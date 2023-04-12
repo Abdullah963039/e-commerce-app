@@ -54,7 +54,7 @@ export function HomeSlider({ slides }) {
                 />
               </div>
               {slide.text && (
-                <div className="max-w-[250px] break-words text-center lg:max-w-[400px]">
+                <div className="max-w-[250px] whitespace-break-spaces text-center lg:max-w-[400px]">
                   <p className="text-xs sm:text-base lg:text-3xl">
                     {slide.text}
                   </p>
@@ -122,7 +122,7 @@ export function Slider({ slides, height }) {
                 />
               </div>
               {slide.text && (
-                <div className="max-w-[250px] break-words text-center lg:max-w-[400px]">
+                <div className="max-w-[250px] whitespace-break-spaces text-center lg:max-w-[400px]">
                   <p className="text-xs sm:text-base lg:text-3xl">
                     {slide.text}
                   </p>

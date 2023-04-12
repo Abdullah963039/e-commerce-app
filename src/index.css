@@ -27,6 +27,7 @@ a {
 [type="number"] {
     border: 1px solid;
     border-radius: .5rem;
+    text-align: center;
     appearance: none;
 }
 
@@ -52,7 +53,14 @@ a {
     width: 25px;
     height: 25px;
     cursor: pointer;
+    opacity: .75;
+    transition: .15s;
 }
+
+.circle:hover {
+    opacity: 1;
+}
+
 
 
 .add-to-fav {

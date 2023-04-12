@@ -20,7 +20,7 @@ export default function ProductInforamtions() {
       </div>
       <div>
         <span className="ml-4 text-slate-600">المواصفات</span>
-        <p className="break-words px-2 text-xl">
+        <p className="whitespace-break-spaces px-2 text-xl">
           سامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونجسامسونج
         </p>
       </div>

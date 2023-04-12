@@ -5,30 +5,32 @@ import { Link } from "react-router-dom";
 export default function Header() {
   return (
     <header className="bg-gradient-to-bl from-sky-500 to-sky-300">
-      <div className="container flex flex-row items-center justify-between mx-auto">
+      <div className="container mx-auto flex flex-row items-center justify-between">
         <div>
           <Link to={"/"}>
-            <img src={logo} alt="logo" className="max-w-[60px] w-fit" />
+            <img src={logo} alt="logo" className="w-fit max-w-[60px]" />
           </Link>
         </div>
         <div>
           <input
             type="text"
             placeholder="ابحث هنا"
-            className="search rounded-md text-center py-1 outline-none w-full max-w-xs placeholder:text-slate-50 placeholder:text-sm focus-within:placeholder:text-sky-500 caret-sky-800"
+            className="search w-full max-w-xs rounded-md py-1 text-center caret-sky-800 outline-none placeholder:text-sm placeholder:text-slate-50 focus-within:placeholder:text-sky-500"
           />
         </div>
-        <div className="flex gap-1 sm:gap-2 md:gap-4 text-slate-50 mr-2 justify-self-start ">
+        <div className="mr-2 flex gap-1 justify-self-start text-slate-50 sm:gap-2 md:gap-4 ">
           <Link to="/login">
-            <button className="btn icon text-xs py-1 px-3 sm:text-base hover:bg-white hover:text-slate-900">
+            <button className="btn icon px-3 py-1 text-xs hover:bg-white hover:text-slate-900 sm:text-base">
               <AiOutlineUser />
               دخول
             </button>
           </Link>
-          <button className="btn icon text-xs py-1 px-3 sm:text-base hover:bg-white hover:text-slate-900">
-            <AiOutlineShoppingCart />
-            العربة
-          </button>
+          <Link to="/cart">
+            <button className="btn icon px-3 py-1 text-xs hover:bg-white hover:text-slate-900 sm:text-base">
+              <AiOutlineShoppingCart />
+              العربة
+            </button>
+          </Link>
         </div>
       </div>
     </header>

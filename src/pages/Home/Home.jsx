@@ -33,7 +33,7 @@ const slides = [
 
 export default function Home() {
   return (
-    <div className="bg-slate-50">
+    <div className="bg-slate-100">
       <div className="h-[300px] overflow-hidden bg-sky-100 py-8 text-slate-600">
         <HomeSlider slides={slides} />
       </div>

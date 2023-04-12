@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const SubTitle = ({ title, href = "/", buttonContent }) => {
   return (
-    <div className="container my-5 flex items-center justify-between py-2 text-xs sm:text-base md:text-3xl">
+    <div className="container my-5 flex items-center justify-between py-2 text-xl sm:text-2xl md:text-3xl">
       <h3>{title}</h3>
       {buttonContent && (
         <Link to={href} className="text-decoration-none">

@@ -5,6 +5,7 @@ import RateContainer from "../../components/Rates/RateContainer";
 export default function ProductDetailsPage() {
   return (
     <div className="container flex flex-col gap-6">
+      {/* Product Description */}
       <ProductDetails />
       {/* Rate Component */}
       <RateContainer />
