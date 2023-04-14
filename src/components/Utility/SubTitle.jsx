@@ -6,7 +6,7 @@ const SubTitle = ({ title, href = "/", buttonContent }) => {
       <h3>{title}</h3>
       {buttonContent && (
         <Link to={href} className="text-decoration-none">
-          <button className="btn border-sky-400 px-3 py-1 text-xs text-sky-400 hover:bg-sky-400  hover:text-slate-100 sm:text-base xl:px-6 ">
+          <button className="btn border-slate-700 px-4 py-1 text-xs text-slate-700 hover:bg-slate-700  hover:text-slate-100 sm:text-base xl:px-6 ">
             {buttonContent}
           </button>
         </Link>

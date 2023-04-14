@@ -4,6 +4,7 @@ export default function SelectionSidbar() {
   return (
     <aside className="flex w-full max-w-[180px] select-none flex-col gap-4">
       <div className="flex flex-col pb-3">
+        {/* Categories */}
         <p className="mb-4 text-xl font-bold">الفئة</p>
         <div className="flex items-center gap-2 pr-2">
           <input
@@ -14,7 +15,7 @@ export default function SelectionSidbar() {
           />
           <label
             htmlFor="category-ch1"
-            className="text-sm peer-checked:text-sky-600"
+            className="text-sm peer-checked:font-bold"
           >
             الكل{" "}
           </label>
@@ -28,7 +29,7 @@ export default function SelectionSidbar() {
           />
           <label
             htmlFor="category-ch2"
-            className="text-sm peer-checked:text-sky-600"
+            className="text-sm peer-checked:font-bold"
           >
             اجهزة منزلية
           </label>
@@ -42,7 +43,7 @@ export default function SelectionSidbar() {
           />
           <label
             htmlFor="category-ch3"
-            className="text-sm peer-checked:text-sky-600"
+            className="text-sm peer-checked:font-bold"
           >
             اجهزة منزلية
           </label>
@@ -56,13 +57,14 @@ export default function SelectionSidbar() {
           />
           <label
             htmlFor="category-ch4"
-            className="text-sm peer-checked:text-sky-600"
+            className="text-sm peer-checked:font-bold"
           >
             اجهزة منزلية
           </label>
         </div>
       </div>
       <div className="flex flex-col pb-3">
+        {/* Brands */}
         <p className="mb-4 text-xl font-bold">الماركة</p>
         <div className="flex items-center gap-2 pr-2">
           <input
@@ -71,10 +73,7 @@ export default function SelectionSidbar() {
             className="peer"
             name={"brand"}
           />
-          <label
-            htmlFor="brand-ch1"
-            className="text-sm peer-checked:text-sky-600"
-          >
+          <label htmlFor="brand-ch1" className="text-sm peer-checked:font-bold">
             الكل
           </label>
         </div>
@@ -85,10 +84,7 @@ export default function SelectionSidbar() {
             className="peer"
             name={"brand"}
           />
-          <label
-            htmlFor="brand-ch2"
-            className="text-sm peer-checked:text-sky-600"
-          >
+          <label htmlFor="brand-ch2" className="text-sm peer-checked:font-bold">
             آبل
           </label>
         </div>
@@ -99,10 +95,7 @@ export default function SelectionSidbar() {
             className="peer"
             name={"brand"}
           />
-          <label
-            htmlFor="brand-ch3"
-            className="text-sm peer-checked:text-sky-600"
-          >
+          <label htmlFor="brand-ch3" className="text-sm peer-checked:font-bold">
             سامسونج
           </label>
         </div>
@@ -114,15 +107,17 @@ export default function SelectionSidbar() {
           <input
             type="number"
             min={1}
-            className="w-10 border-sky-200 text-center outline-none"
+            inputMode="numeric"
+            className="max-w-[5rem] border-slate-200 text-center outline-none"
           />
         </div>
         <div className="flex items-center gap-2 pr-2">
           <span className="text-sm">الى</span>
           <input
             type="number"
+            inputMode="numeric"
             min={1}
-            className="w-10 border-sky-200 text-center outline-none"
+            className="max-w-[5rem] border-slate-200 text-center outline-none"
           />
         </div>
       </div>

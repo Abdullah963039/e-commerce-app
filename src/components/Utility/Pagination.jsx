@@ -1,7 +1,7 @@
 import ReactPaginate from "react-paginate";
 
 const BUTTONS_STYLE =
-  "btn py-1 px-3 border-sky-500 text-sky-500 hover:bg-sky-500 hover:text-white duration-150";
+  "btn py-1 px-3 border-slate-700 text-slate-900 hover:bg-slate-700 hover:text-white duration-150";
 
 export default function Pagination() {
   const totalPages = 100; // !
@@ -21,7 +21,7 @@ export default function Pagination() {
         previousClassName={BUTTONS_STYLE}
         nextClassName={BUTTONS_STYLE}
         breakClassName={BUTTONS_STYLE}
-        activeClassName="bg-sky-500 text-white"
+        activeClassName="bg-slate-700 text-white"
       />
     </div>
   );

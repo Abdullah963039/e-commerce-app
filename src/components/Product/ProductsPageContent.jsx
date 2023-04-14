@@ -26,7 +26,7 @@ export default function ProductsPageContent() {
                   name="sort"
                   className="peer appearance-none"
                 />
-                <span className="peer-checked:font-bold peer-checked:text-sky-600">
+                <span className="peer-checked:font-bold peer-checked:text-slate-600">
                   حسب الاسم
                 </span>
               </label>
@@ -38,7 +38,7 @@ export default function ProductsPageContent() {
                   name="sort"
                   className="peer appearance-none"
                 />
-                <span className="peer-checked:font-bold peer-checked:text-sky-600">
+                <span className="peer-checked:font-bold peer-checked:text-slate-600">
                   التقييم
                 </span>
               </label>
@@ -50,7 +50,7 @@ export default function ProductsPageContent() {
                   name="sort"
                   className="peer appearance-none"
                 />
-                <span className="peer-checked:font-bold peer-checked:text-sky-600">
+                <span className="peer-checked:font-bold peer-checked:text-slate-600">
                   التاريخ
                 </span>
               </label>
@@ -62,7 +62,7 @@ export default function ProductsPageContent() {
                   name="sort"
                   className="peer appearance-none"
                 />
-                <span className="peer-checked:font-bold peer-checked:text-sky-600">
+                <span className="peer-checked:font-bold peer-checked:text-slate-600">
                   سعر من الاعلى
                 </span>
               </label>

@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 
 * {
-    box-sizing: border-box;
     font-family: 'Amiri', serif;
 }
 
@@ -76,3 +75,9 @@ a {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    .navlink.active {
+        @apply bg-slate-700 text-slate-50;
+    }
+}

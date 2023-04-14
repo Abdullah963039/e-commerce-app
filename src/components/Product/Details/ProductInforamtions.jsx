@@ -26,10 +26,10 @@ export default function ProductInforamtions() {
       </div>
       <div className="flex flex-wrap gap-4">
         <button className="btn flex cursor-default gap-2 bg-white px-6 py-3 font-bold">
-          <del>before</del>
+          <del className="text-slate-500">before</del>
           <span>current</span>
         </button>
-        <button className="btn icon flex gap-2 border-sky-500 bg-sky-500 px-6 py-3 text-sm text-white hover:bg-sky-600">
+        <button className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900">
           <BiCartAdd className="text-xl" />
           اضف للعربة
         </button>

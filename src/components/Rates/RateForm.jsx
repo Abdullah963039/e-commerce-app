@@ -18,7 +18,7 @@ export default function RateForm() {
         ></textarea>
         <button
           type="submit"
-          className="btn border-sky-500 bg-sky-500 px-4 py-2 text-white duration-150 hover:bg-white hover:font-bold hover:text-sky-500"
+          className="btn border-slate-700 bg-slate-700 px-4 py-2 text-white duration-150 hover:bg-slate-900 hover:font-bold"
         >
           إرسال
         </button>
