@@ -6,11 +6,11 @@ export default function AdminAddSubCategory() {
       <input
         type="text"
         placeholder="اسم التصنيف الفرعي"
-        className="w-full rounded-md border border-slate-300 bg-transparent p-2 outline-none placeholder:text-slate-600"
+        className="w-full rounded-md border border-slate-300 bg-white p-2 outline-none placeholder:text-slate-600"
       />
       <select
         name="subCategory"
-        className="w-full rounded-md border border-slate-400  bg-white p-2"
+        className="w-full rounded-md border border-slate-400  bg-white p-1"
       >
         <option value="asfas">first cat</option>
         <option value="asfas">sec cat</option>

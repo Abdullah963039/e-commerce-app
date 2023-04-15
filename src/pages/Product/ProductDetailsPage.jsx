@@ -10,7 +10,7 @@ export default function ProductDetailsPage() {
       {/* Rate Component */}
       <RateContainer />
       {/* Products May You Like */}
-      <div className="mb-6 rounded-lg bg-white px-2 shadow-lg">
+      <div className="mb-6 rounded-lg px-2 shadow-lg">
         <ProductsList title={"منتجات قد تعجبك"} buttonContent={"المزيد"} />
       </div>
     </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 
 //! <option> element Must Rendered As Array
 
-export default function MultiSelectForm() {
+export default function MultiSelectForm({ subCategories = [] }) {
   const [selectedCategoriesArray, setSelectedCategoriesArray] = useState([]); //? Array Of Selected Choices
   const [showSubCategories, setShowSubCategories] = useState(false); //? Show Select Box
 
@@ -36,7 +36,7 @@ export default function MultiSelectForm() {
       >
         {/* Select Form Title */}
         اضف تصنيف فرعي
-        <span className="absolute left-0 text-3xl text-slate-900">
+        <span className="absolute left-[-6px] text-[1.75rem] text-slate-900">
           {showSubCategories ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
         </span>
       </div>
@@ -72,9 +72,15 @@ export default function MultiSelectForm() {
         onClick={(e) => handleSelect(e)}
       >
         {/* Value Must Equal To  */}
-        <option value="sub1">sub1</option>
-        <option value="sub2">sub2</option>
-        <option value="sub3">sub1</option>
+        {subCategories.length !== 0 ? (
+          subCategories.map((subCategory, index) => (
+            <option key={index} value={subCategory}>
+              {subCategory}
+            </option>
+          ))
+        ) : (
+          <option disabled>لا يوجد تصنيفات فرعية</option>
+        )}
       </select>
     </div>
   );

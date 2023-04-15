@@ -5,7 +5,7 @@ import CategoryCard from "./CategoryCard";
 
 export default function AllCategoryContainer() {
   return (
-    <div className="container">
+    <div className="container py-4">
       <div className=" min-h-[calc(100vh-65px)]">
         <SubTitle title={"كل التصنيفات"} />
         <div className="my-8 flex flex-wrap justify-center gap-0">

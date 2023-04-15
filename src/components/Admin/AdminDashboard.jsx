@@ -1,15 +1,15 @@
 //? Sidebar Of Admin
 
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export default function AdminDashboard() {
   const NAVLINK_STYLE =
     "w-full border-b border-slate-300 py-4 duration-150 hover:bg-slate-700 hover:text-slate-50 navlink";
 
   return (
-    <aside className="relative col-span-2 h-full overflow-clip rounded-lg bg-white">
+    <aside className="relative col-span-2 overflow-clip rounded-lg ">
       <nav className="sticky top-0">
-        <ul className="flex flex-col items-center overflow-hidden rounded-lg text-center">
+        <ul className="flex flex-col items-center overflow-hidden rounded-lg bg-white text-center">
           <NavLink to="/admin/orders" className={NAVLINK_STYLE}>
             <li title="ادارة الطلبات">ادارة الطلبات</li>
           </NavLink>

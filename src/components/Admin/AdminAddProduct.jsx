@@ -4,6 +4,14 @@ import MultiSelectForm from "./MultiSelectBox/MultiSelectForm";
 //! PRODUCT COLORS MUST BE REQUIRED
 
 export default function AdminAddProduct() {
+  const subCategories = [
+    "تصنيف فرعي 1",
+    "تصنيف فرعي 2",
+    "تصنيف فرعي 3",
+    "تصنيف فرعي 4",
+    "تصنيف فرعي 5",
+  ];
+
   return (
     <form className="flex max-w-[600px] flex-col gap-2">
       <div className="w-fit ">
@@ -57,7 +65,7 @@ export default function AdminAddProduct() {
         <option value="">التصنيف الرئيسي</option>
       </select>
       {/* Product Sub Category */}
-      <MultiSelectForm />
+      <MultiSelectForm subCategories={subCategories} />
       {/* Product Brand */}
       <select
         name="mainBrand"
@@ -98,13 +106,9 @@ export default function AdminAddProduct() {
               className="w-full"
             />
           </label>
-          <label className="circle block bg-teal-700">
-            <input
-              type="checkbox"
-              hidden
-              name="productColor"
-              className="w-full"
-            />
+          <label className="circle flex items-center justify-center border border-slate-300">
+            <input type="color" hidden name="productColor" className="w-full" />
+            +
           </label>
         </div>
       </div>

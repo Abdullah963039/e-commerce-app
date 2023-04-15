@@ -3,9 +3,9 @@ import { TbClick } from "react-icons/tb";
 
 export const Register = () => {
   return (
-    <>
-      <div className="container flex h-[calc(100vh-(65px+56px))] flex-col items-center justify-center">
-        <div className="flex max-w-[500px] flex-col gap-4 rounded-2xl border-[1px] border-solid border-slate-100 shadow-sm shadow-slate-400">
+    <div className="bg-slate-200">
+      <div className="container flex h-[calc(100vh-(65px+56px))] flex-col items-center justify-center py-4">
+        <div className="flex max-w-[500px] flex-col gap-4 rounded-2xl border-[1px] border-solid border-slate-100 bg-white shadow-sm shadow-slate-400">
           <h2 className="mt-4 text-center text-2xl text-slate-700">
             حساب جديد
           </h2>
@@ -46,6 +46,6 @@ export const Register = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };

@@ -24,66 +24,74 @@ import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
 import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
 import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
+//? User Pages
+import UserPage from "./pages/User/UserPage";
+import UserProfilePage from "./pages/User/UserProfilePage";
+import UserOrdersPage from "./pages/User/UserOrdersPage";
+import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
+import UserAddAddressPage from "./pages/User/UserAddAddressPage";
+import UserAddressesPage from "./pages/User/UserAddressesPage";
+import UserEditAddressPage from "./pages/User/UserEditAddressPage";
 
 const routes = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
+      //? Home Page
       {
-        //? Home Page
         index: true,
         element: <Home />,
       },
+      //? Login Page
       {
-        //? Login Page
         path: "/login",
         element: <Login />,
       },
+      //? Register Page
       {
-        //? Register Page
         path: "/register",
         element: <Register />,
       },
+      //? All Categories Page
       {
-        //? All Categories Page
         path: "/categories",
         element: <AllCategeories />,
       },
+      //? All Brands Page
       {
-        //? All Brands Page
         path: "/brands",
         element: <AllBrands />,
       },
+      //? Products Page
       {
-        //? Products Page
         path: "/products",
         element: <Products />,
         children: [
+          //? All Products Page
           {
-            //? All Products Page
             index: true,
             element: <AllProducts />,
           },
+          //? Product Details Page
           {
-            //? Product Details Page
             path: ":id",
             element: <ProductDetailsPage />,
           },
         ],
       },
+      //? Cart Page
       {
-        //? Cart Page
         path: "/cart",
         element: <Cart />,
       },
+      //? Payment Page
       {
-        //? Payment Page
         path: "/paymethod",
         element: <PaymentPage />,
       },
+      //? Adminstrator Page
       {
-        //? Adminstrator Page
         path: "/admin",
         element: <AdminPage />,
         children: [
@@ -126,6 +134,48 @@ const routes = createBrowserRouter([
             //? Adminstrator Add Product Page
             path: "add-product",
             element: <AdminAddProductPage />,
+          },
+        ],
+      },
+      {
+        //? User Page
+        path: "/user",
+        element: <UserPage />,
+        children: [
+          //? User Profile Page
+          {
+            index: true,
+            element: <UserProfilePage />,
+          },
+          //? User Orders Page
+          {
+            path: "orders",
+            element: <UserOrdersPage />,
+          },
+          //? User Favorites Page
+          {
+            path: "favorites",
+            element: <UserFavoriteProductsPage />,
+          },
+          //? User Address Page
+          {
+            path: "address",
+            children: [
+              {
+                index: true,
+                element: <UserAddressesPage />,
+              },
+              //? User Add New Address Page
+              {
+                path: "add-address",
+                element: <UserAddAddressPage />,
+              },
+              //? User Edit Address Page
+              {
+                path: "edit",
+                element: <UserEditAddressPage />,
+              },
+            ],
           },
         ],
       },
