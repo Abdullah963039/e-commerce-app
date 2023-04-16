@@ -4,9 +4,9 @@ export default function ProductInforamtions() {
   return (
     <div className="flex h-full flex-col justify-evenly gap-4">
       <div>
-        <span className="text-slate-600">Categoty</span>
-        <p className="px-2">description</p>
-        <span className="text-yellow-600">rate</span>
+        <span className="text-slate-600">الكترونيات</span>
+        <p className="px-2">ايفون ايفون ايفون ايفون ايفون </p>
+        <span className="text-yellow-600">4.5</span>
       </div>
       <div>
         <span className="ml-4 text-slate-600">الماركة</span>
@@ -28,8 +28,8 @@ export default function ProductInforamtions() {
       </div>
       <div className="flex flex-wrap gap-4">
         <button className="btn flex cursor-default gap-2 bg-white px-6 py-3 font-bold">
-          <del className="text-slate-500">before</del>
-          <span>current</span>
+          <del className="text-slate-500">5000</del>
+          <span>4000</span>
         </button>
         <button className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900">
           <BiCartAdd className="text-xl" />

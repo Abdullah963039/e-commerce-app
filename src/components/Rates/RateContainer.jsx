@@ -6,13 +6,13 @@ import RateForm from "./RateForm";
 export default function RateContainer() {
   return (
     <div className="my-4 rounded-lg bg-white shadow-lg">
-      <div className="flex items-center gap-3 p-2  text-xl">
-        <b>comments</b>
+      <div className="mb-2 flex items-center gap-3 p-2 text-xl">
+        <b className="text-2xl">التعليقات</b>
         <div className="flex items-center font-bold text-yellow-500">
           <AiFillStar className="h-full" />
           4.5
         </div>
-        <p className="text-slate-400">(rate count)</p>
+        <p className="text-xs text-slate-400">(168 تقييم)</p>
       </div>
       <div>
         <RateForm />

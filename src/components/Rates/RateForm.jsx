@@ -7,7 +7,7 @@ export default function RateForm() {
   return (
     <>
       <div className="flex items-center gap-4 px-6">
-        <h2 className="text-xl font-semibold">Name</h2>
+        <h2 className="text-xl font-semibold">محمد علي</h2>
         <RatingStars />
       </div>
       <form className="flex flex-col items-end gap-2 border-b border-solid border-slate-300 p-4">
