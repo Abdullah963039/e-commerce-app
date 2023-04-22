@@ -1,94 +1,43 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&display=swap');
 
-* {
-    font-family: 'Amiri', serif;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-    width: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #334155;
-    border-radius: 5px;
-}
-
-.container {
-    margin: 0 auto;
-}
-
-a {
-    text-decoration: none !important;
-    user-select: none;
-}
-
-.btn {
-    cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: .5rem;
-    transition: .3s;
-    user-select: none;
-    -webkit-user-drag: none;
-}
-
-[type="number"] {
-    border: 1px solid;
-    border-radius: .5rem;
-    text-align: center;
-    appearance: none;
-}
-
-.btn.icon {
-    display: flex;
-    gap: .125rem;
-    align-items: center;
-}
-
-.search {
-    background-color: transparent;
-    transition: .3s;
-    border: 1px solid white;
-}
-
-.search:focus {
-    background-color: #eee;
-}
-
-.circle {
-    border-radius: 50%;
-    border: 1px solid #eee;
-    width: 25px;
-    height: 25px;
-    cursor: pointer;
-    opacity: .75;
-    transition: .15s;
-}
-
-.circle:hover {
-    opacity: 1;
-}
-
-.add-to-fav {
-    transition: .3s;
-    cursor: pointer;
-}
-
-.add-to-fav:hover {
-    color: #ce2a2a;
-}
-
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer components {
+    .container {
+        @apply mx-auto
+    }
+
+    a {
+        @apply no-underline select-none
+    }
+
+    [type="number"] {
+        @apply border-1 rounded-md text-center appearance-none
+    }
+
     .navlink.active {
         @apply bg-slate-700 text-slate-50;
+    }
+
+    .btn {
+        @apply cursor-pointer border-1 rounded-md duration-300 select-none
+    }
+
+    .btn.icon {
+        @apply flex gap-2 items-center
+    }
+
+    .search {
+        @apply bg-transparent duration-300 border-1 border-white focus: bg-slate-100
+    }
+
+    .circle {
+        @apply rounded-full w-[25px] h-[25px] cursor-pointer border-1 border-white opacity-75 duration-150 hover: opacity-100
+    }
+
+    .add-to-fav {
+        @apply duration-300 cursor-pointer hover: text-red-700
     }
 }
