@@ -19,7 +19,7 @@ export default function AdminAddProduct() {
         <label className="cursor-pointer text-slate-400">
           <span className="text-slate-500">صورة المنتج</span>
           <input type="file" required name="productImage" hidden />
-          <MdDriveFolderUpload className="text-9xl" />
+          <MdDriveFolderUpload className="text-9xl duration-150 hover:text-slate-700" />
         </label>
       </div>
       {/* Product Name */}

@@ -1,3 +1,3 @@
-import axios from 'axios'
+import axios from "axios";
 
-export default baseURL = axios.create({baseURL: "http://127.0.0.1:8000"})
+export const baseURL = axios.create({ baseURL: "http://127.0.0.1:8000" });

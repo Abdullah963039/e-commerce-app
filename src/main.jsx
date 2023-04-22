@@ -5,9 +5,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // Components
 import App from "./App";
+//? Home
 import Home from "./pages/Home/Home";
+//? Authentication
 import { Login } from "./pages/Auth/Login";
 import { Register } from "./pages/Auth/Register";
+//? Components
 import AllCategeories from "./pages/Category/AllCategeories";
 import AllBrands from "./pages/Brands/AllBrands";
 import Products from "./pages/Product/Products";
@@ -184,7 +187,7 @@ const routes = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <React.StrictMode>
-    <RouterProvider router={routes} />
-  </React.StrictMode>
+  // <React.StrictMode>
+  <RouterProvider router={routes} />
+  // </React.StrictMode>
 );
