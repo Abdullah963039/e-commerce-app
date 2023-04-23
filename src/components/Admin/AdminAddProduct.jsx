@@ -18,7 +18,7 @@ export default function AdminAddProduct() {
         {/* Add Product Image */}
         <label className="cursor-pointer text-slate-400">
           <span className="text-slate-500">صورة المنتج</span>
-          <input type="file" required name="productImage" hidden />
+          <input type="file" required name="imageCover" hidden />
           <MdDriveFolderUpload className="text-9xl duration-150 hover:text-slate-700" />
         </label>
       </div>
@@ -26,13 +26,13 @@ export default function AdminAddProduct() {
       <input
         type="text"
         placeholder="اسم المنتج"
-        name="productName"
+        name="title"
         required
         className="w-full rounded-md border border-slate-300 p-2 outline-none"
       />
       {/* Product Description */}
       <textarea
-        name="productDescription"
+        name="description"
         rows="3"
         className="min-h-[50px] w-full resize-y rounded-md border border-slate-300 p-2 outline-none"
         placeholder="وصف المنتج"
@@ -50,12 +50,12 @@ export default function AdminAddProduct() {
         type="number"
         placeholder="سعر المنتج"
         required
-        name="productDiscountedPrice"
+        name="price"
         className="w-full rounded-md border border-slate-300 p-2 outline-none"
       />
       {/* Product Category */}
       <select
-        name="mainCategory"
+        name="category"
         required
         className="w-full rounded-md border border-slate-300  bg-white p-2"
       >

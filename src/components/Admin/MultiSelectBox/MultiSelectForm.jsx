@@ -1,35 +1,23 @@
 import { RiArrowDropDownLine, RiArrowDropUpLine } from "react-icons/ri";
-import { useState } from "react";
+import MultiSelectFormHook from "../../../Listeners/Product/MultiSelectForm.hook";
 
 //! <option> element Must Rendered As Array
 
-export default function MultiSelectForm({ subCategories = [] }) {
-  const [selectedCategoriesArray, setSelectedCategoriesArray] = useState([]); //? Array Of Selected Choices
-  const [showSubCategories, setShowSubCategories] = useState(false); //? Show Select Box
-
-  //?  Control Selected Choice:
-  function handleSelect(e) {
-    addChoice(e.target.value);
-  }
-
-  //? Delete Choice:
-  const deleteChoice = (e) => {
-    //> e.target.nextSibling.data : Represent Value Of Created Badge
-    setSelectedCategoriesArray((choices) => [
-      ...choices.filter((choice) => choice !== e.target.nextSibling.data),
-    ]);
-  };
-
-  //? Add Selected Choice To []
-  const addChoice = (choice) => {
-    // > Check If Selected Choice Is Allready Selected
-    if (selectedCategoriesArray.find((value) => value === choice))
-      return selectedCategoriesArray;
-    setSelectedCategoriesArray((state) => [...state, choice]);
-  };
+export default function MultiSelectForm({
+  categryId = "64424fc74a79dbe4047340b2",
+}) {
+  const {
+    selectedCategoriesArray,
+    showSubCategories,
+    loading,
+    subCategories,
+    setShowSubCategories,
+    handleSelect,
+    deleteChoice,
+  } = MultiSelectFormHook(categryId);
 
   return (
-    <div className="relative">
+    <div className="relative cursor-pointer">
       <div
         onClick={() => setShowSubCategories(!showSubCategories)}
         className="relative rounded-lg border border-slate-300 bg-white p-2"
@@ -40,7 +28,7 @@ export default function MultiSelectForm({ subCategories = [] }) {
           {showSubCategories ? <RiArrowDropUpLine /> : <RiArrowDropDownLine />}
         </span>
       </div>
-      {selectedCategoriesArray && (
+      {selectedCategoriesArray.length > 0 && (
         <div className="my-2 flex flex-wrap items-center gap-2">
           {/* Budges Of Selected Sub Categories */}
           {selectedCategoriesArray.map((choice, index) => {
@@ -50,7 +38,7 @@ export default function MultiSelectForm({ subCategories = [] }) {
                 className="flex w-fit flex-row-reverse items-center gap-4 rounded bg-slate-700 px-2 text-sm text-slate-100"
               >
                 <div
-                  onClick={(e) => deleteChoice(e)}
+                  onClick={deleteChoice}
                   className="cursor-pointer text-base hover:text-red-500"
                 >
                   &times;
@@ -66,16 +54,16 @@ export default function MultiSelectForm({ subCategories = [] }) {
         multiple
         className={`${
           showSubCategories ? "block" : "hidden"
-        } absolute right-0 w-full scroll-m-0 bg-white px-2 outline-none`}
+        } absolute right-0 z-10 w-full scroll-m-0 bg-white px-2 outline-none`}
         id="subCategories"
         name="subCategories"
-        onClick={(e) => handleSelect(e)}
+        onClick={handleSelect}
       >
         {/* Value Must Equal To  */}
-        {subCategories.length !== 0 ? (
-          subCategories.map((subCategory, index) => (
-            <option key={index} value={subCategory}>
-              {subCategory}
+        {subCategories?.length > 0 ? (
+          subCategories?.map((subCategory) => (
+            <option key={subCategory["_id"]} value={subCategory["_id"]}>
+              {subCategory.name}
             </option>
           ))
         ) : (

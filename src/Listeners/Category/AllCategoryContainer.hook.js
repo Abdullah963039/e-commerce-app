@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useStore } from "../../hooks/useStore";
 
-export default function AllCategoryContainerHook() {
+export default function AllCategoryContainerHook(limit) {
   //> Use Categories Store ..
   const { allCategories, getAllCategories, loading, getAllCategoriesByPage } =
     useStore(); //> Use Global Store
@@ -9,7 +9,7 @@ export default function AllCategoryContainerHook() {
 
   //> Fetching Data ..
   useEffect(() => {
-    getAllCategories();
+    getAllCategories(limit);
   }, []);
 
   let totalPages = 0; //> Controll Pagenation
@@ -17,7 +17,8 @@ export default function AllCategoryContainerHook() {
     //> Avoid undefined value
     totalPages = allCategories.paginationResult.numberOfPages; //> Wait For Load Data
 
-  const getPageNumber = (pageNumber) => getAllCategoriesByPage(pageNumber); //> Handle Click On Pagination
+  const getPageNumber = (pageNumber) =>
+    getAllCategoriesByPage(limit, pageNumber); //> Handle Click On Pagination
 
   return { categories, loading, totalPages, getPageNumber };
 }

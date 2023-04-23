@@ -6,20 +6,22 @@ const BRANDS_URL = "/api/v1/brands";
 export const brandsStore = (set) => ({
   allBrands: [],
   //? GET Methods
-  getAllBrands: async () => {
+  getAllBrands: async (limit) => {
     try {
       set({ loading: true, error: false });
-      const data = await useGet(BRANDS_URL);
+      const data = await useGet(BRANDS_URL + `?limit=${limit}`);
       set({ loading: false, allBrands: data });
     } catch (error) {
       set({ error: true, loading: false });
       console.log(error);
     }
   },
-  getAllBrandsByPage: async (pageNumber) => {
+  getAllBrandsByPage: async (limit, pageNumber) => {
     try {
       set({ loading: true, error: false }); //* Start Loading
-      const data = await useGet(BRANDS_URL + `?limit=20&page=${pageNumber}`);
+      const data = await useGet(
+        BRANDS_URL + `?limit=${limit}&page=${pageNumber}`
+      );
       set({ allBrands: data, loading: false });
     } catch (error) {
       set({ error: true, loading: false });
@@ -30,7 +32,7 @@ export const brandsStore = (set) => ({
   createNewBrand: async (formData) => {
     try {
       set({ loading: true, error: false });
-      const response = await usePost(BRANDS_URL, formData);
+      const response = await usePost(BRANDS_URL, formData, true);
       set({ loading: false });
       return response;
     } catch (error) {

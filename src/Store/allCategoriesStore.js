@@ -6,21 +6,21 @@ const CATEGORIES_URL = "/api/v1/categories";
 export const allCategoriesStore = (set) => ({
   allCategories: [],
   //? GET
-  getAllCategories: async () => {
+  getAllCategories: async (limit) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading
-      const data = await useGet(CATEGORIES_URL + "?limit=18");
+      const data = await useGet(CATEGORIES_URL + `?limit=${limit}`);
       set({ allCategories: data, loading: false }); //* Stop Loading & Set Data
     } catch (error) {
       console.error(error);
       set({ error: true, loading: false }); //* Stop Loading & Set Errror
     }
   },
-  getAllCategoriesByPage: async (pageNumber) => {
+  getAllCategoriesByPage: async (limit, pageNumber) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading
       const data = await useGet(
-        CATEGORIES_URL + `?limit=18&page=${pageNumber}`
+        CATEGORIES_URL + `?limit=${limit}&page=${pageNumber}`
       );
       set({ allCategories: data, loading: false }); //* Stop Loading & Set Data
     } catch (error) {
@@ -32,7 +32,7 @@ export const allCategoriesStore = (set) => ({
   createNewCategory: async (formData) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading & Cancel Error
-      const response = await usePost(CATEGORIES_URL, formData);
+      const response = await usePost(CATEGORIES_URL, formData, true);
       set({ loading: false });
       return response;
     } catch (error) {

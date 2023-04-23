@@ -2,7 +2,7 @@ import { ToastContainer } from "react-toastify";
 import { MdDriveFolderUpload } from "react-icons/md";
 
 import { LoadingIcon } from "../../components/Utility/Loading";
-import { AdminAddCategoryHook } from "../../logics/Category/AdminAddCategory.hook";
+import { AdminAddCategoryHook } from "../../Listeners/Category/AdminAddCategory.hook";
 
 export default function AdminAddCategory() {
   const {

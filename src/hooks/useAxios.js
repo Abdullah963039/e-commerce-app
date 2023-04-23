@@ -7,14 +7,20 @@ export async function useGet(url) {
 }
 
 // ? POST Method
-export async function usePost(url, formData, configs) {
-  const medieConfigs = {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  };
-  const response = await baseURL.post(url, formData, (configs = medieConfigs));
+export async function usePost(url, formData, sendImage = false) {
+  if (sendImage) {
+    //> Will Send Image
+    const medieConfigs = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
 
+    const response = await baseURL.post(url, formData, medieConfigs);
+    return response;
+  }
+  //> Send just text
+  const response = await baseURL.post(url, formData);
   return response;
 }
 

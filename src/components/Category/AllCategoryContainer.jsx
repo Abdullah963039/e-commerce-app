@@ -2,11 +2,11 @@ import Pagination from "../Utility/Pagination";
 import SubTitle from "../Utility/SubTitle";
 import CategoryCard from "./CategoryCard";
 import { Loading } from "../Utility/Loading";
-import AllCategoryContainerHook from "../../logics/Category/AllCategoryContainer.hook";
+import AllCategoryContainerHook from "../../Listeners/Category/AllCategoryContainer.hook";
 
 export default function AllCategoryContainer() {
   const { categories, loading, totalPages, getPageNumber } =
-    AllCategoryContainerHook(); //? All Component Logics
+    AllCategoryContainerHook(18); //? All Component Logics
 
   return (
     <div className="container py-4">

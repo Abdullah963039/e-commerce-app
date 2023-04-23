@@ -8,7 +8,7 @@ export default function HomeCategoryHook() {
 
   //> Fetching Data ..
   useEffect(() => {
-    getAllCategories();
+    getAllCategories(6);
   }, []);
 
   return { categories, loading };
