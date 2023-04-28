@@ -12,6 +12,12 @@ export default function AdminAddSubCategoryHook() {
   const nameRef = useRef(""); //> Referance To Sub Categoty Input
 
   useEffect(() => {
+    if (!navigator.onLine) {
+      //? Check Network
+      notify("offline");
+      return;
+    }
+
     getAllCategories();
   }, []);
 

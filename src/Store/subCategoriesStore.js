@@ -15,19 +15,6 @@ export const subCategoriesStore = (set) => ({
       console.log(error);
     }
   },
-  getAllSubCategoriesOnCategory: async (categoryId) => {
-    //> Get All Sub Categories Of Specific Category
-    try {
-      set({ loading: true, error: false });
-      const response = await useGet(
-        `/api/v1/categories/${categoryId}/subcategories`
-      );
-      set({ loading: false, subCategories: response.data });
-    } catch (error) {
-      set({ loading: false, error: true });
-      return error.response;
-    }
-  },
   //? POST
   createNewSubCategory: async (formData) => {
     try {

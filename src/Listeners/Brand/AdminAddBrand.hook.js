@@ -23,6 +23,11 @@ export default function AdminAddBrandHook() {
   const handleSubmit = async (e) => {
     e.preventDefault(); //> Prevent Defaul Behavior
 
+    if (!navigator.onLine) {
+      notify("offline");
+      return;
+    }
+
     if (image === "" || nameRef.current.value === "") {
       if (image === "") notify("error", "من فضلك اختر صورة");
       if (nameRef.current.value === "")
