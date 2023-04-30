@@ -1,3 +1,4 @@
+import ProductsContainerHook from "../../Listeners/Product/ProductsPageContent.hook";
 import Product from "./Product";
 
 const STYLE = {
@@ -5,17 +6,12 @@ const STYLE = {
   singleCard: "col-span-12 sm:col-span-6 md:col-span-4 lg:col-span-3",
 };
 
-export default function ProductsContainer() {
+export default function ProductsContainer({ productsList = [] }) {
   return (
     <div className={STYLE.gridContainer}>
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
-      <Product className={STYLE.singleCard} />
+      {productsList?.map((product, index) => (
+        <Product key={index} className={STYLE.singleCard} product={product} />
+      ))}
     </div>
   );
 }

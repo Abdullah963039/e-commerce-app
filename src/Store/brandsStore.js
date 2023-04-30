@@ -28,6 +28,17 @@ export const brandsStore = (set) => ({
       console.log(error);
     }
   },
+  getSpecificBrand: async (brandId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useGet(BRANDS_URL + `/${brandId}`);
+      set({ loading: false });
+      return response.data.name;
+    } catch (error) {
+      set({ loading: false, error: true });
+      console.log(error);
+    }
+  },
   //? POST Methods
   createNewBrand: async (formData) => {
     try {

@@ -28,6 +28,17 @@ export const allCategoriesStore = (set) => ({
       set({ error: true, loading: false }); //* Stop Loading & Set Errror
     }
   },
+  getSpecificCategory: async (categoryId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useGet(CATEGORIES_URL + `/${categoryId}`);
+      set({ loading: false });
+      return response.data.name;
+    } catch (error) {
+      set({ loading: false, error: true });
+      console.log(error);
+    }
+  },
 
   getAllSubCategoriesOnCategory: async (categoryId) => {
     //> Get All Sub Categories Of Specific Category

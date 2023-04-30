@@ -176,9 +176,9 @@ export default function AdminAddProduct() {
         </>
 
         {/* Sold Price */}
-        <>
+        {/* <>
           <input
-            name="sold"
+            name="priceAfter"
             ref={soldPriceRef}
             min={0}
             type="number"
@@ -186,7 +186,7 @@ export default function AdminAddProduct() {
             title="السعر بعد الخصم"
             className="w-full rounded-md border border-slate-300 p-2 outline-none"
           />
-        </>
+        </> */}
 
         {/* Product Category */}
 

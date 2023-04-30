@@ -1,7 +1,34 @@
 import React, { useState } from "react";
 import { AiOutlineArrowRight, AiOutlineArrowLeft } from "react-icons/ai";
 
-export function HomeSlider({ slides }) {
+const slides = [
+  {
+    img: "/src/assets/svgs/shopping.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+  {
+    img: "/src/assets/svgs/shopping_app.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+  {
+    img: "/src/assets/svgs/window-shopping.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+  {
+    img: "/src/assets/svgs/shopping.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+  {
+    img: "/src/assets/svgs/shopping_app.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+  {
+    img: "/src/assets/svgs/window-shopping.svg",
+    text: "حسم قد يصل الى 40%",
+  },
+];
+
+export function HomeSlider() {
   const [curreentImage, setCurreentImage] = useState(0);
 
   const nextImage = () => {

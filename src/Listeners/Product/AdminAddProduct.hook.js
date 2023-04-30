@@ -53,7 +53,10 @@ export default function AdminAddProductHook() {
   // ? Product Images
   const selectMultipleImages = (e) => {
     if (e.target.files[0] === undefined) return;
-    if (productImages.length > 3) {
+    if (
+      e.target.files.length > 4 ||
+      e.target.files.length + productImages.length > 4
+    ) {
       notify("error", "لا يمكن اضافة أكتر من 4 صور");
       return;
     }
@@ -96,7 +99,7 @@ export default function AdminAddProductHook() {
       quantityRef.current.value === "" ||
       priceRef.current.value === "" ||
       mainCategory === "" ||
-      //! selectedBrand === "" ||
+      selectedBrand === "" ||
       availColors.length === 0 ||
       imageCover === "" ||
       productImages.length === 0
@@ -108,29 +111,23 @@ export default function AdminAddProductHook() {
     const formData = new FormData(e.target);
 
     //> Add Product Images
-    for (let i = 0; i < productImages.length; i++) {
-      formData.append("images", productImages[i]);
-    }
+    productImages.forEach((img) => formData.append("images", img));
 
     formData.append("category", mainCategory); //> Main Category
-    //! formData.append("brand", selectedBrand);
+    formData.append("brand", selectedBrand); //> Main Brand
 
     //> Add Subcategories If It Exist
-    if (budges.length > 0) {
-      for (let i = 0; i < budges.length; i++) {
-        formData.append("subcategory", budges[i]);
-      }
-    }
+    if (budges.length > 0)
+      budges.forEach((sub) => formData.append("subcategory", sub));
 
-    for (let i = 0; i < availColors.length; i++) {
-      formData.append("availableColors", availColors[i]);
-    }
+    availColors.forEach((clr) => formData.append("availableColors", clr));
 
     const response = await createNewProduct(formData);
 
     console.log(response);
 
     if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
+    if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
     if (response.status === 201) {
       notify("done");
       clearAllData();
@@ -146,10 +143,10 @@ export default function AdminAddProductHook() {
     setSelectedBrand("");
     setAvailColors([]);
 
-    nameRef.current.value === "";
-    descriptionRef.current.value === "";
-    quantityRef.current.value === "";
-    priceRef.current.value === "";
+    nameRef.current.value = "";
+    descriptionRef.current.value = "";
+    quantityRef.current.value = "";
+    priceRef.current.value = "";
   };
 
   return {

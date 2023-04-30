@@ -78,7 +78,7 @@ const routes = createBrowserRouter([
           },
           //? Product Details Page
           {
-            path: ":id",
+            path: ":productId",
             element: <ProductDetailsPage />,
           },
         ],
