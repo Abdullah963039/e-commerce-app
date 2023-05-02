@@ -4,6 +4,7 @@ export const currencyFormatter = (number) => {
     currency: "EGP",
     currencyDisplay: "name",
     maximumFractionDigits: 0,
+    useGrouping: false,
   });
 
   return fr.format(number);

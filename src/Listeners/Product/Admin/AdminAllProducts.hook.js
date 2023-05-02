@@ -1,6 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../../hooks/useStore";
-import { useState } from "react";
 
 export const AdminAllProductsHook = () => {
   const [rerender, setRerender] = useState(false); // state for make rerender when deleting products

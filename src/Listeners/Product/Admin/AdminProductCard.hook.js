@@ -18,8 +18,8 @@ export function AdminProductCardHook() {
 
     if (response.status === 204) {
       notify("done", "تم حذف المنتج بنجاح");
+      rerenderComponent();
     } else notify("error");
-    rerenderComponent();
   };
   return {
     deleteModal,

@@ -1,6 +1,8 @@
-import { useStore } from "../../../hooks/useStore";
 import { useState, useRef, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useStore } from "../../../hooks/useStore";
 import notify from "../../../utils/notifcation";
+import { useReducer } from "react";
 
 const colors = [
   { name: "أحمر", hex: "#F30B0B" },
@@ -15,9 +17,15 @@ const colors = [
   { name: "ابيض", hex: "#fefefe" },
 ];
 
-export default function AdminAddProductHook() {
+export const AdminEditProductPageHook = () => {
+  const { productId } = useParams(); // to get product id
+  const [product, setProduct] = useState(""); // to store product details
+
   //? Global Store
   const {
+    getSpecificProduct,
+    editSpecificProduct,
+
     subCategories,
     loading,
     allCategories: { data: categories },
@@ -25,8 +33,20 @@ export default function AdminAddProductHook() {
     getAllCategories,
     getAllBrands,
     getAllSubCategoriesOnCategory,
-    createNewProduct,
   } = useStore();
+
+  useEffect(() => {
+    const asyncFunc = async () => {
+      const res = await getSpecificProduct(productId);
+      setProduct(res);
+
+      await getAllCategories();
+      await getAllBrands();
+    };
+    asyncFunc();
+
+    return () => setProduct("");
+  }, []); // dependencies refer to: product is allready been exist
 
   //? Use States
   const [imageCover, setImageCover] = useState(""); //> Image Cover State
@@ -38,10 +58,26 @@ export default function AdminAddProductHook() {
 
   //? Use Ref
   const nameRef = useRef("");
+  // nameRef.current.value = currentProduct["title"]; // set product title
   const descriptionRef = useRef("");
+  // descriptionRef.current.value = currentProduct["description"]; // set product description
   const quantityRef = useRef("");
+  // quantityRef.current.value = currentProduct["quantity"]; // set product quantity
   const priceRef = useRef("");
+  // priceRef.current.value = currentProduct["price"]; // set product price
   const soldPriceRef = useRef("");
+
+  // useEffect to set values
+  useEffect(() => {
+    nameRef.current.value = product["title"]; // set product title
+    descriptionRef.current.value = product["description"]; // set product description
+    quantityRef.current.value = product["quantity"]; // set product quantity
+    priceRef.current.value = product["price"]; // set product price
+    setMainCategory(product["category"]); // set product category
+    setBudges(product["subcategory"]); // set product subcategory
+    setSelectedBrand(product["brand"]); // set product brand
+    setAvailColors(product["availableColors"]); // set product available colors
+  }, [Boolean(product)]);
 
   // ? Product Image Cover
   const selectImageCover = (e) => {
@@ -79,19 +115,13 @@ export default function AdminAddProductHook() {
     setAvailColors([...availColors.filter((clr) => clr !== hex)]); //> Delete Color
 
   //? Use Effect
-  useEffect(() => {
-    getAllCategories();
-    getAllBrands();
-
-    return () => clearAllData();
-  }, []);
 
   useEffect(() => {
     if (mainCategory !== "") getAllSubCategoriesOnCategory(mainCategory);
   }, [mainCategory]);
 
   //? Handle Submit Function
-  const sendData = async (e) => {
+  const editProduct = async (e) => {
     e.preventDefault();
 
     // > Form Validation
@@ -108,29 +138,6 @@ export default function AdminAddProductHook() {
     ) {
       notify("error", "اكمل البيانات من فضلك !");
       return;
-    }
-
-    const formData = new FormData(e.target);
-
-    //> Add Product Images
-    productImages.forEach((img) => formData.append("images", img));
-
-    formData.append("category", mainCategory); //> Main Category
-    formData.append("brand", selectedBrand); //> Main Brand
-
-    //> Add Subcategories If It Exist
-    if (budges.length > 0)
-      budges.forEach((sub) => formData.append("subcategory", sub));
-
-    availColors.forEach((clr) => formData.append("availableColors", clr));
-
-    const response = await createNewProduct(formData);
-
-    if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
-    if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
-    if (response.status === 201) {
-      notify("done");
-      clearAllData();
     }
   };
 
@@ -149,8 +156,11 @@ export default function AdminAddProductHook() {
     priceRef.current.value = "";
   };
 
+  //? New Logic
+  const handleChange = (e) => e.target.value;
+
   return {
-    sendData,
+    editProduct,
     loading,
     imageCoverLogic: { imageCover, selectImageCover, deleteImageCover },
     productImagesLogic: {
@@ -185,4 +195,4 @@ export default function AdminAddProductHook() {
       availColors,
     },
   };
-}
+};

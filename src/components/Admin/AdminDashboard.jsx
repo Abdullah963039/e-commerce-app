@@ -8,7 +8,7 @@ export default function AdminDashboard() {
 
   return (
     <aside className="relative col-span-2 overflow-clip rounded-lg ">
-      <nav className="sticky top-0">
+      <nav className="sticky top-8">
         <ul className="flex flex-col items-center overflow-hidden rounded-lg bg-white text-center">
           <NavLink to="/admin/orders" className={NAVLINK_STYLE}>
             <li title="ادارة الطلبات">ادارة الطلبات</li>

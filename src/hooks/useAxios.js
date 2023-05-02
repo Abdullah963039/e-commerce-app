@@ -25,11 +25,11 @@ export async function usePost(url, formData, sendImage = false) {
 }
 
 // ? PUT Method
-// export async function usePut(url, data, configs) {
-//   const response = await baseURL.put(url, data, configs);
+export async function usePut(url, data, configs) {
+  const response = await baseURL.put(url, data, configs);
 
-//   return response;
-// }
+  return response;
+}
 
 // ? DELETE Method
 

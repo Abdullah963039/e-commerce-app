@@ -35,6 +35,7 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserAddressesPage from "./pages/User/UserAddressesPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
+import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
 
 const routes = createBrowserRouter([
   {
@@ -137,6 +138,11 @@ const routes = createBrowserRouter([
             //? Adminstrator Add Product Page
             path: "add-product",
             element: <AdminAddProductPage />,
+          },
+          {
+            //? Adminstrator Add Product Page
+            path: "edit-product/:productId",
+            element: <AdminEditProductPage />,
           },
         ],
       },

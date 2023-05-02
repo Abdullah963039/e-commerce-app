@@ -1,8 +1,8 @@
 import { AiFillDelete, AiFillEdit, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { currencyFormatter } from "../../utils/formatter";
-import { useStore } from "../../hooks/useStore";
+
 import ConfirmMessage from "./ConfirmMessage";
+import { currencyFormatter } from "../../utils/formatter";
 import { AdminProductCardHook } from "../../Listeners/Product/Admin/AdminProductCard.hook.js";
 
 export default function AdminProductCard({ product }) {
@@ -32,12 +32,14 @@ export default function AdminProductCard({ product }) {
               إزالة
             </span>
           </div>
-          <div className="group flex cursor-pointer items-center gap-1">
-            <AiFillEdit className="text-slate-500 group-hover:text-yellow-500" />
-            <span className="text-slate-500 group-hover:text-yellow-500">
-              تعديل
-            </span>
-          </div>
+          <Link to={`edit-product/${product["_id"]}`}>
+            <div className="group flex cursor-pointer items-center gap-1">
+              <AiFillEdit className="text-slate-500 group-hover:text-yellow-500" />
+              <span className="text-slate-500 group-hover:text-yellow-500">
+                تعديل
+              </span>
+            </div>
+          </Link>
         </div>
         {/* Product Image */}
         <div className="flex w-full items-center justify-center p-2">

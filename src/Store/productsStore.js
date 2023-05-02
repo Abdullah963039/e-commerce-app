@@ -81,6 +81,8 @@ export const productStore = (set) => ({
       return error.response;
     }
   },
+  //? PUT
+  editSpecificProduct: async (formData) => {},
   //? DELETE
   deleteProduct: async (productId) => {
     try {

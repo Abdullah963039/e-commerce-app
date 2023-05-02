@@ -1,7 +1,7 @@
-import { LoadingIcon } from "../Utility/Loading";
+import { AdminEditProductPageHook } from "../../Listeners/Product/Admin/AdminEditProductPage.hook";
 import { MultiSelect } from "primereact/multiselect";
 import { Dropdown } from "primereact/dropdown";
-import AdminAddProductHook from "../../Listeners/Product/Admin/AdminAddProduct.hook";
+
 // Styles
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
@@ -10,10 +10,11 @@ import { MdDriveFolderUpload } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
 // Notification
 import { ToastContainer } from "react-toastify";
+import { LoadingIcon } from "../../components/Utility/Loading";
 
-export default function AdminAddProduct() {
+export default function AdminEditProductPage() {
   const {
-    sendData,
+    editProduct,
     loading,
     imageCoverLogic: { imageCover, selectImageCover, deleteImageCover },
     productImagesLogic: {
@@ -30,17 +31,21 @@ export default function AdminAddProduct() {
     MainCategoryLogic: { categories, mainCategory, selectMainCategory },
     brandsLogic: { brands, selectedBrand, selectNewBrand },
     colorsLogic: { colors, addColor, deleteColor, availColors },
-  } = AdminAddProductHook();
-
+  } = AdminEditProductPageHook();
   return (
     <>
       <form
-        onSubmit={sendData}
+        onSubmit={editProduct}
         id="newProduct"
         className="flex max-w-[600px] flex-col gap-2"
       >
         {/* Add Product Image Cover */}
-
+        <h1 className="mb-4 py-2 text-center text-xl font-semibold shadow-sm">
+          تعديل المنتج{" : "}
+          <span className="text-base text-slate-800">
+            {nameRef.current.value}
+          </span>
+        </h1>
         <>
           <div className="mb-4 flex w-fit">
             <input
@@ -141,8 +146,8 @@ export default function AdminAddProduct() {
         <>
           <textarea
             name="description"
-            rows="3"
-            className="min-h-[50px] w-full resize-y rounded-md border border-slate-300 p-2 outline-none"
+            rows="6"
+            className="min-h-[80px] w-full resize-y rounded-md border border-slate-300 p-2 outline-none"
             placeholder="وصف المنتج"
             title="وصف المنتج"
             ref={descriptionRef}
@@ -215,6 +220,7 @@ export default function AdminAddProduct() {
             maxSelectedLabels={3}
             showSelectAll={false}
             className="w-full"
+            itemClassName="gap-3"
           />
         </>
 
@@ -238,7 +244,7 @@ export default function AdminAddProduct() {
             <div className="flex items-center gap-2">
               {
                 //> Selected Colors
-                availColors.map((hex, index) => (
+                availColors?.map((hex, index) => (
                   <span
                     key={index}
                     className="circle cursor-pointer"
@@ -266,7 +272,7 @@ export default function AdminAddProduct() {
                     <option
                       key={index}
                       value={hex}
-                      hidden={availColors.includes(hex)}
+                      hidden={availColors?.includes(hex)}
                       onClick={() => addColor(hex)}
                       className="w-full cursor-pointer p-2 py-1 text-sm hover:bg-slate-200 disabled:cursor-not-allowed disabled:line-through"
                     >

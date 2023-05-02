@@ -31,7 +31,7 @@ export default function AdminAllProducts() {
           />
         </>
       )}
-      <ToastContainer />
+      <ToastContainer rtl />
     </>
   );
 }
