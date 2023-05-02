@@ -17,6 +17,8 @@ const colors = [
   { name: "ابيض", hex: "#fefefe" },
 ];
 
+//! when receiving product images from database .. recive as url .. should convert it to blob or file
+
 export const AdminEditProductPageHook = () => {
   const { productId } = useParams(); // to get product id
   const [product, setProduct] = useState(""); // to store product details
@@ -43,40 +45,44 @@ export const AdminEditProductPageHook = () => {
       await getAllCategories();
       await getAllBrands();
     };
-    asyncFunc();
+
+    asyncFunc(); // get data asynchronously
 
     return () => setProduct("");
   }, []); // dependencies refer to: product is allready been exist
 
   //? Use States
-  const [imageCover, setImageCover] = useState(""); //> Image Cover State
+  const [imageCover, setImageCover] = useState(); //> Image Cover State
   const [productImages, setProductImages] = useState([]); //> Product Images State
   const [mainCategory, setMainCategory] = useState(""); //> Main Category State
-  const [budges, setBudges] = useState([]); //> Selected Subcategories State
+  const [budges, setBudges] = useState(""); //> Selected Subcategories State
   const [selectedBrand, setSelectedBrand] = useState(""); //> Selected Subcategories State
   const [availColors, setAvailColors] = useState([]); //> Available Colors State
 
   //? Use Ref
   const nameRef = useRef("");
-  // nameRef.current.value = currentProduct["title"]; // set product title
   const descriptionRef = useRef("");
-  // descriptionRef.current.value = currentProduct["description"]; // set product description
   const quantityRef = useRef("");
-  // quantityRef.current.value = currentProduct["quantity"]; // set product quantity
   const priceRef = useRef("");
-  // priceRef.current.value = currentProduct["price"]; // set product price
   const soldPriceRef = useRef("");
 
-  // useEffect to set values
+  //? useEffect to set values
   useEffect(() => {
+    setImageCover(product["imageCover"]);
+    setProductImages(product["images"]); //! SHOULD BE IMPLEMENTED , CONVERT TO FILE AND RENDER IT
+
     nameRef.current.value = product["title"]; // set product title
     descriptionRef.current.value = product["description"]; // set product description
     quantityRef.current.value = product["quantity"]; // set product quantity
     priceRef.current.value = product["price"]; // set product price
+
     setMainCategory(product["category"]); // set product category
     setBudges(product["subcategory"]); // set product subcategory
     setSelectedBrand(product["brand"]); // set product brand
+
     setAvailColors(product["availableColors"]); // set product available colors
+
+    console.clear();
   }, [Boolean(product)]);
 
   // ? Product Image Cover
@@ -124,40 +130,24 @@ export const AdminEditProductPageHook = () => {
   const editProduct = async (e) => {
     e.preventDefault();
 
-    // > Form Validation
-    if (
-      nameRef.current.value === "" ||
-      descriptionRef.current.value === "" ||
-      quantityRef.current.value === "" ||
-      priceRef.current.value === "" ||
-      mainCategory === "" ||
-      selectedBrand === "" ||
-      availColors.length === 0 ||
-      imageCover === "" ||
-      productImages.length === 0
-    ) {
-      notify("error", "اكمل البيانات من فضلك !");
-      return;
-    }
+    const formData = new FormData(e.target);
+    //> Add Product Images
+    productImages.forEach((img) => formData.append("images", img));
+
+    formData.append("category", mainCategory); //> Main Category
+    formData.append("brand", selectedBrand); //> Main Brand
+
+    budges.forEach((sub) => formData.append("subcategory", sub));
+
+    availColors.forEach((clr) => formData.append("availableColors", clr));
+
+    const response = await editSpecificProduct(formData, productId);
+    console.log(response);
+
+    if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
+    if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
+    if (response.status === 200) notify("done", "تم التعديل بنجاح");
   };
-
-  // > Clear All Data After Success Submit Data
-  const clearAllData = () => {
-    setImageCover("");
-    setProductImages([]);
-    setMainCategory("");
-    setBudges([]);
-    setSelectedBrand("");
-    setAvailColors([]);
-
-    nameRef.current.value = "";
-    descriptionRef.current.value = "";
-    quantityRef.current.value = "";
-    priceRef.current.value = "";
-  };
-
-  //? New Logic
-  const handleChange = (e) => e.target.value;
 
   return {
     editProduct,

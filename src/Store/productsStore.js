@@ -1,4 +1,4 @@
-import { useDelete, useGet, usePost } from "../hooks/useAxios";
+import { useDelete, useGet, usePost, usePut } from "../hooks/useAxios";
 import { useStore } from "../hooks/useStore";
 import { allCategoriesStore } from "./allCategoriesStore";
 import { brandsStore } from "./brandsStore";
@@ -82,7 +82,22 @@ export const productStore = (set) => ({
     }
   },
   //? PUT
-  editSpecificProduct: async (formData) => {},
+  editSpecificProduct: async (formData, productId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await usePut(
+        PRODUCTS_URL + `/${productId}`,
+        formData,
+        true
+      );
+      set({ loading: false, error: false });
+
+      return response;
+    } catch (error) {
+      set({ loading: false, error: true });
+      console.log(error);
+    }
+  },
   //? DELETE
   deleteProduct: async (productId) => {
     try {

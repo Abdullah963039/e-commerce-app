@@ -25,9 +25,20 @@ export async function usePost(url, formData, sendImage = false) {
 }
 
 // ? PUT Method
-export async function usePut(url, data, configs) {
-  const response = await baseURL.put(url, data, configs);
+export async function usePut(url, formData, sendImage = false) {
+  if (sendImage) {
+    //> Will Send Image
+    const medieConfigs = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
 
+    const response = await baseURL.put(url, formData, medieConfigs);
+    return response;
+  }
+  //> Send just text
+  const response = await baseURL.put(url, formData);
   return response;
 }
 

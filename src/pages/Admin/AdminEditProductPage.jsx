@@ -39,13 +39,13 @@ export default function AdminEditProductPage() {
         id="newProduct"
         className="flex max-w-[600px] flex-col gap-2"
       >
-        {/* Add Product Image Cover */}
         <h1 className="mb-4 py-2 text-center text-xl font-semibold shadow-sm">
           تعديل المنتج{" : "}
           <span className="text-base text-slate-800">
             {nameRef.current.value}
           </span>
         </h1>
+        {/* Add Product Image Cover */}
         <>
           <div className="mb-4 flex w-fit">
             <input
@@ -65,7 +65,11 @@ export default function AdminEditProductPage() {
               ) : (
                 <>
                   <img
-                    src={URL.createObjectURL(imageCover)}
+                    src={
+                      typeof imageCover === "object"
+                        ? URL.createObjectURL(imageCover)
+                        : imageCover
+                    }
                     alt="Product Cover"
                     className="my-2 w-36"
                   />
@@ -93,7 +97,7 @@ export default function AdminEditProductPage() {
         {/* Product Images */}
         <>
           <div className="flex flex-wrap items-center gap-2">
-            {productImages.length < 4 && (
+            {productImages?.length < 4 && (
               <>
                 <label className="cursor-pointer select-none self-start text-slate-400">
                   <input
@@ -107,15 +111,19 @@ export default function AdminEditProductPage() {
                 </label>
               </>
             )}
-            {productImages.length > 0 && (
+            {productImages?.length > 0 && (
               <div className="grid w-full grid-cols-2 gap-2 sm:grid-cols-3 md:grid-cols-4">
-                {productImages.map((image, index) => (
+                {productImages?.map((image, index) => (
                   <div
                     key={index}
                     className="relative col-span-1 flex w-fit items-center rounded-md bg-slate-100 p-2"
                   >
                     <img
-                      src={URL.createObjectURL(image)}
+                      src={
+                        typeof image === "string"
+                          ? image
+                          : URL.createObjectURL(image)
+                      }
                       alt="Product Image"
                       className="w-32"
                     />
@@ -292,7 +300,7 @@ export default function AdminEditProductPage() {
             loading && `icon`
           } w-fit self-end bg-slate-800 px-4 py-2 text-white`}
         >
-          حفظ التعديلات
+          تعديل المنتج
           {loading && <LoadingIcon className="mr-2" />}
         </button>
       </form>

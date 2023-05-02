@@ -286,8 +286,7 @@ export default function AdminAddProduct() {
             loading && `icon`
           } w-fit self-end bg-slate-800 px-4 py-2 text-white`}
         >
-          حفظ التعديلات
-          {loading && <LoadingIcon className="mr-2" />}
+          اضافة المنتج {loading && <LoadingIcon className="mr-2" />}
         </button>
       </form>
       <ToastContainer rtl />
