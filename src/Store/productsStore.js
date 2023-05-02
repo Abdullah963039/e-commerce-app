@@ -1,4 +1,7 @@
-import { useGet, usePost } from "../hooks/useAxios";
+import { useDelete, useGet, usePost } from "../hooks/useAxios";
+import { useStore } from "../hooks/useStore";
+import { allCategoriesStore } from "./allCategoriesStore";
+import { brandsStore } from "./brandsStore";
 
 const PRODUCTS_URL = "/api/v1/products";
 
@@ -9,12 +12,12 @@ export const productStore = (set) => ({
     if (option !== "") {
       try {
         set({ loading: true, error: false }); //* Enable Loading
-        const data = await useGet(
+        const response = await useGet(
           PRODUCTS_URL + `?limit=${limit}&sort=${option}`
         );
 
         set({ loading: false }); //* Stop Loading & Set Data
-        return data;
+        return response;
       } catch (error) {
         console.error(error);
         set({ error: true, loading: false }); //* Stop Loading & Set Errror
@@ -23,8 +26,8 @@ export const productStore = (set) => ({
 
     try {
       set({ loading: true, error: false }); //* Enable Loading
-      const data = await useGet(PRODUCTS_URL + `?limit=${limit}`);
-      set({ allProducts: data, loading: false }); //* Stop Loading & Set Data
+      const response = await useGet(PRODUCTS_URL + `?limit=${limit}`);
+      set({ allProducts: response, loading: false }); //* Stop Loading & Set Data
     } catch (error) {
       console.error(error);
       set({ error: true, loading: false }); //* Stop Loading & Set Errror
@@ -53,6 +56,19 @@ export const productStore = (set) => ({
       console.log(error);
     }
   },
+  getProductMayLike: async (limit, categoryId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useGet(
+        PRODUCTS_URL + `?limit=${limit}&category[in][]=${categoryId}`
+      );
+      set({ loading: false });
+      return response.data;
+    } catch (error) {
+      set({ loading: false, error: true });
+      console.log(error);
+    }
+  },
   //? POST
   createNewProduct: async (formData) => {
     try {
@@ -65,5 +81,18 @@ export const productStore = (set) => ({
       return error.response;
     }
   },
-  //? PUT
+  //? DELETE
+  deleteProduct: async (productId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useDelete(PRODUCTS_URL + `/${productId}`);
+      set({ loading: false, error: false });
+
+      return response;
+    } catch (err) {
+      set({ loading: false, error: true });
+      console.log(err);
+      return err.response;
+    }
+  },
 });

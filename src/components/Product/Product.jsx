@@ -18,7 +18,7 @@ export default function Product({ className, product }) {
             <img
               src={product["imageCover"]}
               alt={product["title"]}
-              className="max-h-full max-w-full object-contain"
+              className="max-h-[250px] max-w-[250px] object-contain"
               title={product["title"]}
             />
           </Link>
@@ -29,7 +29,7 @@ export default function Product({ className, product }) {
         </div>
         <div className="flex shrink basis-1/4 flex-col justify-end gap-4">
           <p className="whitespace-break-spaces p-2 text-slate-500">
-            {product["description"]}
+            {product["title"]}
           </p>
           <div className="mt-2 flex items-center justify-between justify-self-end px-3 pb-4">
             <div className="flex items-center gap-1 font-bold text-yellow-400">

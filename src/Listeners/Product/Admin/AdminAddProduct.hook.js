@@ -1,6 +1,6 @@
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../../hooks/useStore";
 import { useState, useRef, useEffect } from "react";
-import notify from "../../utils/notifcation";
+import notify from "../../../utils/notifcation";
 
 const colors = [
   { name: "أحمر", hex: "#F30B0B" },

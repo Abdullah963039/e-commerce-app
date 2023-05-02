@@ -4,7 +4,7 @@ import ProductDetails from "../../components/Product/Details/ProductDetails";
 import RateContainer from "../../components/Rates/RateContainer";
 
 export default function ProductDetailsPage() {
-  const { allProducts } = ProductDetailsHook();
+  const { mayLikeProducts } = ProductDetailsHook();
   return (
     <div className="container flex flex-col gap-6">
       {/* Product Description */}
@@ -16,7 +16,7 @@ export default function ProductDetailsPage() {
         <ProductsList
           title={"منتجات قد تعجبك"}
           buttonContent={"المزيد"}
-          productsList={allProducts?.data}
+          productsList={mayLikeProducts}
         />
       </div>
     </div>

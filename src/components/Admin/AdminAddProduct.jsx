@@ -7,7 +7,7 @@ import "primereact/resources/primereact.min.css";
 // Icons
 import { MdDriveFolderUpload } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
-import AdminAddProductHook from "../../Listeners/Product/AdminAddProduct.hook";
+import AdminAddProductHook from "../../Listeners/Product/Admin/AdminAddProduct.hook";
 // Notification
 import { ToastContainer } from "react-toastify";
 

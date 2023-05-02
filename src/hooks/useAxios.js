@@ -33,8 +33,8 @@ export async function usePost(url, formData, sendImage = false) {
 
 // ? DELETE Method
 
-// export async function useDelete(url, configs) {
-//   const response = await baseURL.delete(url, configs);
+export async function useDelete(url, configs) {
+  const response = await baseURL.delete(url, configs);
 
-//   return response;
-// }
+  return response;
+}
