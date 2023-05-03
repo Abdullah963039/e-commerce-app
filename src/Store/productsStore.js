@@ -1,7 +1,4 @@
 import { useDelete, useGet, usePost, usePut } from "../hooks/useAxios";
-import { useStore } from "../hooks/useStore";
-import { allCategoriesStore } from "./allCategoriesStore";
-import { brandsStore } from "./brandsStore";
 
 const PRODUCTS_URL = "/api/v1/products";
 

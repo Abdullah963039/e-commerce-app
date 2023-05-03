@@ -1,4 +1,6 @@
+// Hook
 import { AdminEditProductPageHook } from "../../Listeners/Product/Admin/AdminEditProductPage.hook";
+// Library
 import { MultiSelect } from "primereact/multiselect";
 import { Dropdown } from "primereact/dropdown";
 
@@ -218,7 +220,7 @@ export default function AdminEditProductPage() {
         {/* Product Sub Category */}
         <>
           <MultiSelect
-            options={subCategories}
+            options={subCategories || []}
             display="chip"
             onChange={addSubCategory}
             optionLabel="name"

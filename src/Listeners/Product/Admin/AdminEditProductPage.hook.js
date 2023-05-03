@@ -2,7 +2,6 @@ import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useStore } from "../../../hooks/useStore";
 import notify from "../../../utils/notifcation";
-import { useReducer } from "react";
 
 const colors = [
   { name: "أحمر", hex: "#F30B0B" },
@@ -19,9 +18,17 @@ const colors = [
 
 //! when receiving product images from database .. recive as url .. should convert it to blob or file
 
+// ? New Logic
+async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
+  const response = await fetch(url);
+  const data = await response.blob();
+  return new File([data], name, {
+    type: data.type || defaultType,
+  });
+}
+
 export const AdminEditProductPageHook = () => {
-  const { productId } = useParams(); // to get product id
-  const [product, setProduct] = useState(""); // to store product details
+  const { productId } = useParams(); // to get product id from url params
 
   //? Global Store
   const {
@@ -37,25 +44,12 @@ export const AdminEditProductPageHook = () => {
     getAllSubCategoriesOnCategory,
   } = useStore();
 
-  useEffect(() => {
-    const asyncFunc = async () => {
-      const res = await getSpecificProduct(productId);
-      setProduct(res);
-
-      await getAllCategories();
-      await getAllBrands();
-    };
-
-    asyncFunc(); // get data asynchronously
-
-    return () => setProduct("");
-  }, []); // dependencies refer to: product is allready been exist
-
   //? Use States
+  const [product, setProduct] = useState(""); //> To store product details
   const [imageCover, setImageCover] = useState(); //> Image Cover State
   const [productImages, setProductImages] = useState([]); //> Product Images State
   const [mainCategory, setMainCategory] = useState(""); //> Main Category State
-  const [budges, setBudges] = useState(""); //> Selected Subcategories State
+  const [budges, setBudges] = useState(); //> Selected Subcategories State
   const [selectedBrand, setSelectedBrand] = useState(""); //> Selected Subcategories State
   const [availColors, setAvailColors] = useState([]); //> Available Colors State
 
@@ -66,24 +60,61 @@ export const AdminEditProductPageHook = () => {
   const priceRef = useRef("");
   const soldPriceRef = useRef("");
 
+  //? useEffect to get pruduct details & store it in product state ..
+  useEffect(() => {
+    const asyncFunc = async () => {
+      const res = await getSpecificProduct(productId); // get product details
+
+      setProduct(res); // store product details
+
+      await getAllCategories(); // get all categories
+      await getAllBrands(); // get all brands
+    };
+
+    asyncFunc(); // get data asynchronously
+
+    return () => setProduct(""); // DESTRUCTOR: clear all data
+  }, []); // dependencies refer to: product is allready been exist
   //? useEffect to set values
   useEffect(() => {
-    setImageCover(product["imageCover"]);
-    setProductImages(product["images"]); //! SHOULD BE IMPLEMENTED , CONVERT TO FILE AND RENDER IT
+    const convertUrlImageToFile = async (arrayOfUrls = []) => {
+      const IS_URL_REGEX = /^http:\/\//; // to check if items is url
+
+      const res = arrayOfUrls.map(async (url, index) => {
+        if (IS_URL_REGEX.test(url)) {
+          const file = await getFileFromUrl(url, `image-${index}.png`);
+
+          return file;
+        } else return url;
+      });
+
+      return Promise.all(res);
+    }; // recive array of urls and return array of files
+
+    setMainCategory(product["category"]); // set product category
+
+    setImageCover(product["imageCover"]); // set product image cover
+    convertUrlImageToFile(product["images"]).then((out) =>
+      setProductImages(out)
+    ); // convert urls images to files
 
     nameRef.current.value = product["title"]; // set product title
     descriptionRef.current.value = product["description"]; // set product description
     quantityRef.current.value = product["quantity"]; // set product quantity
     priceRef.current.value = product["price"]; // set product price
 
-    setMainCategory(product["category"]); // set product category
-    setBudges(product["subcategory"]); // set product subcategory
     setSelectedBrand(product["brand"]); // set product brand
-
     setAvailColors(product["availableColors"]); // set product available colors
+
+    setBudges(product["subcategory"]); // set product subcategory
 
     console.clear();
   }, [Boolean(product)]);
+
+  //? useEffect to get subcategories on category
+  useEffect(() => {
+    getAllSubCategoriesOnCategory(mainCategory);
+  }, [mainCategory]);
 
   // ? Product Image Cover
   const selectImageCover = (e) => {
@@ -120,18 +151,13 @@ export const AdminEditProductPageHook = () => {
   const deleteColor = (hex) =>
     setAvailColors([...availColors.filter((clr) => clr !== hex)]); //> Delete Color
 
-  //? Use Effect
-
-  useEffect(() => {
-    if (mainCategory !== "") getAllSubCategoriesOnCategory(mainCategory);
-  }, [mainCategory]);
-
   //? Handle Submit Function
   const editProduct = async (e) => {
     e.preventDefault();
 
     const formData = new FormData(e.target);
-    //> Add Product Images
+    // //> Add Product Images
+
     productImages.forEach((img) => formData.append("images", img));
 
     formData.append("category", mainCategory); //> Main Category
@@ -186,3 +212,9 @@ export const AdminEditProductPageHook = () => {
     },
   };
 };
+
+/**
+ * > implement convert url to file function
+ * set images to return value
+ *
+ */
