@@ -82,8 +82,6 @@ export default function AdminAddProductHook() {
   useEffect(() => {
     getAllCategories();
     getAllBrands();
-
-    return () => clearAllData();
   }, []);
 
   useEffect(() => {

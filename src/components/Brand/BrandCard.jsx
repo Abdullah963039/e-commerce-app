@@ -8,7 +8,7 @@ export default function BrandCard({ img, title }) {
         <img
           src={img}
           alt="sadfa0"
-          className="m-auto object-cover"
+          className="m-auto aspect-square object-contain"
           title={title}
         />
       </div>

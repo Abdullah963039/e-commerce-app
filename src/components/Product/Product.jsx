@@ -18,7 +18,7 @@ export default function Product({ className, product }) {
             <img
               src={product["imageCover"]}
               alt={product["title"]}
-              className="max-h-[250px] max-w-[250px] object-contain"
+              className="aspect-square object-contain"
               title={product["title"]}
             />
           </Link>
