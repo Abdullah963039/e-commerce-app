@@ -1,3 +1,4 @@
+// Http request hooks
 import { useDelete, useGet, usePost, usePut } from "../hooks/useAxios";
 
 const PRODUCTS_URL = "/api/v1/products";
@@ -12,22 +13,24 @@ export const productStore = (set) => ({
         const response = await useGet(
           PRODUCTS_URL + `?limit=${limit}&sort=${option}`
         );
-
-        set({ loading: false }); //* Stop Loading & Set Data
         return response;
       } catch (error) {
         console.error(error);
-        set({ error: true, loading: false }); //* Stop Loading & Set Errror
+        set({ error: true }); //* Stop Loading & Set Errror
+      } finally {
+        set({ loading: false });
       }
     }
 
     try {
       set({ loading: true, error: false }); //* Enable Loading
       const response = await useGet(PRODUCTS_URL + `?limit=${limit}`);
-      set({ allProducts: response, loading: false }); //* Stop Loading & Set Data
+      set({ allProducts: response }); //* Stop Loading & Set Data
     } catch (error) {
       console.error(error);
-      set({ error: true, loading: false }); //* Stop Loading & Set Errror
+      set({ error: true }); //* Stop Loading & Set Errror
+    } finally {
+      set({ loading: false });
     }
   },
   getAllProductsByPage: async (limit, pageNumber) => {
@@ -40,6 +43,20 @@ export const productStore = (set) => ({
     } catch (error) {
       console.error(error);
       set({ error: true, loading: false }); //* Stop Loading & Set Errror
+    }
+  },
+  getAllProductsBySearch: async (search) => {
+    try {
+      set({ loading: true, error: false }); //* Enable Loading
+      const response = await useGet(PRODUCTS_URL + `?limit=5&${search}`); //! limit here is static
+      set({ allProducts: response }); //* Stop Loading & Set Data
+
+      return response;
+    } catch (error) {
+      console.error(error);
+      set({ error: true }); //* Stop Loading & Set Errror
+    } finally {
+      set({ loading: false });
     }
   },
   getSpecificProduct: async (productId) => {

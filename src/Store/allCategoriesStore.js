@@ -39,7 +39,6 @@ export const allCategoriesStore = (set) => ({
       console.log(error);
     }
   },
-
   getAllSubCategoriesOnCategory: async (categoryId) => {
     //> Get All Sub Categories Of Specific Category
     try {
@@ -69,6 +68,4 @@ export const allCategoriesStore = (set) => ({
       return error.response;
     }
   },
-  //? PUT
-  //? DELETE
 });

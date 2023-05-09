@@ -1,6 +1,8 @@
+// components
 import { MdDriveFolderUpload } from "react-icons/md";
 import { LoadingIcon } from "../../components/Utility/Loading";
 import { ToastContainer } from "react-toastify";
+// hook
 import AdminAddBrandHook from "../../Listeners/Brand/AdminAddBrand.hook";
 
 export default function AdminAddBrand() {

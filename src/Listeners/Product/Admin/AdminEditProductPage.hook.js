@@ -1,6 +1,9 @@
+// hooks
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
+// global state
 import { useStore } from "../../../hooks/useStore";
+// utilities
 import notify from "../../../utils/notifcation";
 
 const colors = [
@@ -16,9 +19,7 @@ const colors = [
   { name: "ابيض", hex: "#fefefe" },
 ];
 
-//! when receiving product images from database .. recive as url .. should convert it to blob or file
-
-// ? New Logic
+// ? Convert image url to file ..
 async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
   const response = await fetch(url);
   const data = await response.blob();
@@ -74,7 +75,7 @@ export const AdminEditProductPageHook = () => {
     asyncFunc(); // get data asynchronously
 
     return () => setProduct(""); // DESTRUCTOR: clear all data
-  }, []); // dependencies refer to: product is allready been exist
+  }, []);
   //? useEffect to set values
   useEffect(() => {
     const convertUrlImageToFile = async (arrayOfUrls = []) => {
@@ -109,7 +110,7 @@ export const AdminEditProductPageHook = () => {
     setBudges(product["subcategory"]); // set product subcategory
 
     console.clear();
-  }, [Boolean(product)]);
+  }, [Boolean(product)]); // effect runs when the product data is ready
 
   //? useEffect to get subcategories on category
   useEffect(() => {
@@ -212,9 +213,3 @@ export const AdminEditProductPageHook = () => {
     },
   };
 };
-
-/**
- * > implement convert url to file function
- * set images to return value
- *
- */

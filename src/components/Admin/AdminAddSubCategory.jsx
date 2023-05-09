@@ -1,4 +1,6 @@
+// components
 import { ToastContainer } from "react-toastify";
+// hook
 import AdminAddSubCategoryHook from "../../Listeners/SubCategory/AdminAddSubCategory.hook";
 
 export default function AdminAddSubCategory() {

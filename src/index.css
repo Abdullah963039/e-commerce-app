@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*:focus-within {
+    outline: inherit;
+}
+
 .container {
     @apply mx-auto;
 }
@@ -50,4 +54,10 @@ a {
 
 .add-to-fav:hover {
     @apply text-red-700
+}
+
+/* Override react-image-gallary */
+.image-gallery-content .image-gallery-slide .image-gallery-image {
+    aspect-ratio: 1 / 1;
+    object-fit: contain;
 }

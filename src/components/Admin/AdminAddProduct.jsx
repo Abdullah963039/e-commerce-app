@@ -1,15 +1,17 @@
-import { LoadingIcon } from "../Utility/Loading";
+// components
 import { MultiSelect } from "primereact/multiselect";
 import { Dropdown } from "primereact/dropdown";
+import { ToastContainer } from "react-toastify";
+
+import { LoadingIcon } from "../Utility/Loading";
+// hooks
 import AdminAddProductHook from "../../Listeners/Product/Admin/AdminAddProduct.hook";
-// Styles
+// styles
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-// Icons
+// icons
 import { MdDriveFolderUpload } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
-// Notification
-import { ToastContainer } from "react-toastify";
 
 export default function AdminAddProduct() {
   const {
