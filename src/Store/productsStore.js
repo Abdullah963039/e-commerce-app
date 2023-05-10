@@ -11,6 +11,7 @@ export const productStore = (set) => ({
       try {
         set({ loading: true, error: false }); //* Enable Loading
         const response = await useGet(
+          //> Here option param .. to get product /may you like/most sold/most ..
           PRODUCTS_URL + `?limit=${limit}&sort=${option}`
         );
         return response;
