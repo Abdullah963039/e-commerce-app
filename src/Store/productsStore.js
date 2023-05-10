@@ -6,7 +6,7 @@ const PRODUCTS_URL = "/api/v1/products";
 export const productStore = (set) => ({
   allProducts: [],
   //? GET
-  getAllProducts: async (limit, option = "") => {
+  getAllProducts: async (limit = 5, option = "") => {
     if (option !== "") {
       try {
         set({ loading: true, error: false }); //* Enable Loading
@@ -33,7 +33,7 @@ export const productStore = (set) => ({
       set({ loading: false });
     }
   },
-  getAllProductsByPage: async (limit, pageNumber) => {
+  getAllProductsByPage: async (limit = 5, pageNumber = 1) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading
       const data = await useGet(
@@ -48,7 +48,7 @@ export const productStore = (set) => ({
   getAllProductsBySearch: async (search) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading
-      const response = await useGet(PRODUCTS_URL + `?limit=5&${search}`); //! limit here is static
+      const response = await useGet(PRODUCTS_URL + `?limit=20&${search}`); //! limit here is static
       set({ allProducts: response }); //* Stop Loading & Set Data
 
       return response;

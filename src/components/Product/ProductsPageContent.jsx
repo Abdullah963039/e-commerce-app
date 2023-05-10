@@ -20,7 +20,7 @@ export default function ProductsPageContent() {
               ? "لايوجد منتجات لعرضها"
               : `يوجد ${allProducts["results"]} منتج`}
           </div>
-          <SortMenu onClick={getProduct} />
+          <SortMenu />
         </div>
 
         <div className="flex">

@@ -1,19 +1,17 @@
 /**
- * Converts object to query string
  *
- * @param {object} object - target object to convert
- * @returns {string}
+ * @param {String} key query param key
+ * @param {String | Array} value query param value
+ * @returns {String}
  */
-export function toQueryString(object) {
-  let entries = Object.entries(object)
-    .map((entry) => `${entry[0]}=${entry[1]}`)
-    .join("&");
+export function toQueryString(key, value) {
+  let queryParam = "";
 
-  return entries;
-}
+  if (Array.isArray(value)) {
+    queryParam = value.map((item) => `${key}=${item}`).join("&");
+  } else {
+    queryParam = `${key}=${value}`;
+  }
 
-export function arrayToQueryString(array, key) {
-  let qs = array.map((item) => `${key}[in][]=${item}`).join("&");
-
-  return qs;
+  return queryParam;
 }

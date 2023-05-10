@@ -1,124 +1,77 @@
 // hooks
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useStore } from "../../hooks/useStore";
+import { useSessionStorage } from "../../hooks/useStorage";
+import { useDebounce } from "../../hooks/useDebounce";
 import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
 
-// note: qs refer to "query string" keyword
-
 export const SelectionSidbarHook = () => {
-  const [selectedCategories, setSelectedCategories] = useState(() => {
-    let qsCategory = localStorage.getItem("categories");
+  // doing search
+  const { makeSearch } = ProductsPageContentHook();
 
-    if (qsCategory != null) {
-      let arr = qsCategory.split("&").map((cat) => {
-        let equalSignIndex = cat.indexOf("=");
-        return cat.slice(equalSignIndex + 1);
-      });
+  // Categories State
+  const [selectedCategories, setSelectedCategories] = useSessionStorage(
+    "categories",
+    []
+  );
+  // Brands State
+  const [selectedBrands, setSelectedBrands] = useSessionStorage("brands", []);
+  // Price State
+  const [minPrice, setMinPrice] = useSessionStorage("minPrice", "");
+  const [maxPrice, setMaxPrice] = useSessionStorage("maxPrice", "");
 
-      return arr;
-    } else {
-      return [];
-    }
-  });
-  const [selectedBrands, setSelectedBrands] = useState(() => {
-    let qsBrands = localStorage.getItem("brands");
-
-    if (qsBrands != null) {
-      let arr = qsBrands.split("&").map((brand) => {
-        let equalSignIndex = brand.indexOf("=");
-        return brand.slice(equalSignIndex + 1);
-      });
-
-      return arr;
-    } else {
-      return [];
-    }
-  });
-
-  const [priceFrom, setPriceFrom] = useState("");
-  const [priceTo, setPriceTo] = useState("");
-
+  // Global store
   const { getAllCategories, allCategories, allBrands, getAllBrands } =
     useStore();
-  const { getProduct } = ProductsPageContentHook();
 
+  //? use Effect hook
   useEffect(() => {
-    getAllCategories();
-    getAllBrands();
-  }, []);
+    getAllCategories(); //> Get All Categories
+    getAllBrands(); //> Get All Brands
+  }, []); // runs one time
 
-  let queryCategories = selectedCategories
-    .map((category) => `category[in][]=${category}`)
-    .join("&");
-  localStorage.setItem("categories", queryCategories);
-
+  //> Categories - Event Controllers
   const selectCategory = (e) => {
-    const value = e.target.value,
-      checked = e.target.checked;
-
-    if (checked) {
-      setSelectedCategories((previousCategories) => [
-        ...previousCategories,
-        value,
-      ]);
-    } else {
-      setSelectedCategories(selectedCategories.filter((id) => id !== value));
-    }
-
-    setTimeout(() => {
-      getProduct();
-    }, 1250);
+    const { checked, value } = e.target;
+    // toggling selected category
+    checked
+      ? setSelectedCategories((previousCategories) => [
+          ...previousCategories,
+          value,
+        ])
+      : setSelectedCategories(selectedCategories.filter((id) => id !== value));
   };
-
-  let queryBrands = selectedBrands
-    .map((brand) => `brand[in][]=${brand}`)
-    .join("&");
-  localStorage.setItem("brands", queryBrands);
-
+  //>  Brands - Event Controllers
   const selectBrand = (e) => {
-    const value = e.target.value,
-      checked = e.target.checked;
+    const { checked, value } = e.target;
 
-    if (checked) {
-      setSelectedBrands((previousBrands) => [...previousBrands, value]);
-    } else {
-      setSelectedBrands(selectedBrands.filter((id) => id !== value));
-    }
-    setTimeout(() => {
-      getProduct();
-    }, 1250);
+    // toggling selected brand
+    checked
+      ? setSelectedBrands((previousBrands) => [...previousBrands, value])
+      : setSelectedBrands(selectedBrands.filter((id) => id !== value));
   };
 
-  const onChangePriceFrom = (e) => {
-    setPriceFrom(e.target.value);
+  //> MinMax Price - Event Controllers
+  const onChangeMinPrice = (e) => setMinPrice(e.target.value);
+  const onChangeMaxPrice = (e) => setMaxPrice(e.target.value);
 
-    localStorage.setItem("priceFrom", e.target.value);
+  // Convert arrays to strings to be easy to compare old and current dependencies
+  const categoriesString = selectedCategories.toString(),
+    brandsString = selectedBrands.toString();
 
-    setTimeout(() => {
-      getProduct();
-    }, 1000);
-  };
-  const onChangePriceTo = (e) => {
-    setPriceTo(e.target.value);
-
-    localStorage.setItem("priceTo", e.target.value);
-
-    setTimeout(() => {
-      getProduct();
-    }, 1000);
-  };
+  useDebounce(makeSearch, 1250, [categoriesString, brandsString]); //? Make search request after 1250ms from selecting category or brand
+  useDebounce(makeSearch, 1250, [minPrice, maxPrice]); //? Make search request after 1250ms from typing price range
 
   return {
     allCategories,
     allBrands,
+    selectedCategories,
+    selectedBrands,
     selectCategory,
     selectBrand,
-    priceFrom,
-    priceTo,
-    onChangePriceFrom,
-    onChangePriceTo,
+    minPrice,
+    maxPrice,
+    onChangeMinPrice,
+    onChangeMaxPrice,
   };
 };
-
-// price from => price[gt]
-// price to => price[lte]

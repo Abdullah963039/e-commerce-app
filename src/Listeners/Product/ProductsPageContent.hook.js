@@ -2,75 +2,71 @@
 import { useEffect } from "react";
 import { useStore } from "../../hooks/useStore";
 
+// utils
+import { getSession } from "../../utils/getValueFromStorage";
+import { toQueryString } from "../../utils/queryStringConverter";
+
 export default function ProductsPageContentHook() {
-  const {
-    allProducts,
-    getAllProducts,
-    getAllProductsByPage,
-    getAllProductsBySearch,
-    loading,
-  } = useStore();
+  /**
+   *
+   * @param {string | undefined} additionalParam must be "&key=value"
+   * @returns {Promise<void>}
+   */
+  async function makeSearch(additionalParam = "") {
+    const finalQuery = queryParams() + additionalParam;
 
-  const getProduct = async () => {
-    let keyword, sort, categories, brands, priceFrom, priceTo;
+    await getAllProductsBySearch(finalQuery);
+  }
 
-    if (localStorage.getItem("keyword"))
-      keyword = localStorage.getItem("keyword");
-    else keyword = "";
-    if (localStorage.getItem("sort")) sort = localStorage.getItem("sort");
-    else sort = "";
-    if (localStorage.getItem("categories"))
-      categories = localStorage.getItem("categories");
-    else categories = "";
-    if (localStorage.getItem("brands")) brands = localStorage.getItem("brands");
-    else brands = "";
-    if (localStorage.getItem("priceFrom"))
-      priceFrom = localStorage.getItem("priceFrom");
-    else priceFrom = "";
-    if (localStorage.getItem("priceTo"))
-      priceTo = localStorage.getItem("priceTo");
-    else priceTo = "";
+  // Global state
+  const { allProducts, getAllProductsBySearch, loading } = useStore();
 
-    console.log(
-      `keyword=${keyword}&sort=${sort}&${categories}&${brands}${
-        priceFrom != "" ? `&price[gt]=${priceFrom}` : ""
-      }${priceTo != "" ? `&price[lte]=${priceTo}` : ""}`
-    );
+  useEffect(() => {
+    // This function below is the same as getAllProducts As long as there are no search values
+    makeSearch();
+  }, []);
 
-    await getAllProductsBySearch(
-      `keyword=${keyword}&sort=${sort}&${categories}&${brands}${
-        priceFrom != "" ? `&price[gt]=${priceFrom}` : ""
-      }${priceTo != "" ? `&price[lte]=${priceTo}` : ""}`
-    );
-  };
+  const handlePagination = async (pageNumber) =>
+    await makeSearch(`&page=${pageNumber}`);
 
-  // useEffect(() => {
-  //   getAllProducts(20);
-  // }, []);
+  return { allProducts, loading, handlePagination, makeSearch };
+}
 
-  const handlePagination = async (pageNumber) => {
-    let keyword, sort, categories, brands;
-    if (localStorage.getItem("keyword"))
-      keyword = localStorage.getItem("keyword");
-    else keyword = "";
-    if (localStorage.getItem("keyword")) sort = localStorage.getItem("sort");
-    else sort = "";
-    if (localStorage.getItem("categories"))
-      categories = localStorage.getItem("categories");
-    else categories = "";
-    if (localStorage.getItem("brands")) brands = localStorage.getItem("brands");
-    else brands = "";
-    if (localStorage.getItem("priceForm"))
-      priceForm = localStorage.getItem("priceForm");
-    else priceForm = "";
-    if (localStorage.getItem("priceTo"))
-      priceTo = localStorage.getItem("priceTo");
-    else priceTo = "";
+/**
+ * !final query string
+ * No Params need to be passed
+ *
+ * this function checks from session storage values
+ * and returns object with non-empty values
+ * @return {string}
+ */
+function queryParams() {
+  let params = []; // query non-empty params
 
-    await getAllProductsBySearch(
-      `keyword=${keyword}&page=${pageNumber}&sort=${sort}&${categories}&${brands}&price[gt]=${priceForm}&price[lte]=${priceTo}`
-    );
-  };
+  // get values from session storage
+  const keyword = getSession("keyword"),
+    sort = getSession("sort"),
+    categories = getSession("categories"),
+    brands = getSession("brands"),
+    minPrice = getSession("minPrice"),
+    maxPrice = getSession("maxPrice");
 
-  return { allProducts, loading, handlePagination, getProduct };
+  // convert keyword to query param
+  keyword !== "" && params.push(toQueryString("keyword", keyword));
+  // convert sort to query param
+  sort !== "" && params.push(toQueryString("sort", sort));
+  // convert categories to query param
+  categories.length > 0 && params.push(toQueryString("category", categories));
+  // convert brands to query param
+  brands.length > 0 && params.push(toQueryString("brand", brands));
+  // convert min price to query param
+  minPrice !== "" &&
+    minPrice !== "0" &&
+    params.push(toQueryString("price[gte]", minPrice));
+  // convert max price to query param
+  maxPrice !== "" &&
+    maxPrice !== "0" &&
+    params.push(toQueryString("price[lte]", maxPrice));
+
+  return params.join("&"); // retun params as ready query string
 }

@@ -4,10 +4,7 @@ import { Link } from "react-router-dom";
 import { HeaderHook } from "../../Listeners/Search/Header.hook";
 
 export default function Header() {
-  const { onChangeKeyword } = HeaderHook();
-  let word;
-  if (localStorage.getItem("keyword")) word = localStorage.getItem("keyword");
-  else word = "";
+  const { onChangeKeyword, keyword } = HeaderHook();
 
   return (
     <header className="bg-gradient-to-bl from-slate-900 to-slate-700">
@@ -17,15 +14,17 @@ export default function Header() {
             <img src={logo} alt="logo" className="w-fit max-w-[60px]" />
           </Link>
         </div>
-        <div>
-          <input
-            type="text"
-            placeholder="ابحث هنا"
-            className="search w-full max-w-xs rounded-md py-1 text-center text-white outline-none placeholder:text-sm placeholder:text-slate-50 focus-within:text-slate-900 focus-within:placeholder:text-slate-800"
-            value={word}
-            onChange={onChangeKeyword}
-          />
-        </div>
+        {location.pathname === "/products" && (
+          <div>
+            <input
+              type="text"
+              placeholder={"ابحث هنا"}
+              className="search w-full max-w-xs rounded-md py-1 text-center text-white outline-none placeholder:text-sm placeholder:text-slate-50 focus-within:text-slate-900 focus-within:placeholder:text-slate-800"
+              value={keyword}
+              onChange={onChangeKeyword}
+            />
+          </div>
+        )}
         <div className="mr-2 flex gap-1 justify-self-start text-white sm:gap-2 md:gap-4 ">
           <Link to="/login">
             <button className="btn icon px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">

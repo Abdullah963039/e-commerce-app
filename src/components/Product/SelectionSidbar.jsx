@@ -7,14 +7,17 @@ export default function SelectionSidbar() {
     allBrands: { data: brands },
     selectCategory,
     selectBrand,
-    priceFrom,
-    priceTo,
-    onChangePriceFrom,
-    onChangePriceTo,
+    minPrice,
+    maxPrice,
+    onChangeMinPrice,
+    onChangeMaxPrice,
+    selectedCategories,
+    selectedBrands,
   } = SelectionSidbarHook();
 
   return (
     <aside className="flex w-full max-w-[180px] select-none flex-col gap-4">
+      {/* Categories & Brands */}
       <div className="flex flex-col gap-4 pb-3">
         {/* Categories */}
         <div>
@@ -29,9 +32,9 @@ export default function SelectionSidbar() {
                   className="peer"
                   name="category"
                   onClick={selectCategory}
-                  defaultChecked={localStorage
-                    .getItem("categories")
-                    .includes(category["_id"])}
+                  defaultChecked={selectedCategories.some(
+                    (ids) => ids === category["_id"]
+                  )}
                 />
                 <label
                   htmlFor={category["_id"]}
@@ -58,9 +61,9 @@ export default function SelectionSidbar() {
                   name={"brand"}
                   value={brand["_id"]}
                   onClick={selectBrand}
-                  defaultChecked={localStorage
-                    .getItem("brands")
-                    .includes(brand["_id"])}
+                  defaultChecked={selectedBrands.some(
+                    (id) => id === brand["_id"]
+                  )}
                 />
                 <label
                   htmlFor={brand["_id"]}
@@ -75,6 +78,7 @@ export default function SelectionSidbar() {
           )}
         </div>
       </div>
+      {/* Price */}
       <div className="flex flex-col pb-3">
         <p className="mb-4 text-xl font-bold">السعر</p>
         <div className="mb-2 flex items-center gap-2 pr-2">
@@ -84,8 +88,8 @@ export default function SelectionSidbar() {
             min={0}
             inputMode="numeric"
             className="max-w-[5rem] border-slate-200 text-center outline-none"
-            value={priceFrom}
-            onChange={onChangePriceFrom}
+            value={minPrice}
+            onChange={onChangeMinPrice}
           />
         </div>
         <div className="flex items-center gap-2 pr-2">
@@ -95,8 +99,8 @@ export default function SelectionSidbar() {
             inputMode="numeric"
             min={0}
             className="max-w-[5rem] border-slate-200 text-center outline-none"
-            value={priceTo}
-            onChange={onChangePriceTo}
+            value={maxPrice}
+            onChange={onChangeMaxPrice}
           />
         </div>
       </div>
