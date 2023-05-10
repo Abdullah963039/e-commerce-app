@@ -56,9 +56,9 @@ function queryParams() {
   // convert sort to query param
   sort !== "" && params.push(toQueryString("sort", sort));
   // convert categories to query param
-  categories.length > 0 && params.push(toQueryString("category", categories));
+  categories?.length > 0 && params.push(toQueryString("category", categories));
   // convert brands to query param
-  brands.length > 0 && params.push(toQueryString("brand", brands));
+  brands?.length > 0 && params.push(toQueryString("brand", brands));
   // convert min price to query param
   minPrice !== "" &&
     minPrice !== "0" &&
