@@ -49,7 +49,7 @@ export const productStore = (set) => ({
   getAllProductsBySearch: async (search) => {
     try {
       set({ loading: true, error: false }); //* Enable Loading
-      const response = await useGet(PRODUCTS_URL + `?limit=20&${search}`); //! limit here is static
+      const response = await useGet(PRODUCTS_URL + `?limit=20&${search}`);
       set({ allProducts: response }); //* Stop Loading & Set Data
 
       return response;

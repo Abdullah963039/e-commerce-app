@@ -3,6 +3,7 @@ import Header from "./components/Utility/Header";
 import Footer from "./components/Utility/Footer";
 import "./tailwind.css";
 import "react-toastify/dist/ReactToastify.css"; //? Notification Styles
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
@@ -10,6 +11,8 @@ function App() {
       <Header />
       <Outlet />
       <Footer />
+
+      <ToastContainer rtl />
     </>
   );
 }
