@@ -80,7 +80,7 @@ export const RegisterHook = () => {
       notify("done", "تم إنشاء الحساب بنجاح");
       localStorage.setItem("token", res.data.token);
       setTimeout(() => {
-        navigator("/");
+        navigator("/login"); //todo Must Login And navigate to home page
       }, 1500);
     }
     console.log(res);

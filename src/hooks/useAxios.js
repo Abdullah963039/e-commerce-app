@@ -1,7 +1,15 @@
 import { baseURL } from "../Api/baseURL";
 
 // ? GET Method
-export async function useGet(url) {
+export async function useGet(url, auth = false) {
+  if (auth) {
+    const configs = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
+    const response = await baseURL.get(url, configs);
+    return response;
+  }
+
   const response = await baseURL.get(url);
   return response.data;
 }

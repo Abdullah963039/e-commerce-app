@@ -7,11 +7,11 @@ import {
 
 export default function Footer() {
   return (
-    <footer className="bg-white py-4 shadow-inner">
+    <footer className="bg-slate-50 py-4 shadow-inner">
       <div className="container">
         <div
           direction="horizontal"
-          className="flex items-center justify-between text-slate-400"
+          className="flex items-center justify-between text-slate-600"
         >
           <div className="flex gap-4">
             <span>الشروط و الاحكام</span>

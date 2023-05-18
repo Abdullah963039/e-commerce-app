@@ -13,9 +13,7 @@ export function LoginHook() {
   const navigator = useNavigate();
 
   // Global Store
-  const { login, loading } = useStore(); // todo Implement Logining User ...
-
-  console.log(useStore());
+  const { login, loading, user } = useStore(); // todo Implement Logining User ...
 
   // Referance for error tooltip
   const emailTooltipRef = useRef();
@@ -35,7 +33,6 @@ export function LoginHook() {
 
     if (res.status === 200) {
       notify("done", "تم تسجيل الدخول بنجاح");
-      localStorage.setItem("token", res.data.token);
       localStorage.setItem("user", JSON.stringify(res.data.data["_id"]));
 
       setTimeout(() => {

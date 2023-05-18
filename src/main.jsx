@@ -36,6 +36,7 @@ import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserAddressesPage from "./pages/User/UserAddressesPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
 import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
+import ForgetPassword from "./pages/Auth/ForgetPassword";
 
 const routes = createBrowserRouter([
   {
@@ -56,6 +57,11 @@ const routes = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      //? Forget Password Page
+      {
+        path: "/forget-password",
+        element: <ForgetPassword />,
       },
       //? All Categories Page
       {

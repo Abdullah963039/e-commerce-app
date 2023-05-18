@@ -10,6 +10,11 @@ const AUTH = {
 
 export const authStore = (set) => ({
   user: null,
+  logout: () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+    set({ user: null });
+  },
   //? GET
   getLoggedUser: async (userId) => {
     try {
@@ -42,11 +47,26 @@ export const authStore = (set) => ({
     try {
       set({ loading: true, error: false });
       const response = await usePost(AUTH.LOGIN, { email, password });
+      localStorage.setItem("token", response.data.token);
+      set({ user: response.data.data });
 
       return response;
     } catch (err) {
       set({ error: true });
       console.error(err);
+      return err.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
+  forgetPassword: async (email) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await usePost(AUTH.FORGET_PASSWORD, { email });
+      return response;
+    } catch (err) {
+      set({ error: true });
+      console.log({ "catch error": err });
       return err.response;
     } finally {
       set({ loading: false });

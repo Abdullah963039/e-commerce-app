@@ -7,16 +7,14 @@ import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
 import { useStore } from "../../hooks/useStore";
 // utils
 import notify from "../../utils/notifcation";
-import { getLocal } from "../../utils/getValueFromStorage";
 import { useEffect } from "react";
+import { getLocal } from "../../utils/getValueFromStorage";
 
 export const HeaderHook = () => {
-  const userId = getLocal("user"); // Get user id from localStorage
-
   const [keyword, setKeyword] = useSessionStorage("keyword", ""); // Search by keyword
   const { makeSearch } = ProductsPageContentHook(); // Doing search functionality
 
-  const { getLoggedUser, user, loading } = useStore();
+  const { user, logout } = useStore(); // use global store
 
   const navigator = useNavigate(); // Navigator
 
@@ -24,13 +22,8 @@ export const HeaderHook = () => {
 
   useDebounce(() => makeSearch(), 1000, [keyword]); // Debouncing inputed keyword after change 1s
 
-  useEffect(() => {
-    if (userId != null) getLoggedUser(userId);
-  }, [loading]);
-
   const logoutUser = () => {
-    localStorage.removeItem("user"); // Remove the user from localStorage
-    localStorage.removeItem("token"); // Remove the user from localStorage
+    logout();
 
     notify("done", "تم تسجيل الخروج بنجاح"); // notify user if is logged out
 
@@ -38,8 +31,6 @@ export const HeaderHook = () => {
       navigator("/login"); // navigate to login page after success 1s
     }, 1000);
   };
-
-  // console.log(user);
 
   return { keyword, onChangeKeyword, logoutUser, user };
 };
