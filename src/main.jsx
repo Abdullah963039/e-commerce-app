@@ -37,6 +37,8 @@ import UserAddressesPage from "./pages/User/UserAddressesPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
 import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
 import ForgetPassword from "./pages/Auth/ForgetPassword";
+import { ResetPassword } from "./pages/Auth/ResetPassword";
+import VerifyResetCode from "./pages/Auth/VerifyResetCode";
 
 const routes = createBrowserRouter([
   {
@@ -62,6 +64,16 @@ const routes = createBrowserRouter([
       {
         path: "/forget-password",
         element: <ForgetPassword />,
+      },
+      //? Verify Reset Code Page
+      {
+        path: "/verify-code",
+        element: <VerifyResetCode />,
+      },
+      //? Reset Password Page
+      {
+        path: "/reset-password",
+        element: <ResetPassword />,
       },
       //? All Categories Page
       {

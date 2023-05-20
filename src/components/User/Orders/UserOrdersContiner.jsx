@@ -15,7 +15,7 @@ export default function UserOrdersContiner() {
         <div className="flex items-center justify-between p-2">
           {/* Status */}
           <p>
-            الحالة<span className="text-slate-700">قيد التنفيذ</span>
+            الحالة<span className="px-4 text-slate-700">قيد التنفيذ</span>
           </p>
           {/* Order Price */}
           <p className="font-bold">200 جنيه</p>

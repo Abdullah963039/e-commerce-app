@@ -6,12 +6,19 @@ export default function DropdownMenu({
   name = "مستخدم",
   role = "user",
   onLogout,
+  online = true,
 }) {
   return (
     <>
       <div className=" relative">
         <button className="btn icon peer px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
-          {role === "user" ? <RiUserLine /> : <RiAdminLine />}
+          {role === "user" ? (
+            <RiUserLine className={online ? "text-teal-600" : "text-red-500"} />
+          ) : (
+            <RiAdminLine
+              className={online ? "text-teal-600" : "text-red-500"}
+            />
+          )}
           {name}
         </button>
         <ul className="absolute left-0 top-full z-40 hidden w-fit min-w-max justify-start overflow-hidden rounded-md bg-white text-xs text-slate-600 shadow-md  delay-1000 duration-150 hover:flex  peer-hover:flex xs:flex-col md:text-base">

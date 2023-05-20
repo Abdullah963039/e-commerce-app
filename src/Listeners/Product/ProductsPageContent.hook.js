@@ -52,19 +52,23 @@ function queryParams() {
     maxPrice = getSession("maxPrice");
 
   // convert keyword to query param
-  keyword !== "" && params.push(toQueryString("keyword", keyword));
+  keyword !== "" &&
+    keyword != null &&
+    params.push(toQueryString("keyword", keyword));
   // convert sort to query param
-  sort !== "" && params.push(toQueryString("sort", sort));
+  sort !== "" && sort != null && params.push(toQueryString("sort", sort));
   // convert categories to query param
   categories?.length > 0 && params.push(toQueryString("category", categories));
   // convert brands to query param
   brands?.length > 0 && params.push(toQueryString("brand", brands));
   // convert min price to query param
   minPrice !== "" &&
+    minPrice != null &&
     minPrice !== "0" &&
     params.push(toQueryString("price[gte]", minPrice));
   // convert max price to query param
   maxPrice !== "" &&
+    maxPrice != null &&
     maxPrice !== "0" &&
     params.push(toQueryString("price[lte]", maxPrice));
 

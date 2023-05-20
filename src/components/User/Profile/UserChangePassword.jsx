@@ -17,6 +17,12 @@ export default function UserChangePassword() {
           placeholder="كلمة المرور الجديدة"
           className="w-full rounded-md border border-slate-300 p-2 outline-none placeholder:text-slate-500"
         />
+        <input
+          type="password"
+          required
+          placeholder="تأكيد كلمة المرور الجديدة"
+          className="w-full rounded-md border border-slate-300 p-2 outline-none placeholder:text-slate-500"
+        />
         <button className="btn self-end bg-slate-900 px-4 py-2 text-white hover:bg-slate-950">
           حفظ التغييرات
         </button>

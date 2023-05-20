@@ -13,7 +13,7 @@ export function LoginHook() {
   const navigator = useNavigate();
 
   // Global Store
-  const { login, loading, user } = useStore(); // todo Implement Logining User ...
+  const { login, loading } = useStore(); // todo Implement Logining User ...
 
   // Referance for error tooltip
   const emailTooltipRef = useRef();
@@ -33,11 +33,10 @@ export function LoginHook() {
 
     if (res.status === 200) {
       notify("done", "تم تسجيل الدخول بنجاح");
-      localStorage.setItem("user", JSON.stringify(res.data.data["_id"]));
 
       setTimeout(() => {
         navigator("/"); // redirect to home page after 1.5s
-      }, 500);
+      }, 1500);
     } else {
       notify("error", "هناك خطأ في البريد أو كلمة السر");
       localStorage.removeItem("token");

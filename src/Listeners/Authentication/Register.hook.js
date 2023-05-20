@@ -35,7 +35,7 @@ export const RegisterHook = () => {
   const navigator = useNavigate();
 
   //   Global Store
-  const { createNewUser, loading } = useStore();
+  const { createNewUser, loading, login } = useStore();
 
   //   Referances
   const nameTooltipRef = useRef(),
@@ -78,12 +78,11 @@ export const RegisterHook = () => {
     // Respone Success Status ..
     if (res.status === 201) {
       notify("done", "تم إنشاء الحساب بنجاح");
-      localStorage.setItem("token", res.data.token);
+      login(state["email"], state["password"]);
       setTimeout(() => {
-        navigator("/login"); //todo Must Login And navigate to home page
+        navigator("/"); //todo Must Login And navigate to home page
       }, 1500);
     }
-    console.log(res);
   }
 
   const changeName = (e) =>

@@ -13,20 +13,18 @@ import "./tailwind.css";
 import "react-toastify/dist/ReactToastify.css"; //? Notification Styles
 
 // utils
-import { getLocal } from "./utils/getValueFromStorage";
+import { getLocal } from "./utils/getValueFromStorage"; //todo
 
 function App() {
   const { getLoggedUser } = useStore();
 
   //? Get Logged User
   useEffect(() => {
-    const userId = getLocal("user");
     const getUser = async () => {
-      const response = await getLoggedUser(userId);
+      const response = await getLoggedUser();
     };
 
-    if (userId == null) return;
-    getUser();
+    if (localStorage.getItem("token") != null) getUser();
 
     return () => {};
   }, []);

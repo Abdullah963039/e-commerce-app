@@ -22,6 +22,8 @@ export const HeaderHook = () => {
 
   useDebounce(() => makeSearch(), 1000, [keyword]); // Debouncing inputed keyword after change 1s
 
+  const isOnline = navigator.onLine;
+
   const logoutUser = () => {
     logout();
 
@@ -32,5 +34,5 @@ export const HeaderHook = () => {
     }, 1000);
   };
 
-  return { keyword, onChangeKeyword, logoutUser, user };
+  return { keyword, onChangeKeyword, logoutUser, user, isOnline };
 };

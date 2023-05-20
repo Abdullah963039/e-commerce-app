@@ -1,11 +1,18 @@
-import { usePost, useGet } from "../hooks/useAxios";
+import { usePost, useGet, usePut } from "../hooks/useAxios";
 
-const AUTH = {
-  GET_USER: "/api/v1/users/",
-  SIGNUP: "/api/v1/auth/signup",
-  LOGIN: "/api/v1/auth/login",
-  FORGET_PASSWORD: "/api/v1/auth/forgotPasswords", // POST
-  CHANGE_PASSWORD: "/api/v1/users/changeMyPassword", // :userId = changeMyPassword PUT
+const AUTH_API = {
+  GET: {
+    LOGGED_USER: "/api/v1/users/getMe",
+  },
+  POST: {
+    SIGNUP: "/api/v1/auth/signup",
+    LOGIN: "/api/v1/auth/login",
+    FORGET_PASSWORD: "/api/v1/auth/forgotPasswords",
+    RESET_CODE: "/api/v1/auth/verifyResetCode",
+  },
+  PUT: {
+    RESET_PASSWORD: "/api/v1/auth/resetPassword",
+  },
 };
 
 export const authStore = (set) => ({
@@ -16,10 +23,10 @@ export const authStore = (set) => ({
     set({ user: null });
   },
   //? GET
-  getLoggedUser: async (userId) => {
+  getLoggedUser: async () => {
     try {
       set({ loading: true, error: false });
-      const { data } = await useGet(AUTH.GET_USER + userId);
+      const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
       set({ user: data });
     } catch (err) {
       set({ error: true });
@@ -33,7 +40,7 @@ export const authStore = (set) => ({
   createNewUser: async (formData) => {
     try {
       set({ loading: true, error: false });
-      const response = await usePost(AUTH.SIGNUP, formData);
+      const response = await usePost(AUTH_API.POST.SIGNUP, formData);
 
       return response;
     } catch (e) {
@@ -46,10 +53,9 @@ export const authStore = (set) => ({
   login: async (email, password) => {
     try {
       set({ loading: true, error: false });
-      const response = await usePost(AUTH.LOGIN, { email, password });
+      const response = await usePost(AUTH_API.POST.LOGIN, { email, password });
       localStorage.setItem("token", response.data.token);
       set({ user: response.data.data });
-
       return response;
     } catch (err) {
       set({ error: true });
@@ -62,11 +68,38 @@ export const authStore = (set) => ({
   forgetPassword: async (email) => {
     try {
       set({ loading: true, error: false });
-      const response = await usePost(AUTH.FORGET_PASSWORD, { email });
+      const response = await usePost(AUTH_API.POST.FORGET_PASSWORD, { email });
       return response;
     } catch (err) {
       set({ error: true });
       console.log({ "catch error": err });
+      return err.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
+  sendResetCode: async (resetCode) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await usePost(AUTH_API.POST.RESET_CODE, { resetCode });
+      return response;
+    } catch (err) {
+      set({ error: true });
+      return err.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
+  resetPassword: async (email, newPassword) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await usePut(AUTH_API.PUT.RESET_PASSWORD, {
+        email,
+        newPassword,
+      });
+      return response;
+    } catch (err) {
+      set({ error: true });
       return err.response;
     } finally {
       set({ loading: false });
