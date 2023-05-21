@@ -1,21 +1,13 @@
 import { baseURL } from "../Api/baseURL";
 
 // ? GET Method
-export async function useGet(url, auth = false) {
-  if (auth) {
-    const configs = {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    };
-    const response = await baseURL.get(url, configs);
-    return response;
-  }
-
-  const response = await baseURL.get(url);
+export async function useGet(url, configs) {
+  const response = await baseURL.get(url, configs);
   return response.data;
 }
 
 // ? POST Method
-export async function usePost(url, formData, sendImage = false) {
+export async function usePost(url, formData, sendImage = false, configs) {
   if (sendImage) {
     //> Will Send Image
     const medieConfigs = {
@@ -27,8 +19,9 @@ export async function usePost(url, formData, sendImage = false) {
     const response = await baseURL.post(url, formData, medieConfigs);
     return response;
   }
+
   //> Send just text
-  const response = await baseURL.post(url, formData);
+  const response = await baseURL.post(url, formData, configs);
   return response;
 }
 

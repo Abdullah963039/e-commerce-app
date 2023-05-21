@@ -6,6 +6,7 @@ import { subCategoriesStore } from "../Store/subCategoriesStore";
 import { brandsStore } from "../Store/brandsStore";
 import { productStore } from "../Store/productsStore";
 import { authStore } from "../Store/authenticationStore";
+import { wishlistStore } from "../Store/wishlistStore";
 
 export const useStore = create((...props) => ({
   loading: false,
@@ -15,4 +16,5 @@ export const useStore = create((...props) => ({
   ...brandsStore(...props), //> Brands Store
   ...productStore(...props), //> Products Store
   ...authStore(...props), //> Authentication Store
+  ...wishlistStore(...props), //> Wishlist Store
 }));
