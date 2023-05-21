@@ -1,10 +1,17 @@
+// hooks
 import { useRef, useState } from "react";
-import notify from "../../utils/notifcation";
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../../hooks/useStore";
+// utils
+import notify from "../../utils/notifcation";
 
 export function AdminAddCategoryHook() {
   const { loading, createNewCategory } = useStore();
+
   const [image, setImage] = useState("");
+
+  const navigate = useNavigate();
+
   const nameRef = useRef("");
   const formRef = useRef();
 
@@ -35,6 +42,10 @@ export function AdminAddCategoryHook() {
     const response = await createNewCategory(formData); //> Send Data To Database
 
     if (response.status === 400) notify("error", "هذا التنصيف موجود مسبقا");
+    if (response.status === 403) {
+      notify("error", "أنت ممنوع من هذا الامر");
+      navigate("/");
+    }
     if (response.status === 201) {
       notify("done");
       clearData();

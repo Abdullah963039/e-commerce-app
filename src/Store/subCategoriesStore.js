@@ -21,11 +21,9 @@ export const subCategoriesStore = (set) => ({
       set({ loading: true, error: false });
       const response = await usePost(SUB_CATEGORIES_URL, formData);
       set({ loading: false });
-      console.log(response);
       return response;
     } catch (error) {
       set({ loading: false, error: true });
-      console.log(error);
       return error.response;
     }
   },

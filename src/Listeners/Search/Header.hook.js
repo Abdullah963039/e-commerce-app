@@ -7,8 +7,6 @@ import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
 import { useStore } from "../../hooks/useStore";
 // utils
 import notify from "../../utils/notifcation";
-import { useEffect } from "react";
-import { getLocal } from "../../utils/getValueFromStorage";
 
 export const HeaderHook = () => {
   const [keyword, setKeyword] = useSessionStorage("keyword", ""); // Search by keyword
@@ -22,8 +20,6 @@ export const HeaderHook = () => {
 
   useDebounce(() => makeSearch(), 1000, [keyword]); // Debouncing inputed keyword after change 1s
 
-  const isOnline = navigator.onLine;
-
   const logoutUser = () => {
     logout();
 
@@ -34,5 +30,5 @@ export const HeaderHook = () => {
     }, 1000);
   };
 
-  return { keyword, onChangeKeyword, logoutUser, user, isOnline };
+  return { keyword, onChangeKeyword, logoutUser, user };
 };

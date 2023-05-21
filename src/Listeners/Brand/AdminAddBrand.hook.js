@@ -1,11 +1,18 @@
-import React, { useRef, useState } from "react";
+// hooks
+import { useRef, useState } from "react";
 import { useStore } from "../../hooks/useStore";
+import { useNavigate } from "react-router-dom";
+
+// utils
 import notify from "../../utils/notifcation";
 
 export default function AdminAddBrandHook() {
-  const { loading, createNewBrand } = useStore();
+  const { loading, createNewBrand } = useStore(); // Global store
 
-  const [image, setImage] = useState("");
+  const [image, setImage] = useState(""); // Brand image state
+
+  const navigate = useNavigate();
+
   const formRef = useRef();
   const nameRef = useRef("");
 
@@ -40,6 +47,10 @@ export default function AdminAddBrandHook() {
     const response = await createNewBrand(formData); //> Send Data To Database
 
     if (response.status === 400) notify("error", "هذه الماركة موجودة مسبقا");
+    if (response.status === 403) {
+      notify("error", "أنت ممنوع من هذا الامر");
+      navigate("/");
+    }
     if (response.status === 201) {
       notify("done");
       clearData();

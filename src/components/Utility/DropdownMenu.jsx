@@ -2,12 +2,8 @@ import { RiAdminLine, RiUserLine } from "react-icons/ri"; // user icons
 import { FiLogOut } from "react-icons/fi"; // user icons
 import { Link } from "react-router-dom";
 
-export default function DropdownMenu({
-  name = "مستخدم",
-  role = "user",
-  onLogout,
-  online = true,
-}) {
+export default function DropdownMenu({ name = "us", role = "user", onLogout }) {
+  let online = navigator.onLine;
   return (
     <>
       <div className=" relative">

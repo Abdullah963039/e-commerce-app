@@ -1,5 +1,8 @@
+// hooks
 import { useStore } from "../../../hooks/useStore";
+import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+// utils
 import notify from "../../../utils/notifcation";
 
 const colors = [
@@ -27,6 +30,8 @@ export default function AdminAddProductHook() {
     getAllSubCategoriesOnCategory,
     createNewProduct,
   } = useStore();
+
+  const navigate = useNavigate();
 
   //? Use States
   const [imageCover, setImageCover] = useState(""); //> Image Cover State
@@ -124,8 +129,12 @@ export default function AdminAddProductHook() {
 
     const response = await createNewProduct(formData);
 
-    if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
     if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
+    if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
+    if (response.status === 403) {
+      notify("error", "أنت ممنوع من هذا الامر");
+      navigate("/");
+    }
     if (response.status === 201) {
       notify("done");
       clearAllData();

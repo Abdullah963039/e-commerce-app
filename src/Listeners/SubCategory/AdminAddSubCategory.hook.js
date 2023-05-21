@@ -1,10 +1,14 @@
+// hooks
 import { useState, useRef, useEffect } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { useStore } from "../../hooks/useStore";
+// utils
 import notify from "../../utils/notifcation";
 
 export default function AdminAddSubCategoryHook() {
   const [catId, setCatId] = useState(""); //> Store Selected Category Id
+
+  const navigate = useNavigate();
 
   const { getAllCategories, allCategories, createNewSubCategory } = useStore();
   const { data: categories } = allCategories;
@@ -41,6 +45,10 @@ export default function AdminAddSubCategoryHook() {
     });
 
     if (response.status === 400) notify("error", "هذا التنصيف موجود مسبقا");
+    if (response.status === 403) {
+      notify("error", "أنت ممنوع من هذا الامر");
+      navigate("/");
+    }
 
     if (response.status === 201) {
       notify("done");

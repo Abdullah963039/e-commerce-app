@@ -11,7 +11,7 @@ import { HeaderHook } from "../../Listeners/Search/Header.hook";
 import DropdownMenu from "./DropdownMenu";
 
 export default function Header() {
-  const { onChangeKeyword, keyword, user, logoutUser, isOnline } = HeaderHook();
+  const { keyword, onChangeKeyword, logoutUser, user } = HeaderHook();
 
   return (
     <header className="bg-gradient-to-bl from-slate-900 to-slate-700">
@@ -47,7 +47,6 @@ export default function Header() {
               name={user["name"]}
               role={user["role"]}
               onLogout={logoutUser}
-              online={isOnline}
             />
           )}
           <Link to="/cart">

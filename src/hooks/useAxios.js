@@ -7,12 +7,13 @@ export async function useGet(url, configs) {
 }
 
 // ? POST Method
-export async function usePost(url, formData, sendImage = false, configs) {
+export async function usePost(url, formData, sendImage = false) {
   if (sendImage) {
     //> Will Send Image
     const medieConfigs = {
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
@@ -21,6 +22,9 @@ export async function usePost(url, formData, sendImage = false, configs) {
   }
 
   //> Send just text
+  const configs = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  };
   const response = await baseURL.post(url, formData, configs);
   return response;
 }
@@ -32,6 +36,7 @@ export async function usePut(url, formData, sendImage = false) {
     const medieConfigs = {
       headers: {
         "Content-Type": "multipart/form-data",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     };
 
@@ -39,13 +44,21 @@ export async function usePut(url, formData, sendImage = false) {
     return response;
   }
   //> Send just text
-  const response = await baseURL.put(url, formData);
+  const configs = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  };
+  const response = await baseURL.put(url, formData, configs);
   return response;
 }
 
 // ? DELETE Method
 
-export async function useDelete(url, configs) {
+export async function useDelete(
+  url,
+  configs = {
+    headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+  }
+) {
   const response = await baseURL.delete(url, configs);
 
   return response;

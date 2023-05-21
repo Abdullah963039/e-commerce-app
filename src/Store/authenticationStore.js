@@ -24,14 +24,16 @@ export const authStore = (set) => ({
   },
   //? GET
   getLoggedUser: async () => {
+    const configs = {
+      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
+    };
     try {
       set({ loading: true, error: false });
-      const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
+      const { data } = await useGet(AUTH_API.GET.LOGGED_USER, configs);
       set({ user: data });
     } catch (err) {
       set({ error: true });
-      console.log(err);
-      return;
+      return err.response;
     } finally {
       set({ loading: false });
     }
@@ -90,6 +92,7 @@ export const authStore = (set) => ({
       set({ loading: false });
     }
   },
+  //? PUT
   resetPassword: async (email, newPassword) => {
     try {
       set({ loading: true, error: false });
