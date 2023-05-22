@@ -1,4 +1,3 @@
-import ProductsContainerHook from "../../Listeners/Product/ProductsPageContent.hook";
 import Product from "./Product";
 
 const STYLE = {

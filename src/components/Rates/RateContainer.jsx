@@ -1,27 +1,46 @@
-import { AiFillStar } from "react-icons/ai";
-import RateComment from "./RateComment";
+// components
+import RateComment, { NoComments } from "./RateComment";
 import Pagination from "../Utility/Pagination";
 import RateForm from "./RateForm";
+// hooks
+import ProductDetailsHook from "../../Listeners/Product/ProductDetails.hook";
+// icons
+import { AiFillStar } from "react-icons/ai";
+import { RateContainerHook } from "../../Listeners/reviews/RateContainer.hook";
 
 export default function RateContainer() {
+  const { product } = ProductDetailsHook();
+  const { reviews, changeReviewsPage } = RateContainerHook();
   return (
-    <div className="my-4 rounded-lg bg-white shadow-lg">
-      <div className="mb-2 flex items-center gap-3 p-2 text-xl">
-        <b className="text-2xl">التعليقات</b>
-        <div className="flex items-center font-bold text-yellow-500">
-          <AiFillStar className="h-full" />
-          4.5
+    <>
+      <div className="my-4 rounded-lg bg-white shadow-lg">
+        <div className="mb-2 flex items-center gap-3 p-2 text-xl">
+          <b className="text-2xl">التعليقات</b>
+          <div className="flex items-center font-bold text-yellow-500">
+            <AiFillStar className="h-full" />
+            {product?.ratingsAverage}
+          </div>
+          <p className="text-xs text-slate-400">
+            ({product?.ratingsQuantity} تقييم)
+          </p>
         </div>
-        <p className="text-xs text-slate-400">(168 تقييم)</p>
+        <div>
+          <RateForm />
+          {reviews?.data.length > 0 ? (
+            reviews?.data.map((comment, index) => (
+              <RateComment key={index} comment={comment} />
+            ))
+          ) : (
+            <NoComments />
+          )}
+          {reviews && (
+            <Pagination
+              totalPages={reviews?.paginationResult.numberOfPages}
+              onClick={changeReviewsPage}
+            />
+          )}
+        </div>
       </div>
-      <div>
-        <RateForm />
-        <RateComment />
-        <RateComment />
-        <RateComment />
-        <RateComment />
-        <Pagination />
-      </div>
-    </div>
+    </>
   );
 }

@@ -10,15 +10,13 @@ const STYLE = {
     "absolute bottom-[calc(100%_+_5px)] left-1/2 z-10 -translate-x-1/2 select-none rounded-lg border border-red-200 bg-red-200 px-4 text-center text-xs text-red-500 opacity-0 shadow duration-300 after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-red-200 sm:text-sm",
 };
 
-export const ResetPassword = () => {
+export default function ResetPassword() {
   const {
-    email,
-    newPassword,
-    writeEmail,
-    writePassword,
-    handleResetPassword,
-    emailTooltipRef,
+    newPasswordRef,
+    confirmPasswordRef,
     passwordTooltipRef,
+    confirmPasswordTooltipRef,
+    handleResetPassword,
     loading,
   } = ResetPasswordHook();
   return (
@@ -35,26 +33,27 @@ export const ResetPassword = () => {
             >
               <div className="relative" aria-label="ادخل البريد الالكتروني">
                 <input
-                  type="email"
-                  value={email}
-                  onChange={writeEmail}
-                  placeholder="البريد الالكتروني"
+                  type="password"
+                  ref={newPasswordRef}
+                  placeholder="كلمة المرور الجديدة"
                   dir="ltr"
                   className={STYLE.INPUT}
                 />
-                <span ref={emailTooltipRef} className={STYLE.TOOLTIP}></span>
+                <span ref={passwordTooltipRef} className={STYLE.TOOLTIP}></span>
               </div>
               <div className="relative" aria-label="ادخل كلمة السر">
                 <input
                   type="password"
-                  placeholder="كلمة المرور الجديدة"
-                  value={newPassword}
-                  onChange={writePassword}
+                  ref={confirmPasswordRef}
+                  placeholder="تأكيد كلمة المرور الجديدة"
                   dir="ltr"
                   onPaste={(e) => e.preventDefault()}
                   className={STYLE.INPUT}
                 />
-                <span ref={passwordTooltipRef} className={STYLE.TOOLTIP}></span>
+                <span
+                  ref={confirmPasswordTooltipRef}
+                  className={STYLE.TOOLTIP}
+                ></span>
               </div>
 
               <button
@@ -72,4 +71,4 @@ export const ResetPassword = () => {
       </div>
     </>
   );
-};
+}

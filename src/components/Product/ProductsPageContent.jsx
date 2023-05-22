@@ -8,7 +8,7 @@ import SelectionSidbar from "./SelectionSidbar";
 import { SortMenu } from "./SortMenu";
 
 export default function ProductsPageContent() {
-  const { loading, allProducts, getProduct } = ProductsPageContentHook();
+  const { loading, allProducts } = ProductsPageContentHook();
   return (
     <>
       {loading && <Loading />}

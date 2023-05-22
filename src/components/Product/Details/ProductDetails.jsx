@@ -1,13 +1,11 @@
 import ProductDetailsHook from "../../../Listeners/Product/ProductDetails.hook";
 import ProductGallary from "./ProductGallary";
 import ProductInforamtions from "./ProductInforamtions";
-import { Loading } from "../../Utility/Loading";
 
 export default function ProductDetails() {
   const { loading, product, productImages } = ProductDetailsHook();
   return (
     <>
-      {loading && <Loading />}
       {/* Product Information */}
       <div className="grid grid-cols-12 gap-8 py-4">
         {/* Product Gallary */}

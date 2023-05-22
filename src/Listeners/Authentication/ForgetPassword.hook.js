@@ -15,7 +15,7 @@ export const ForgetPasswordHook = () => {
 
   const sendResetCode = async (e) => {
     e.preventDefault();
-    const emailValue = emailRef.current.value;
+    const { value: emailValue } = emailRef.current;
 
     if (emailValue == "") {
       emailTooltipRef.current.style.opacity = "1";
@@ -27,6 +27,8 @@ export const ForgetPasswordHook = () => {
 
       return;
     }
+
+    sessionStorage.setItem("email", emailValue);
 
     const res = await forgetPassword(emailValue);
 

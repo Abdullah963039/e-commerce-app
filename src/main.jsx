@@ -1,7 +1,9 @@
 // React
-import React from "react";
+import React, { Suspense, lazy } from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import { Loading } from "./components/Utility/Loading";
 
 // Components
 import App from "./App";
@@ -10,12 +12,17 @@ import Home from "./pages/Home/Home";
 //? Authentication
 import { Login } from "./pages/Auth/Login";
 import { Register } from "./pages/Auth/Register";
+import ForgetPassword from "./pages/Auth/ForgetPassword";
+import ResetPassword from "./pages/Auth/ResetPassword";
+import VerifyResetCode from "./pages/Auth/VerifyResetCode";
 //? Components
 import AllCategeories from "./pages/Category/AllCategeories";
 import AllBrands from "./pages/Brands/AllBrands";
 import Products from "./pages/Product/Products";
 import AllProducts from "./pages/Product/AllProducts";
-import ProductDetailsPage from "./pages/Product/ProductDetailsPage";
+const ProductDetailsPage = lazy(() =>
+  import("./pages/Product/ProductDetailsPage")
+);
 import Cart from "./pages/Cart/Cart";
 import PaymentPage from "./pages/Payment/PaymentPage";
 // ? Admin Pages
@@ -27,6 +34,7 @@ import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
 import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
 import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
+import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
 //? User Pages
 import UserPage from "./pages/User/UserPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
@@ -35,10 +43,6 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserAddressesPage from "./pages/User/UserAddressesPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
-import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
-import ForgetPassword from "./pages/Auth/ForgetPassword";
-import { ResetPassword } from "./pages/Auth/ResetPassword";
-import VerifyResetCode from "./pages/Auth/VerifyResetCode";
 
 const routes = createBrowserRouter([
   {
@@ -98,7 +102,11 @@ const routes = createBrowserRouter([
           //? Product Details Page
           {
             path: ":productId",
-            element: <ProductDetailsPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <ProductDetailsPage />
+              </Suspense>
+            ),
           },
         ],
       },
@@ -211,7 +219,5 @@ const routes = createBrowserRouter([
 ]);
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  // <React.StrictMode>
   <RouterProvider router={routes} />
-  // </React.StrictMode>
 );

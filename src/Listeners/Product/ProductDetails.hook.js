@@ -45,6 +45,7 @@ export default function ProductDetailsHook() {
 
     return () => {
       setProduct({});
+      setProductImages([]);
       setMayLikeProducts([]);
     }; //> clear data after close this page
   }, [productId]); // renders when change product id

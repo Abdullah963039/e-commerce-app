@@ -1007,28 +1007,12 @@ video {
   flex-basis: 83.333333%;
 }
 
-.basis-\[calc\(50\%-1rem\)\] {
-  flex-basis: calc(50% - 1rem);
+.basis-\[calc\(50\%-0\.5rem\)\] {
+  flex-basis: calc(50% - 0.5rem);
 }
 
 .basis-full {
   flex-basis: 100%;
-}
-
-.basis-\[calc\(50\%-2rem\)\] {
-  flex-basis: calc(50% - 2rem);
-}
-
-.basis-\[calc\(50\%-4rem\)\] {
-  flex-basis: calc(50% - 4rem);
-}
-
-.basis-\[calc\(50\%-0rem\)\] {
-  flex-basis: calc(50% - 0rem);
-}
-
-.basis-\[calc\(50\%-0\.5rem\)\] {
-  flex-basis: calc(50% - 0.5rem);
 }
 
 .-translate-x-1\/2 {
@@ -1053,27 +1037,6 @@ video {
 
 .animate-spin {
   animation: spin 1s linear infinite;
-}
-
-@keyframes ping {
-  75%, 100% {
-    transform: scale(2);
-    opacity: 0;
-  }
-}
-
-.animate-ping {
-  animation: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
-}
-
-@keyframes pulse {
-  50% {
-    opacity: .5;
-  }
-}
-
-.animate-pulse {
-  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 }
 
 .cursor-default {
@@ -1585,6 +1548,10 @@ video {
 
 .font-semibold {
   font-weight: 600;
+}
+
+.font-light {
+  font-weight: 300;
 }
 
 .text-red-500 {
