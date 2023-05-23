@@ -18,7 +18,7 @@ export const reviewsStore = (set) => ({
     try {
       set({ loading: true, error: false });
       const response = await useGet(
-        PRODUCTS_URL + `${productId}/reviews?limit=1&page=${page}`
+        PRODUCTS_URL + `${productId}/reviews?limit=5&page=${page}`
       );
       set({ reviews: response });
       return response;
@@ -46,7 +46,32 @@ export const reviewsStore = (set) => ({
     }
   },
   //? PUT
-  editReview: async () => {},
+  editReview: async (reviewId, review, rating) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await usePut(REVIEWS_API + `/${reviewId}`, {
+        review,
+        rating,
+      });
+      return response;
+    } catch (err) {
+      set({ error: true });
+      return err.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
   //? DELETE
-  deleteReview: async () => {},
+  deleteReview: async (reviewId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useDelete(REVIEWS_API + `/${reviewId}`);
+      return response;
+    } catch (err) {
+      set({ error: true });
+      return err.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
 });

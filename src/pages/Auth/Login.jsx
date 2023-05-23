@@ -39,6 +39,7 @@ export const Login = () => {
             >
               <div className="relative" aria-label="ادخل البريد الالكتروني">
                 <input
+                  autoFocus
                   type="email"
                   value={email}
                   onChange={writeEmail}

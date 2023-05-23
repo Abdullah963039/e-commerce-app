@@ -46,6 +46,7 @@ export const Register = () => {
               <div className="flex flex-col items-center gap-2 sm:flex-row sm:gap-4">
                 <div className="relative basis-full sm:basis-1/2">
                   <input
+                    autoFocus
                     type="text"
                     placeholder="الاسم"
                     value={state["name"]}

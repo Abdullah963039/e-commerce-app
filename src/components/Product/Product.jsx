@@ -34,7 +34,7 @@ export default function Product({ className, product }) {
           <div className="mt-2 flex items-center justify-between justify-self-end px-3 pb-4">
             <div className="flex items-center gap-1 font-bold text-yellow-400">
               <AiFillStar />
-              {product["ratingsQuantity"]}
+              {product["ratingsAverage"] || 0}
             </div>
             <div className="font-bold">
               {currencyFormatter(product["price"])}

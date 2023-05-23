@@ -33,6 +33,7 @@ export default function ResetPassword() {
             >
               <div className="relative" aria-label="ادخل البريد الالكتروني">
                 <input
+                  autoFocus
                   type="password"
                   ref={newPasswordRef}
                   placeholder="كلمة المرور الجديدة"

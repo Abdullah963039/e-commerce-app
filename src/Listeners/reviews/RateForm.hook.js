@@ -31,8 +31,6 @@ export default function RateFormHook() {
 
     const res = await createReview(productId, comment, stars);
 
-    console.log(res);
-
     if (res.status === 400) notify("error", "انت اضفت تعليق من قبل ...");
     if (res.status === 403) notify("error", "أنت ممنوع من النتفيذ");
     if (res.status === 201) notify("done", "تم ارسال التعليق بنجاح");

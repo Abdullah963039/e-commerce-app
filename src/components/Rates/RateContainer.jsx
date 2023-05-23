@@ -4,9 +4,9 @@ import Pagination from "../Utility/Pagination";
 import RateForm from "./RateForm";
 // hooks
 import ProductDetailsHook from "../../Listeners/Product/ProductDetails.hook";
+import RateContainerHook from "../../Listeners/reviews/RateContainer.hook";
 // icons
 import { AiFillStar } from "react-icons/ai";
-import { RateContainerHook } from "../../Listeners/reviews/RateContainer.hook";
 
 export default function RateContainer() {
   const { product } = ProductDetailsHook();
@@ -17,7 +17,7 @@ export default function RateContainer() {
         <div className="mb-2 flex items-center gap-3 p-2 text-xl">
           <b className="text-2xl">التعليقات</b>
           <div className="flex items-center font-bold text-yellow-500">
-            <AiFillStar className="h-full" />
+            <AiFillStar />
             {product?.ratingsAverage}
           </div>
           <p className="text-xs text-slate-400">
@@ -33,7 +33,7 @@ export default function RateContainer() {
           ) : (
             <NoComments />
           )}
-          {reviews && (
+          {reviews?.paginationResult.numberOfPages !== 0 && (
             <Pagination
               totalPages={reviews?.paginationResult.numberOfPages}
               onClick={changeReviewsPage}

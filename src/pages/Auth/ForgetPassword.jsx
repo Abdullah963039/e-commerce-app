@@ -28,6 +28,7 @@ export default function ForgetPassword() {
             >
               <div className="relative" aria-label="ادخل البريد الالكتروني">
                 <input
+                  autoFocus
                   ref={emailRef}
                   type="email"
                   placeholder="البريد الالكتروني"

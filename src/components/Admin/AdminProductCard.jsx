@@ -1,7 +1,7 @@
 import { AiFillDelete, AiFillEdit, AiFillStar } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-import ConfirmMessage from "./ConfirmMessage";
+import ConfirmMessage from "../Utility/ConfirmMessage";
 import { currencyFormatter } from "../../utils/formatter";
 import { AdminProductCardHook } from "../../Listeners/Product/Admin/AdminProductCard.hook.js";
 
@@ -14,8 +14,7 @@ export default function AdminProductCard({ product }) {
       <ConfirmMessage
         controller={deleteModal}
         closeModal={closeModal}
-        productName={product["title"]}
-        productId={product["_id"]}
+        itemId={product["_id"]}
         deleteItem={deleteItem}
       />
 

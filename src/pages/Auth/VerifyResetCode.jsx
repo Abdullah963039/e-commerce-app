@@ -28,6 +28,7 @@ export default function VerifyResetCode() {
             >
               <div className="relative" aria-label="ادخل كود التحقق">
                 <input
+                  autoFocus
                   ref={resetCodeRef}
                   type="email"
                   placeholder="ادخل كود التحقق"
