@@ -5,14 +5,13 @@ import DiscountSection from "../../components/Home/DiscountSection";
 import BrandsSection from "../../components/Home/BrandsSection";
 import HomeProductListHook from "../../Listeners/Product/Home.ProductList.hook";
 import { Loading } from "../../components/Utility/Loading";
+import { Suspense } from "react";
 
 export default function Home() {
-  const { mostSold, fashionProducts, mostRated, loading } =
-    HomeProductListHook();
+  const { mostSold, fashionProducts, mostRated } = HomeProductListHook();
 
   return (
-    <>
-      {loading && <Loading />}
+    <Suspense fallback={<Loading />}>
       <div className="bg-slate-200">
         <div className="h-[300px] overflow-hidden bg-slate-300 py-8 text-slate-600">
           <HomeSlider />
@@ -36,6 +35,6 @@ export default function Home() {
         />
         <BrandsSection />
       </div>
-    </>
+    </Suspense>
   );
 }

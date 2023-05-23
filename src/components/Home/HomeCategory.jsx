@@ -4,7 +4,7 @@ import { Loading } from "../Utility/Loading";
 import AllCategoryContainerHook from "../../Listeners/Category/AllCategoryContainer.hook";
 
 export default function HomeCategory() {
-  const { categories, loading } = AllCategoryContainerHook(6); //? All Component Logics
+  const { categories } = AllCategoryContainerHook(6); //? All Component Logics
 
   return (
     <>
@@ -17,18 +17,14 @@ export default function HomeCategory() {
               href="/categories"
             />
             <div className="flex flex-wrap items-center py-3">
-              {loading ? (
-                <Loading />
-              ) : (
-                categories?.length > 0 &&
+              {categories?.length > 0 &&
                 categories.map((categroy, index) => (
                   <CategoryCard
                     key={index}
                     categroyTitle={categroy.name}
                     img={categroy.image}
                   />
-                ))
-              )}
+                ))}
             </div>
           </div>
         </div>

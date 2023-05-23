@@ -23,12 +23,7 @@ export const wishlistStore = (set) => ({
   addToWishlist: async (productId) => {
     try {
       set({ loading: true, error: false });
-      const response = await usePost(
-        WISHLIST_API,
-        { productId },
-        false, // No sending images
-        authConfigs
-      );
+      const response = await usePost(WISHLIST_API, { productId });
       return response;
     } catch (err) {
       set({ error: true });
@@ -40,10 +35,7 @@ export const wishlistStore = (set) => ({
   removeFromWishlist: async (productId) => {
     try {
       set({ loading: true, error: false });
-      const response = await useDelete(
-        WISHLIST_API + `/${productId}`,
-        authConfigs
-      );
+      const response = await useDelete(WISHLIST_API + `/${productId}`);
       return response;
     } catch (err) {
       set({ error: true });

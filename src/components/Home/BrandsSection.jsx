@@ -5,7 +5,7 @@ import { Loading } from "../Utility/Loading";
 import AllBrandsContainerHook from "../../Listeners/Brand/AllBrandsContainer.hook";
 
 export default function BrandsSection() {
-  const { brands, loading } = AllBrandsContainerHook(6);
+  const { brands } = AllBrandsContainerHook(6);
 
   return (
     <>
@@ -27,7 +27,6 @@ export default function BrandsSection() {
           </div>
         </div>
       )}
-      {loading && <Loading />}
     </>
   );
 }
