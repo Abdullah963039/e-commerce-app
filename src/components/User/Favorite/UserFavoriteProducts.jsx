@@ -1,5 +1,4 @@
-//? User: Favorite Products Container
-import Pagination from "../../Utility/Pagination";
+// components
 import Product from "../../Product/Product";
 // hooks
 import UserFavoriteProductsHook from "../../../Listeners/Product/User/UserFavoriteProducts.hook";
@@ -10,7 +9,7 @@ export default function UserFavoriteProducts() {
   return (
     <>
       <div className="mb-4 grid grid-cols-12 gap-4">
-        {wishlist.length > 0 ? (
+        {wishlist?.length > 0 ? (
           wishlist.map((favProd, index) => (
             <Product
               product={favProd}
@@ -28,7 +27,6 @@ export default function UserFavoriteProducts() {
           </>
         )}
       </div>
-      {/* <Pagination /> */}
     </>
   );
 }

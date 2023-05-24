@@ -10,6 +10,10 @@ export default function Product({ className, product }) {
   const { user, loading, isFavorite, removeFromFavorites, addToFavorites } =
     ProductHook(product["_id"]);
 
+  const productImageCover = product.imageCover.startsWith("http")
+    ? product.imageCover
+    : `http://localhost:8000/products/${product.imageCover}`;
+
   return (
     <div className={`${PRODUCT_CARD} ${className}`}>
       <div className="flex h-full flex-col gap-2">
@@ -19,7 +23,7 @@ export default function Product({ className, product }) {
             className="flex h-full items-center justify-center"
           >
             <img
-              src={product["imageCover"]}
+              src={productImageCover}
               alt={product["title"]}
               className="aspect-square object-contain"
               title={product["title"]}

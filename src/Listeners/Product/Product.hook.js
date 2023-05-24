@@ -1,14 +1,18 @@
 // hooks
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useStore } from "../../hooks/useStore";
 import notify from "../../utils/notifcation";
 
 export default function ProductHook(productId) {
   const { user, addToWishlist, removeFromWishlist, loading } = useStore(); // get user's wishlist from global store
 
-  const [isFavorite, setIsFavorite] = useState(() => {
-    return isFromFavorite(user?.wishlist, productId);
-  });
+  const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const prodcutExist = user?.wishlist.some((id) => id === productId);
+
+    if (prodcutExist) setIsFavorite(true);
+  }, []);
 
   async function removeFromFavorites() {
     const res = await removeFromWishlist(productId);
