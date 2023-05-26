@@ -18,3 +18,10 @@ export const numberFormatter = (number) => {
 
   return fr.format(number);
 };
+
+export const dateFormatter = (date) => {
+  const d = new Date(date);
+  const f = new Intl.DateTimeFormat("en-US");
+
+  return f.format(d);
+};

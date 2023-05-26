@@ -8,6 +8,7 @@ import { productStore } from "../Store/productsStore";
 import { authStore } from "../Store/authenticationStore";
 import { wishlistStore } from "../Store/wishlistStore";
 import { reviewsStore } from "../Store/reviewsStore";
+import { coponsStore } from "../Store/coponsStore";
 
 export const useStore = create((...props) => ({
   loading: false,
@@ -19,4 +20,5 @@ export const useStore = create((...props) => ({
   ...authStore(...props), //> Authentication Store
   ...reviewsStore(...props), //> Reviews Store
   ...wishlistStore(...props), //> Wishlist Store
+  ...coponsStore(...props), //> Copons Store
 }));

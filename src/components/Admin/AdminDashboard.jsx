@@ -14,6 +14,9 @@ export default function AdminDashboard() {
           <NavLink to="/admin/orders" className={NAVLINK_STYLE}>
             <li title="ادارة الطلبات">ادارة الطلبات</li>
           </NavLink>
+          <NavLink to="/admin/copons" className={NAVLINK_STYLE}>
+            <li title="ادارة الكوبونات">ادارة الكوبونات</li>
+          </NavLink>
           <NavLink to="/admin" end className={NAVLINK_STYLE}>
             <li title="ادارة المنتجات">ادارة المنتجات</li>
           </NavLink>
@@ -28,6 +31,9 @@ export default function AdminDashboard() {
           </NavLink>
           <NavLink to="/admin/add-product" className={NAVLINK_STYLE}>
             <li title="اضف منتج">اضف منتج</li>
+          </NavLink>
+          <NavLink to="/admin/add-copon" className={NAVLINK_STYLE}>
+            <li title="اضف كوبون">اضف كوبون</li>
           </NavLink>
         </ul>
       </nav>

@@ -35,6 +35,8 @@ import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
 import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
 import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
 import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
+import AdminAddCoponPage from "./pages/Admin/AdminAddCoponPage";
+import AdminEditCoponPage from "./pages/Admin/AdminEditCoponPage";
 //? User Pages
 import UserPage from "./pages/User/UserPage";
 import UserProfilePage from "./pages/User/UserProfilePage";
@@ -43,6 +45,7 @@ import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
 import UserAddAddressPage from "./pages/User/UserAddAddressPage";
 import UserAddressesPage from "./pages/User/UserAddressesPage";
 import UserEditAddressPage from "./pages/User/UserEditAddressPage";
+import AdminCoponsPage from "./pages/Admin/AdminCoponsPage";
 
 const routes = createBrowserRouter([
   {
@@ -169,6 +172,21 @@ const routes = createBrowserRouter([
             //? Adminstrator Add Product Page
             path: "edit-product/:productId",
             element: <AdminEditProductPage />,
+          },
+          {
+            //? Adminstrator Copons Page
+            path: "copons",
+            element: <AdminCoponsPage />,
+          },
+          {
+            //? Adminstrator Add Copon Page
+            path: "add-copon",
+            element: <AdminAddCoponPage />,
+          },
+          {
+            //? Adminstrator Edit Copon Page
+            path: "edit-copon/:coponId",
+            element: <AdminEditCoponPage />,
           },
         ],
       },

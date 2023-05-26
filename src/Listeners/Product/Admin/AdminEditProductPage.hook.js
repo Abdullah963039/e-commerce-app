@@ -108,13 +108,15 @@ export const AdminEditProductPageHook = () => {
     setAvailColors(product["availableColors"]); // set product available colors
 
     setBudges(product["subcategory"]); // set product subcategory
-
-    console.clear();
   }, [Boolean(product)]); // effect runs when the product data is ready
 
   //? useEffect to get subcategories on category
   useEffect(() => {
-    getAllSubCategoriesOnCategory(mainCategory);
+    const getSubCat = async () => {
+      const res = await getAllSubCategoriesOnCategory(mainCategory);
+    };
+
+    Boolean(product) && getSubCat(); // if product has been loaded .. then fetch
   }, [mainCategory]);
 
   // ? Product Image Cover
@@ -169,7 +171,6 @@ export const AdminEditProductPageHook = () => {
     availColors.forEach((clr) => formData.append("availableColors", clr));
 
     const response = await editSpecificProduct(formData, productId);
-    console.log(response);
 
     if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
     if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
