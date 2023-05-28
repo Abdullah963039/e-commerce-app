@@ -30,7 +30,7 @@ export default function VerifyResetCode() {
                 <input
                   autoFocus
                   ref={resetCodeRef}
-                  type="email"
+                  type="number"
                   placeholder="ادخل كود التحقق"
                   dir="ltr"
                   className={STYLE.INPUT}

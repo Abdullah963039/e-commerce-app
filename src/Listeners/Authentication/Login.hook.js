@@ -42,7 +42,6 @@ export function LoginHook() {
       localStorage.removeItem("token");
       localStorage.removeItem("user");
     }
-    //todo console.log(res);
   }
 
   return {
@@ -56,11 +55,3 @@ export function LoginHook() {
     loading,
   };
 }
-
-/**
- * nameTooltipRef.current.style.opacity = "1";
-      nameTooltipRef.current.innerText = "الاسم قصير جدا";
-      setTimeout(() => {
-        nameTooltipRef.current.style.opacity = "0";
-      }, 3500);
- */

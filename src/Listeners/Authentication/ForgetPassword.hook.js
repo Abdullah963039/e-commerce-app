@@ -28,7 +28,7 @@ export const ForgetPasswordHook = () => {
       return;
     }
 
-    sessionStorage.setItem("email", emailValue);
+    sessionStorage.setItem("email", JSON.stringify(emailValue));
 
     const res = await forgetPassword(emailValue);
 
@@ -43,12 +43,8 @@ export const ForgetPasswordHook = () => {
     }
     if (res.status === 200) {
       notify("done", "تم ارسال الكود بنجاح");
-      setTimeout(() => {
-        navigator("/verify-code");
-      }, 1000);
+      navigator("/verify-code");
     }
-    // todo: Handle Reset Code ..
-    console.log(res);
   };
 
   return {

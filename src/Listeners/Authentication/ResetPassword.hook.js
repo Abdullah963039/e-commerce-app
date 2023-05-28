@@ -19,7 +19,7 @@ export default function ResetPasswordHook() {
   const navigator = useNavigate();
 
   // Global Store
-  const { loading } = useStore(); // todo Implement Logining User ...
+  const { loading, resetPassword, login } = useStore(); // todo Implement Logining User ...
 
   // Referance for inputs
   const newPasswordRef = useRef();
@@ -28,11 +28,10 @@ export default function ResetPasswordHook() {
   const passwordTooltipRef = useRef();
   const confirmPasswordTooltipRef = useRef();
 
-  const writeEmail = (e) => setEmail(e.target.value);
-  const writePassword = (e) => setNewPassword(e.target.value);
-
   async function handleResetPassword(e) {
     e.preventDefault();
+
+    const { value: newPassword } = newPasswordRef.current;
 
     const result = cheakPasswords(
       newPasswordRef,
@@ -40,6 +39,19 @@ export default function ResetPasswordHook() {
       passwordTooltipRef,
       confirmPasswordTooltipRef
     );
+
+    if (!result) return;
+
+    const res = await resetPassword(userEmail, newPassword);
+
+    if (res.status === 200) {
+      notify("done", "تم تغيير كلمة المرور بنجاح");
+      await login(userEmail, newPassword);
+      navigator("/");
+    }
+    if (res.status === 400) {
+      notify("error", "كود التحقق غير صالح");
+    }
 
     return;
   }
@@ -140,4 +152,6 @@ function cheakPasswords(
     }, 3000);
     return false;
   }
+
+  return true;
 }

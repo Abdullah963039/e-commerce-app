@@ -9,8 +9,10 @@ import { authStore } from "../Store/authenticationStore";
 import { wishlistStore } from "../Store/wishlistStore";
 import { reviewsStore } from "../Store/reviewsStore";
 import { coponsStore } from "../Store/coponsStore";
+import { addressesStore } from "../Store/addressesStore";
+import { updateUserStore } from "../Store/updateUserStore";
 
-export const useStore = create((...props) => ({
+const store = (...props) => ({
   loading: false,
   error: false,
   ...allCategoriesStore(...props), //> All Categories Store
@@ -21,4 +23,8 @@ export const useStore = create((...props) => ({
   ...reviewsStore(...props), //> Reviews Store
   ...wishlistStore(...props), //> Wishlist Store
   ...coponsStore(...props), //> Copons Store
-}));
+  ...addressesStore(...props), //> User Addresses Store
+  ...updateUserStore(...props), //> User Profile Store
+});
+
+export const useStore = create(store);

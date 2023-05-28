@@ -11,9 +11,9 @@ export function VerifyResetCodeHook() {
 
   const navigator = useNavigate();
 
-  const { loading } = useStore();
+  const { loading, verifyResetCode } = useStore();
 
-  const handleSendResetCode = (e) => {
+  const handleSendResetCode = async (e) => {
     e.preventDefault();
     const codeValue = resetCodeRef.current.value;
 
@@ -24,6 +24,14 @@ export function VerifyResetCodeHook() {
         resetCodeTooltipRef.current.style.opacity = "0";
       }, 3500);
       return;
+    }
+
+    const res = await verifyResetCode(codeValue);
+
+    if (res.status === 400) notify("error", "الكود غير صحيح أو غير صالح");
+    if (res.status === 200) {
+      notify("done", "كود التحقق صحيح");
+      navigator("/reset-password");
     }
   };
   return {

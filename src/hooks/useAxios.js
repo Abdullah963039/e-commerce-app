@@ -24,7 +24,7 @@ export async function usePost(url, formData, sendImage = false) {
   //> Send just text
   const configs = {
     headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-  };
+  }
   const response = await baseURL.post(url, formData, configs);
   return response;
 }

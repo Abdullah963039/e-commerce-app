@@ -80,7 +80,7 @@ export const authStore = (set) => ({
       set({ loading: false });
     }
   },
-  sendResetCode: async (resetCode) => {
+  verifyResetCode: async (resetCode) => {
     try {
       set({ loading: true, error: false });
       const response = await usePost(AUTH_API.POST.RESET_CODE, { resetCode });

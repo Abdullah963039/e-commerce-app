@@ -225,7 +225,7 @@ const routes = createBrowserRouter([
               },
               //? User Edit Address Page
               {
-                path: "edit", // todo Must Be Child Route
+                path: "edit/:addressId", // todo Must Be Child Route
                 element: <UserEditAddressPage />,
               },
             ],

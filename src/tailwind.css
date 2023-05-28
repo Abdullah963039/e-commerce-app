@@ -712,6 +712,11 @@ video {
   margin-right: auto;
 }
 
+.my-12 {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
 .my-2 {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -730,11 +735,6 @@ video {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.my-12 {
-  margin-top: 3rem;
-  margin-bottom: 3rem;
 }
 
 .mb-1 {
@@ -876,6 +876,11 @@ video {
 
 .min-h-\[calc\(100vh-65px\)\] {
   min-height: calc(100vh - 65px);
+}
+
+.min-h-fit {
+  min-height: -moz-fit-content;
+  min-height: fit-content;
 }
 
 .min-h-max {
@@ -1243,6 +1248,10 @@ video {
   border-radius: 0px;
 }
 
+.rounded-sm {
+  border-radius: 0.125rem;
+}
+
 .border {
   border-width: 1px;
 }
@@ -1526,6 +1535,14 @@ video {
   text-align: center;
 }
 
+.\!text-right {
+  text-align: right !important;
+}
+
+.indent-1 {
+  text-indent: 0.25rem;
+}
+
 .indent-2 {
   text-indent: 0.5rem;
 }
@@ -1715,6 +1732,11 @@ video {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
+.ring-slate-300 {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(203 213 225 / var(--tw-ring-opacity));
 }
 
 .ring-slate-400 {
@@ -2057,6 +2079,11 @@ a {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.hover\:text-yellow-100:hover {
+  --tw-text-opacity: 1;
+  color: rgb(254 249 195 / var(--tw-text-opacity));
+}
+
 .hover\:text-yellow-500:hover {
   --tw-text-opacity: 1;
   color: rgb(234 179 8 / var(--tw-text-opacity));
@@ -2129,6 +2156,11 @@ a {
 }
 
 @media (min-width: 320px) {
+  .xs\:my-4 {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
   .xs\:inline {
     display: inline;
   }
@@ -2137,8 +2169,30 @@ a {
     flex-direction: column;
   }
 
+  .xs\:justify-end {
+    justify-content: flex-end;
+  }
+
+  .xs\:gap-4 {
+    gap: 1rem;
+  }
+
+  .xs\:p-4 {
+    padding: 1rem;
+  }
+
   .xs\:pl-4 {
     padding-left: 1rem;
+  }
+
+  .xs\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .xs\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
   }
 }
 
@@ -2153,6 +2207,10 @@ a {
 
   .sm\:col-span-8 {
     grid-column: span 8 / span 8;
+  }
+
+  .sm\:w-1\/2 {
+    width: 50%;
   }
 
   .sm\:basis-1\/2 {
