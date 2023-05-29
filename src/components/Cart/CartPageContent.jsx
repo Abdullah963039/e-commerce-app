@@ -13,7 +13,7 @@ export default function CartPageContent() {
         <div className="col-span-12 sm:col-span-8">
           <CartsContainer />
         </div>
-        <div className="col-span-6 col-start-4 h-fit rounded-lg bg-white p-4 sm:col-span-4">
+        <div className="col-span-12 h-fit rounded-lg bg-white p-4 sm:col-span-4">
           <DiscountCode />
         </div>
       </div>

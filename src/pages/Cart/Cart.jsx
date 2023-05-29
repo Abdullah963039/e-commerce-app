@@ -1,6 +1,6 @@
 //? Cart Page :
 
-import CartPageContent from "../../components/Cart/CartPageContent";
+import {CartPageContent} from "../../components/Cart";
 
 export default function Cart() {
   return (

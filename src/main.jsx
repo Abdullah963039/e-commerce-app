@@ -2,11 +2,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-// Components
 import App from "./App";
-//? Home
-import Home from "./pages/Home/Home";
 
 //? Authentication
 import {
@@ -19,11 +15,7 @@ import {
 
 //? Components
 import { AllProducts, Products, ProductDetailsPage } from "./pages/Product";
-
-import AllCategeories from "./pages/Category/AllCategeories";
-import AllBrands from "./pages/Brands/AllBrands";
-import Cart from "./pages/Cart/Cart";
-import PaymentPage from "./pages/Payment/PaymentPage";
+import { AllBrands, AllCategeories, Cart, Home, PaymentPage } from "./pages";
 
 // ? Admin Pages
 import {

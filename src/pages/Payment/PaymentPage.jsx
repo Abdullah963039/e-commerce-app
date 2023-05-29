@@ -1,11 +1,11 @@
 //? Payment Page ..
 
-import PayMethodContainer from "../../components/Paymethod/PayMethodContainer";
+import { PaymethodContainer } from "../../components/Paymethod";
 
 export default function PaymentPage() {
   return (
     <div className="bg-slate-200">
-      <PayMethodContainer />
+      <PaymethodContainer />
     </div>
   );
 }
