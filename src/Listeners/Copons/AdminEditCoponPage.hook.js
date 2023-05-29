@@ -1,12 +1,10 @@
 // hooks
 
 import { useParams } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
-import { useState, useEffect, useRef } from "react";
+import { useStore } from "../../hooks";
+import { useState, useEffect } from "react";
 // utils
-import { dateFormatter } from "../../utils/formatter";
-import notify from "../../utils/notifcation";
-import { toDate } from "./AdminAddCopon.hook";
+import { notify } from "../../utils";
 
 export default function AdminEditCoponPageHook() {
   const { coponId } = useParams(); // get coponId from url

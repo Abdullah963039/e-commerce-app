@@ -1,5 +1,5 @@
 import ImageGallery from "react-image-gallery";
-import { LeftButton, RightButton } from "./GallaryControllers";
+import { LeftButton, RightButton } from "../";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 export default function ProductGallary({ images = [] }) {

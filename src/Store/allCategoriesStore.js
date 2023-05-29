@@ -1,5 +1,5 @@
 //! Axois
-import { useGet, usePost } from "../hooks/useAxios";
+import { useGet, usePost } from "../hooks";
 
 const CATEGORIES_URL = "/api/v1/categories";
 

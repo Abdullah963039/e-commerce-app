@@ -1,8 +1,8 @@
 // components
-import SingleAddress from "./SingleAddress";
+import { SingleAddress } from "../";
 import { Link } from "react-router-dom";
 // hooks
-import UserAddressesHook from "../../../Listeners/Addresses/UserAddresses.hook";
+import { UserAddressesHook } from "../../../Listeners/Addresses";
 
 export default function UserAddresses() {
   const { allAddresses } = UserAddressesHook();

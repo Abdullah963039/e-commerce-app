@@ -1,6 +1,5 @@
-import React from "react";
-import CartItem from "../../components/Cart/CartItem";
-import AdminUserDetails from "../../components/Admin/AdminUserDetails";
+import { CartItem } from "../../components/Cart";
+import { AdminUserDetails } from "../../components/Admin";
 
 export default function AdminOrderDetailsPage() {
   return (

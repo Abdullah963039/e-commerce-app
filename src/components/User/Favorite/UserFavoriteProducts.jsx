@@ -1,7 +1,7 @@
 // components
 import Product from "../../Product/Product";
 // hooks
-import UserFavoriteProductsHook from "../../../Listeners/Product/User/UserFavoriteProducts.hook";
+import { UserFavoriteProductsHook } from "../../../Listeners/Product";
 
 export default function UserFavoriteProducts() {
   const { wishlist } = UserFavoriteProductsHook();

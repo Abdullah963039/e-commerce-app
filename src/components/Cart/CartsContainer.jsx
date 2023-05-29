@@ -1,6 +1,6 @@
 //? Cart Containter > Contains All Cart Items ..
 
-import CartItem from "./CartItem";
+import { CartItem } from "./";
 
 export default function CartsContainer() {
   return (

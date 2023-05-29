@@ -1,5 +1,5 @@
 // hooks
-import { SelectionSidbarHook } from "../../Listeners/Search/SelectionSidbar.hook";
+import { SelectionSidbarHook } from "../../Listeners/Search";
 
 export default function SelectionSidbar() {
   const {

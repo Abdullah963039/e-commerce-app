@@ -1,4 +1,4 @@
-import { useGet, usePost } from "../hooks/useAxios";
+import { useGet, usePost } from "../hooks";
 
 const BRANDS_URL = "/api/v1/brands";
 //> Limit + ?limit=10

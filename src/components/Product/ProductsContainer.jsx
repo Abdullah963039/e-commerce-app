@@ -1,4 +1,4 @@
-import Product from "./Product";
+import { Product } from "./";
 
 const STYLE = {
   gridContainer: "grid grid-cols-12 gap-4",

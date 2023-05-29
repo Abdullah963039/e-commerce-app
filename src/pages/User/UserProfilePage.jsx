@@ -1,5 +1,4 @@
-import UserChangePassword from "../../components/User/Profile/UserChangePassword";
-import UserProfile from "../../components/User/Profile/UserProfile";
+import { UserChangePassword, UserProfile } from "../../components/User";
 
 export default function UserProfilePage() {
   return (

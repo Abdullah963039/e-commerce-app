@@ -1,7 +1,7 @@
 // hooks
 import { useEffect, useState } from "react";
-import { useStore } from "../../hooks/useStore";
-import notify from "../../utils/notifcation";
+import { useStore } from "../../hooks";
+import { notify } from "../../utils";
 
 export default function ProductHook(productId) {
   const { user, addToWishlist, removeFromWishlist, loading } = useStore(); // get user's wishlist from global store

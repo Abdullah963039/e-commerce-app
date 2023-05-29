@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useParams } from "react-router-dom";
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 /**
  * This hook responsible for getting comment of product

@@ -1,7 +1,7 @@
 // hooks
-import UserAddAddressHook from "../../../Listeners/Addresses/UserAddAddress.hook";
+import { UserAddAddressHook } from "../../../Listeners/Addresses";
 // icons
-import { LoadingIcon } from "../../Utility/Loading";
+import { LoadingIcon } from "../../Utility";
 
 export default function UserAddAddress() {
   const { aliasRef, detailsRef, phoneRef, handleCreateAddress, loading } =

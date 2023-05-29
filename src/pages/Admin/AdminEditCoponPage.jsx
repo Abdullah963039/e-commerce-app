@@ -3,9 +3,9 @@ import { ToastContainer } from "react-toastify";
 import { Calendar } from "primereact/calendar";
 // icons
 import { AiOutlineLeft, AiOutlineRight } from "react-icons/ai";
-import { LoadingIcon } from "../../components/Utility/Loading";
+import { LoadingIcon } from "../../components/Utility";
 // hooks
-import AdminEditCoponPageHook from "../../Listeners/Copons/AdminEditCoponPage.hook";
+import { AdminEditCoponPageHook } from "../../Listeners/Copons";
 
 const INPUT_STYLES =
   "w-full rounded-lg border border-slate-200 h-full p-2 text-center text-sm shadow-sm outline-none placeholder:text-xs placeholder:text-slate-400 sm:p-2 sm:text-base sm:placeholder:text-base  focus:border-slate-400";

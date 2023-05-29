@@ -2,10 +2,10 @@
 import ReactStars from "react-rating-stars-component";
 import { ToastContainer } from "react-toastify";
 // hooks
-import RateFormHook from "../../Listeners/reviews/RateForm.hook";
+import { RateFormHook } from "../../Listeners/reviews";
 // icons
 import { BsStar, BsStarHalf, BsStarFill } from "react-icons/bs";
-import { LoadingIcon } from "../Utility/Loading";
+import { LoadingIcon } from "../Utility";
 
 export default function RateForm() {
   const { commentRef, user, submitReview, stars, loading, rateStars } =

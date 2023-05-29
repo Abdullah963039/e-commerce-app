@@ -1,6 +1,6 @@
 // hooks
 import { useEffect, useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 
 export default function UserAddressesHook() {
   const [allAddresses, setAllAddresses] = useState([]);

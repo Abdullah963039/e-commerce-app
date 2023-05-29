@@ -1,4 +1,4 @@
-import AdminAddBrand from "../../components/Admin/AdminAddBrand";
+import { AdminAddBrand } from "../../components/Admin";
 
 export default function AdminAddBrandPage() {
   return (

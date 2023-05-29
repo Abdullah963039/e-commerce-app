@@ -1,7 +1,7 @@
 //? Pay Method Content Container
 
-import SubTitle from "../Utility/SubTitle";
-import PaymentForm from "./PaymentForm";
+import { SubTitle } from "../Utility";
+import { PaymentForm } from "./";
 
 export default function PaymethodContainer() {
   return (

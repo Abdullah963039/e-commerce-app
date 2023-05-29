@@ -1,5 +1,4 @@
-import React from "react";
-import UserManageOrders from "../../components/User/UserManageOrders";
+import { UserManageOrders } from "../../components/User";
 
 export default function UserOrdersPage() {
   return (

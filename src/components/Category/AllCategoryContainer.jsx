@@ -1,8 +1,6 @@
-import Pagination from "../Utility/Pagination";
-import SubTitle from "../Utility/SubTitle";
-import CategoryCard from "./CategoryCard";
-import { Loading } from "../Utility/Loading";
-import AllCategoryContainerHook from "../../Listeners/Category/AllCategoryContainer.hook";
+import { Pagination, SubTitle, Loading } from "../Utility";
+import { CategoryCard } from "./";
+import { AllCategoryContainerHook } from "../../Listeners/Category";
 
 export default function AllCategoryContainer() {
   const { categories, loading, totalPages, getPageNumber } =

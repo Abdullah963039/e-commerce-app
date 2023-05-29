@@ -1,8 +1,7 @@
 // hooks
 import { useState, useRef } from "react";
-import { useStore } from "../../hooks/useStore";
-import { isEmailValid, isPhoneValid } from "../../utils/validators";
-import notify from "../../utils/notifcation";
+import { useStore } from "../../hooks";
+import { isEmailValid, isPhoneValid, notify } from "../../utils";
 
 export default function UserProfileHook() {
   const [editProfileModal, setEditProfileModal] = useState(false);

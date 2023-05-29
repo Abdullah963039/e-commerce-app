@@ -1,4 +1,4 @@
-import UserEditAddress from "../../components/User/Addresses/UserEditAddress";
+import { UserEditAddress } from "../../components/User";
 
 export default function UserEditAddressPage() {
   return (

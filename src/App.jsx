@@ -1,19 +1,18 @@
 // hooks
 import { useEffect } from "react";
-import { useStore } from "./hooks/useStore";
+import { useStore } from "./hooks";
 
 // components
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Header from "./components/Utility/Header";
-import Footer from "./components/Utility/Footer";
+import { Header, Footer } from "./components/Utility";
 
 // styles
 import "./tailwind.css";
 import "react-toastify/dist/ReactToastify.css"; //? Notification Styles
 
 // utils
-import { getLocal } from "./utils/getValueFromStorage"; //todo
+import { getLocal } from "./utils";
 
 function App() {
   const { getLoggedUser } = useStore();

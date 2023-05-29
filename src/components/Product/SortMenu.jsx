@@ -1,9 +1,9 @@
 // icons
 import { TbSortDescending } from "react-icons/tb";
 // hooks
-import { SortMenuHook } from "../../Listeners/Search/SortMenu.hook";
+import { SortMenuHook } from "../../Listeners/Search/";
 
-export function SortMenu() {
+export default function SortMenu() {
   const { selectSort, sort } = SortMenuHook();
 
   return (

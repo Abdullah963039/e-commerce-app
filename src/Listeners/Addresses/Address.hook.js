@@ -1,8 +1,8 @@
 // hooks
 import { useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export default function AddressHook() {
   const [showModal, setShowModal] = useState(false);

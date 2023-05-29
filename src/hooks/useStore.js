@@ -1,16 +1,18 @@
 import { create } from "zustand";
 
 //? Store Partitions ...
-import { allCategoriesStore } from "../Store/allCategoriesStore";
-import { subCategoriesStore } from "../Store/subCategoriesStore";
-import { brandsStore } from "../Store/brandsStore";
-import { productStore } from "../Store/productsStore";
-import { authStore } from "../Store/authenticationStore";
-import { wishlistStore } from "../Store/wishlistStore";
-import { reviewsStore } from "../Store/reviewsStore";
-import { coponsStore } from "../Store/coponsStore";
-import { addressesStore } from "../Store/addressesStore";
-import { updateUserStore } from "../Store/updateUserStore";
+import {
+  allCategoriesStore,
+  subCategoriesStore,
+  brandsStore,
+  productStore,
+  authStore,
+  wishlistStore,
+  reviewsStore,
+  coponsStore,
+  addressesStore,
+  updateUserStore,
+} from "../Store";
 
 const store = (...props) => ({
   loading: false,

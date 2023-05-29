@@ -1,6 +1,8 @@
-import ProductDetailsHook from "../../../Listeners/Product/ProductDetails.hook";
+// components
 import ProductGallary from "./ProductGallary";
 import ProductInforamtions from "./ProductInforamtions";
+// hooks
+import { ProductDetailsHook } from "../../../Listeners/Product";
 
 export default function ProductDetails() {
   const { loading, product, productImages } = ProductDetailsHook();

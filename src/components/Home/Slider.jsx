@@ -28,7 +28,7 @@ const slides = [
   },
 ];
 
-export function HomeSlider() {
+export default function HomeSlider() {
   const [curreentImage, setCurreentImage] = useState(0);
 
   const nextImage = () => {

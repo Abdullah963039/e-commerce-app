@@ -1,7 +1,7 @@
 // hooks
-import UserEditAddressHook from "../../../Listeners/Addresses/UserEditAddress.hook";
+import { UserEditAddressHook } from "../../../Listeners/Addresses";
 // icons
-import { LoadingIcon } from "../../Utility/Loading";
+import { LoadingIcon } from "../../Utility";
 
 export default function UserEditAddress() {
   const { aliasRef, detailsRef, handleUpadteAddress, loading, phoneRef } =

@@ -1,10 +1,9 @@
 // hooks
-import { useReducer } from "react";
-import { useRef } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useReducer, useRef } from "react";
+import { useStore } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 //? Regular Expressions
 const emailRegex = /\w{4,}@\w{2,}\.\w{2,}/;
@@ -29,7 +28,7 @@ const INIT_STATE = {
   passwordConfirm: "",
 };
 
-export const RegisterHook = () => {
+export default function RegisterHook() {
   const [state, dispatch] = useReducer(reducer, INIT_STATE);
 
   const navigator = useNavigate();
@@ -111,7 +110,7 @@ export const RegisterHook = () => {
     passwordConfirmTooltipRef,
     loading,
   };
-};
+}
 
 //> Reducer Fn
 function reducer(state, { type, payload }) {

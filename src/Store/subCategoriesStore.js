@@ -1,4 +1,4 @@
-import { useGet, usePost } from "../hooks/useAxios";
+import { useGet, usePost } from "../hooks";
 
 const SUB_CATEGORIES_URL = "/api/v1/subcategories";
 

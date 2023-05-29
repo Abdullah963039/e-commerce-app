@@ -1,7 +1,7 @@
 //? Admin All Products Page
 
 import { Outlet } from "react-router-dom";
-import AdminDashboard from "../../components/Admin/AdminDashboard";
+import { AdminDashboard } from "../../components/Admin";
 
 export default function AdminPage() {
   return (

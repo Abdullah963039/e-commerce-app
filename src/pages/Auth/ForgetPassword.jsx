@@ -1,6 +1,6 @@
 // hooks
 import { ToastContainer } from "react-toastify";
-import { ForgetPasswordHook } from "../../Listeners/Authentication/ForgetPassword.hook";
+import { ForgetPasswordHook } from "../../Listeners/Authentication";
 // icons
 import { LoadingIcon } from "../../components/Utility/Loading";
 

@@ -1,6 +1,6 @@
 // icons
-import ResetPasswordHook from "../../Listeners/Authentication/ResetPassword.hook";
-import { LoadingIcon } from "../../components/Utility/Loading";
+import { ResetPasswordHook } from "../../Listeners/Authentication";
+import { LoadingIcon } from "../../components/Utility";
 // hooks
 
 const STYLE = {

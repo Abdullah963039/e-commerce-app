@@ -1,12 +1,11 @@
 // hooks
+import { useNavigate } from "react-router-dom";
 import { useSessionStorage } from "../../hooks/useStorage";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useNavigate } from "react-router-dom";
-import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
-// global store
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
+import { ProductsPageContentHook } from "../Product";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export const HeaderHook = () => {
   const [keyword, setKeyword] = useSessionStorage("keyword", ""); // Search by keyword

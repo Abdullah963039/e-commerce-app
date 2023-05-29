@@ -1,11 +1,11 @@
 // hooks
 import { useRef } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
-export const ForgetPasswordHook = () => {
+export default function ForgetPasswordHook() {
   const { forgetPassword, loading } = useStore();
 
   const navigator = useNavigate();
@@ -53,12 +53,4 @@ export const ForgetPasswordHook = () => {
     emailTooltipRef,
     sendResetCode,
   };
-};
-
-/**
- * passwordTooltipRef.current.style.opacity = "1";
-        passwordTooltipRef.current.innerText = "ادخل كلمةالمرور من فضلك";
-        setTimeout(() => {
-          passwordTooltipRef.current.style.opacity = "0";
-        }, 3500);
- */
+}

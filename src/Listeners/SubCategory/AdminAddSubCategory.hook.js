@@ -1,9 +1,9 @@
 // hooks
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export default function AdminAddSubCategoryHook() {
   const [catId, setCatId] = useState(""); //> Store Selected Category Id

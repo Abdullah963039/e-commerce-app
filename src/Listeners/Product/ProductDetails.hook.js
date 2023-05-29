@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useState, useEffect } from "react";
 
 export default function ProductDetailsHook() {

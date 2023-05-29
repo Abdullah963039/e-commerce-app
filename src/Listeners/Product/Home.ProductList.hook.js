@@ -1,6 +1,6 @@
 // hooks
 import { useEffect, useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
 import { getLocal } from "../../utils/getValueFromStorage";
 

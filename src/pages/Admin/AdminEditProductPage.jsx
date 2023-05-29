@@ -1,5 +1,6 @@
 // Hook
-import { AdminEditProductPageHook } from "../../Listeners/Product/Admin/AdminEditProductPage.hook";
+import { AdminEditProductPageHook } from "../../Listeners/Product";
+
 // Library
 import { MultiSelect } from "primereact/multiselect";
 import { Dropdown } from "primereact/dropdown";
@@ -7,12 +8,14 @@ import { Dropdown } from "primereact/dropdown";
 // Styles
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
+
 // Icons
 import { MdDriveFolderUpload } from "react-icons/md";
 import { AiOutlineClose } from "react-icons/ai";
+
 // Notification
 import { ToastContainer } from "react-toastify";
-import { LoadingIcon } from "../../components/Utility/Loading";
+import { LoadingIcon } from "../../components/Utility";
 
 export default function AdminEditProductPage() {
   const {

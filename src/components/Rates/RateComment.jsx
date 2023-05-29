@@ -2,12 +2,13 @@
 import { AiFillStar, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import { BiSad } from "react-icons/bi";
 // hooks
-import RateContainerHook, {
+import {
+  RateContainerHook,
   deleteReviewHook,
   editReviewHook,
-} from "../../Listeners/reviews/RateContainer.hook";
+} from "../../Listeners/reviews";
 // components
-import ConfirmMessage, { ConfirmEditModal } from "../Utility/ConfirmMessage";
+import { ConfirmMessage, ConfirmEditModal } from "../Utility";
 import { ToastContainer } from "react-toastify";
 
 export default function RateComment({ comment }) {

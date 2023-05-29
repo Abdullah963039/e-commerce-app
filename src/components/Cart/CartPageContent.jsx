@@ -1,8 +1,7 @@
 //? Contains All Cart Page Content ...
 
-import CartsContainer from "./CartsContainer";
-import DiscountCode from "./DiscountCode";
-import SubTitle from "../../components/Utility/SubTitle";
+import { CartsContainer, DiscountCode } from "./";
+import { SubTitle } from "../../components/Utility";
 
 export default function CartPageContent() {
   return (

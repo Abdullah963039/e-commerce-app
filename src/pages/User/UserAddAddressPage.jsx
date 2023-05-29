@@ -1,4 +1,4 @@
-import UserAddAddress from "../../components/User/Addresses/UserAddAddress";
+import { UserAddAddress } from "../../components/User";
 
 export default function UserAddAddressPage() {
   return (

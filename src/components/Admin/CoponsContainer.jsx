@@ -1,10 +1,10 @@
-// hooks
-import { CoponsContainerHook } from "../../Listeners/Copons/CoponsContainer.hook";
 // components
-import Copon from "./Copon";
-import Pagintaion from "../Utility/Pagination";
+import { Copon } from "./";
+import { Pagination } from "../Utility";
 import { ToastContainer } from "react-toastify";
-// : { data: copons, paginationResult }
+// hooks
+import { CoponsContainerHook } from "../../Listeners/Copons";
+
 export function CoponsContainer() {
   const { allCopons, paginationController } = CoponsContainerHook();
 
@@ -24,7 +24,7 @@ export function CoponsContainer() {
 
           <div className="self-center justify-self-end">
             {allCopons?.paginationResult?.["numberOfPages"] > 0 && (
-              <Pagintaion
+              <Pagination
                 totalPages={allCopons?.paginationResult?.["numberOfPages"]}
                 onClick={paginationController}
               />

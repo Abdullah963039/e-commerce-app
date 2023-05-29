@@ -1,7 +1,7 @@
 // hooks
 import { useSessionStorage } from "../../hooks/useStorage";
 import { useDebounce } from "../../hooks/useDebounce";
-import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
+import { ProductsPageContentHook } from "../Product";
 
 export const SortMenuHook = () => {
   const { makeSearch } = ProductsPageContentHook();

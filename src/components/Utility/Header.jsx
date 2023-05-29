@@ -1,14 +1,14 @@
 // icons
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { RiAdminLine, RiUserLine } from "react-icons/ri"; // user icons
-import { FiLogOut } from "react-icons/fi";
+import { RiUserLine } from "react-icons/ri";
+
 // logo
 import logo from "../../assets/imgs/logo.png";
 // components
 import { Link } from "react-router-dom";
 // hooks
-import { HeaderHook } from "../../Listeners/Search/Header.hook";
-import DropdownMenu from "./DropdownMenu";
+import { HeaderHook } from "../../Listeners/Search";
+import { DropdownMenu } from "./";
 
 export default function Header() {
   const { keyword, onChangeKeyword, logoutUser, user } = HeaderHook();

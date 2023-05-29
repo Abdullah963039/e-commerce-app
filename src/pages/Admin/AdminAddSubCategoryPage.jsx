@@ -1,5 +1,4 @@
-import React from "react";
-import AdminAddSubCategory from "../../components/Admin/AdminAddSubCategory";
+import { AdminAddSubCategory } from "../../components/Admin";
 
 export default function AdminAddSubCategoryPage() {
   return (

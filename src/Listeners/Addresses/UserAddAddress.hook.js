@@ -1,8 +1,8 @@
 // hooks
 import { useRef } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export default function UserAddAddressHook() {
   const aliasRef = useRef(),

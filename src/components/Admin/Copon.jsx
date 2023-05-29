@@ -1,10 +1,10 @@
 // components
 import { Link } from "react-router-dom";
-import ConfirmMessage from "../Utility/ConfirmMessage";
+import { ConfirmMessage } from "../Utility";
 // icons
 import { AiFillEdit, AiFillDelete } from "react-icons/ai";
 // hooks
-import { CoponHook } from "../../Listeners/Copons/Copon.hook";
+import { CoponHook } from "../../Listeners/Copons";
 // utils
 import { dateFormatter } from "../../utils/formatter";
 

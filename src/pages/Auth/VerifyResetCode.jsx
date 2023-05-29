@@ -1,6 +1,7 @@
-// hooks
+// components
 import { ToastContainer } from "react-toastify";
-import { VerifyResetCodeHook } from "../../Listeners/Authentication/VerifyResetCode.hook";
+// hooks
+import { VerifyResetCodeHook } from "../../Listeners/Authentication";
 // icons
 import { LoadingIcon } from "../../components/Utility/Loading";
 

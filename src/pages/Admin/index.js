@@ -1,0 +1,12 @@
+export { default as AdminPage } from "./AdminPage";
+export { default as AdminAddBrandPage } from "./AdminAddBrandPage";
+export { default as AdminAddCategoryPage } from "./AdminAddCategoryPage";
+export { default as AdminAddCoponPage } from "./AdminAddCoponPage";
+export { default as AdminAddProductPage } from "./AdminAddProductPage";
+export { default as AdminAddSubCategoryPage } from "./AdminAddSubCategoryPage";
+export { default as AdminAllOrdersPage } from "./AdminAllOrdersPage";
+export { default as AdminAllProducts } from "./AdminAllProducts";
+export { default as AdminCoponsPage } from "./AdminCoponsPage";
+export { default as AdminEditCoponPage } from "./AdminEditCoponPage";
+export { default as AdminEditProductPage } from "./AdminEditProductPage";
+export { default as AdminOrderDetailsPage } from "./AdminOrderDetailsPage";

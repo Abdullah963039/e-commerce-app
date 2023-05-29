@@ -1,4 +1,4 @@
-import UserAddresses from "../../components/User/Addresses/UserAddresses";
+import { UserAddresses } from "../../components/User";
 
 export default function UserAddressesPage() {
   return (

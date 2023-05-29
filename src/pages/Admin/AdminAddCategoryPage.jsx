@@ -1,4 +1,4 @@
-import AdminAddCategory from "../../components/Admin/AdminAddCategory";
+import { AdminAddCategory } from "../../components/Admin";
 
 export default function AdminAddCategoryPage() {
   return (

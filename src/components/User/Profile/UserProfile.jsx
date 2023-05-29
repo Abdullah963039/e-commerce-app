@@ -1,6 +1,6 @@
 import { AiFillEdit } from "react-icons/ai";
-import UserProfileHook from "../../../Listeners/User/UserProfile.hook";
-import { EditProfileModal } from "../../Utility/ConfirmMessage";
+import { UserProfileHook } from "../../../Listeners/User";
+import { EditProfileModal } from "../../Utility";
 
 export default function UserProfile() {
   const {

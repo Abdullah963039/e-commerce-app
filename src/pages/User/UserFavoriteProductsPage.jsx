@@ -1,4 +1,4 @@
-import UserFavoriteProducts from "../../components/User/Favorite/UserFavoriteProducts";
+import { UserFavoriteProducts } from "../../components/User";
 
 export default function UserFavoriteProductsPage() {
   return (

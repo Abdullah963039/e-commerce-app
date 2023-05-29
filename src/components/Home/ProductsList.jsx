@@ -1,5 +1,5 @@
-import Product from "../Product/Product";
-import SubTitle from "../Utility/SubTitle";
+import { Product } from "../Product";
+import { SubTitle } from "../Utility";
 
 export default function ProductsList({
   title,

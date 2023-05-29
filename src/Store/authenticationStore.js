@@ -1,4 +1,4 @@
-import { usePost, useGet, usePut } from "../hooks/useAxios";
+import { usePost, useGet, usePut } from "../hooks";
 
 const AUTH_API = {
   GET: {

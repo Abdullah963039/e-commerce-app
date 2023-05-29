@@ -1,6 +1,6 @@
 // hooks
 import { useEffect, useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 
 export const CoponsContainerHook = () => {
   const [allCopons, setAllCopons] = useState(undefined);

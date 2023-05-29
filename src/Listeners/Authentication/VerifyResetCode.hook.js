@@ -1,11 +1,11 @@
 // hooks
 import { useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
-export function VerifyResetCodeHook() {
+export default function VerifyResetCodeHook() {
   const resetCodeRef = useRef(""),
     resetCodeTooltipRef = useRef("");
 

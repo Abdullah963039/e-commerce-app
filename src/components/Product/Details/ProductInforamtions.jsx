@@ -1,4 +1,6 @@
+// icons
 import { BiCartAdd } from "react-icons/bi";
+// utlis
 import { currencyFormatter } from "../../../utils/formatter";
 
 export default function ProductInforamtions({ product }) {

@@ -1,7 +1,11 @@
+// components
 import { Link } from "react-router-dom";
+// icons
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+// utils
 import { currencyFormatter } from "../../utils/formatter";
-import ProductHook from "../../Listeners/Product/Product.hook";
+// hooks
+import { ProductHook } from "../../Listeners/Product";
 
 const PRODUCT_CARD =
   "basis-full overflow-hidden rounded-lg border-[1px] border-solid border-sky-100 bg-white shadow-sm sm:basis-[calc(50%-1rem)] md:basis-[calc(25%-1rem)]";

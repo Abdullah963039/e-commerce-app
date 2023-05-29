@@ -1,9 +1,9 @@
 // hooks
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export function AdminAddCategoryHook() {
   const { loading, createNewCategory } = useStore();

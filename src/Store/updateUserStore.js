@@ -1,4 +1,4 @@
-import { usePut } from "../hooks/useAxios";
+import { usePut } from "../hooks";
 
 const UPDATE_PROFILE_URL = "/api/v1/users/updateMe";
 const UPDATE_PASSWORD_URL = "/api/v1/users/changeMyPassword";

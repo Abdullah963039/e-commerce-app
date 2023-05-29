@@ -1,9 +1,9 @@
 // hooks
 import { useRef } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useNavigate } from "react-router-dom";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 import { getSession } from "../../utils/getValueFromStorage";
 
 // regex

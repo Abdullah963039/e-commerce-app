@@ -1,7 +1,7 @@
 //? User Page
 
 import { Outlet } from "react-router-dom";
-import UserDashboard from "../../components/User/UserDashboard";
+import { UserDashboard } from "../../components/User";
 
 export default function UserPage() {
   return (

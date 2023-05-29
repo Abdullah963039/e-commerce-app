@@ -1,4 +1,4 @@
-import { useGet, useDelete, usePost, usePut } from "../hooks/useAxios";
+import { useGet, useDelete, usePost, usePut } from "../hooks";
 
 const USER_ADDRESSES_URL = "/api/v1/addresses";
 

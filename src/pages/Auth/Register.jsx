@@ -5,7 +5,7 @@ import { ToastContainer } from "react-toastify";
 import { TbClick } from "react-icons/tb";
 import { LoadingIcon } from "../../components/Utility/Loading";
 // hooks
-import { RegisterHook } from "../../Listeners/Authentication/Register.hook";
+import { RegisterHook } from "../../Listeners/Authentication";
 
 const STYLES = {
   INPUT:
@@ -14,7 +14,7 @@ const STYLES = {
     "absolute bottom-[calc(100%_+_5px)] left-1/2 z-10 -translate-x-1/2 select-none rounded-lg border border-red-200 bg-red-200 px-4 text-center text-xs text-red-500 opacity-0 shadow duration-300 after:absolute after:left-1/2 after:top-full after:-translate-x-1/2 after:border-8 after:border-transparent after:border-t-red-200 sm:text-sm",
 };
 
-export const Register = () => {
+export default function Register() {
   const {
     state,
     changeName,
@@ -135,4 +135,4 @@ export const Register = () => {
       <ToastContainer rtl />
     </>
   );
-};
+}

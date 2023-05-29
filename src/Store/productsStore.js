@@ -1,5 +1,5 @@
 // Http request hooks
-import { useDelete, useGet, usePost, usePut } from "../hooks/useAxios";
+import { useDelete, useGet, usePost, usePut } from "../hooks";
 
 const PRODUCTS_URL = "/api/v1/products";
 

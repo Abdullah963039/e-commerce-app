@@ -1,6 +1,5 @@
-import SubTitle from "../Utility/SubTitle";
+import { SubTitle } from "../Utility";
 import CategoryCard from "../Category/CategoryCard";
-import { Loading } from "../Utility/Loading";
 import AllCategoryContainerHook from "../../Listeners/Category/AllCategoryContainer.hook";
 
 export default function HomeCategory() {

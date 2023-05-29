@@ -1,5 +1,5 @@
 // hooks
-import UserChangePasswordHook from "../../../Listeners/User/UserChangePassword.hook";
+import { UserChangePasswordHook } from "../../../Listeners/User";
 
 export default function UserChangePassword() {
   const {

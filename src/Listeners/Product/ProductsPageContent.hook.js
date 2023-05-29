@@ -1,10 +1,9 @@
 // hooks
 import { useEffect } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 
 // utils
-import { getSession } from "../../utils/getValueFromStorage";
-import { toQueryString } from "../../utils/queryStringConverter";
+import { getSession, toQueryString } from "../../utils";
 
 export default function ProductsPageContentHook() {
   /**

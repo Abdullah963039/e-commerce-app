@@ -1,8 +1,8 @@
 // hooks
 import { useState, useRef, useCallback } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export function AdminAddCoponHook() {
   const [expiredIn, setExpiredIn] = useState(null); // State to save expired date of copon
@@ -51,8 +51,6 @@ export function AdminAddCoponHook() {
       return;
     }
 
-    // const expire = toDate(expiredIn); // Convert UTC date to mm/dd/yyyy format
-
     const res = await createCopon(nameValue, expiredIn, discountValue);
 
     if (res.status === 201) {
@@ -74,8 +72,6 @@ export function AdminAddCoponHook() {
       notify("error", "الصلاحية للادمن فقط .. لا يمكنك القيام بهذا الامر");
       return;
     }
-
-    // todo handle notifications ...
   }
 
   return {
@@ -86,15 +82,4 @@ export function AdminAddCoponHook() {
     createNewCopon,
     loading,
   };
-}
-// helper
-export function toDate(date) {
-  let dd = date.getDate();
-  let mm = date.getMonth();
-  let yy = date.getFullYear();
-
-  dd = dd < 10 ? "0" + dd : dd;
-  mm = mm < 10 ? "0" + mm : mm;
-
-  return `${mm}/${dd}/${yy}`;
 }

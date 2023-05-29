@@ -1,5 +1,5 @@
 // hooks
-import { useStore } from "../../../hooks/useStore";
+import { useStore } from "../../../hooks";
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 // utils

@@ -1,10 +1,8 @@
 // hooks
-import ProductsPageContentHook from "../../Listeners/Product/ProductsPageContent.hook";
+import { ProductsPageContentHook } from "../../Listeners/Product";
 
 // components
-import ProductsContainer from "./ProductsContainer";
-import SelectionSidbar from "./SelectionSidbar";
-import { SortMenu } from "./SortMenu";
+import { ProductsContainer, SelectionSidbar, SortMenu } from "./";
 
 export default function ProductsPageContent() {
   const { allProducts } = ProductsPageContentHook();

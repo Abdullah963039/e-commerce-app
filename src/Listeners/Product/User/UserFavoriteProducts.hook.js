@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useStore } from "../../../hooks/useStore";
+import { useStore } from "../../../hooks";
 
 export default function UserFavoriteProductsHook() {
   const [wishlist, setWishlist] = useState([]); // user's wishlist state

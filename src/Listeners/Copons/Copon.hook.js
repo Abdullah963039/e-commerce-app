@@ -1,9 +1,9 @@
 // hooks
 import { useState } from "react";
-import { useStore } from "../../hooks/useStore";
-import { CoponsContainerHook } from "./CoponsContainer.hook";
+import { useStore } from "../../hooks";
+import { CoponsContainerHook } from "./";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export function CoponHook() {
   const { rerenderComponent: rerenderDate } = CoponsContainerHook();

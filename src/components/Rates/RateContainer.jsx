@@ -1,10 +1,9 @@
 // components
-import RateComment, { NoComments } from "./RateComment";
-import Pagination from "../Utility/Pagination";
-import RateForm from "./RateForm";
+import { RateComment, NoComments, RateForm } from "./";
+import { Pagination } from "../Utility";
 // hooks
-import ProductDetailsHook from "../../Listeners/Product/ProductDetails.hook";
-import RateContainerHook from "../../Listeners/reviews/RateContainer.hook";
+import { ProductDetailsHook } from "../../Listeners/Product";
+import { RateContainerHook } from "../../Listeners/reviews";
 // icons
 import { AiFillStar } from "react-icons/ai";
 

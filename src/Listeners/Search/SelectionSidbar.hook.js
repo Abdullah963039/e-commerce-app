@@ -1,9 +1,9 @@
 // hooks
 import { useEffect } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useSessionStorage } from "../../hooks/useStorage";
 import { useDebounce } from "../../hooks/useDebounce";
-import ProductsPageContentHook from "../Product/ProductsPageContent.hook";
+import { ProductsPageContentHook } from "../Product";
 
 export const SelectionSidbarHook = () => {
   // doing search

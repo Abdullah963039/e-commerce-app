@@ -1,51 +1,56 @@
 // React
-import React, { Suspense, lazy } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-
-import { Loading } from "./components/Utility/Loading";
 
 // Components
 import App from "./App";
 //? Home
 import Home from "./pages/Home/Home";
+
 //? Authentication
-import { Login } from "./pages/Auth/Login";
-import { Register } from "./pages/Auth/Register";
-import ForgetPassword from "./pages/Auth/ForgetPassword";
-import ResetPassword from "./pages/Auth/ResetPassword";
-import VerifyResetCode from "./pages/Auth/VerifyResetCode";
+import {
+  Login,
+  Register,
+  ForgetPassword,
+  ResetPassword,
+  VerifyResetCode,
+} from "./pages/Auth";
+
 //? Components
+import { AllProducts, Products, ProductDetailsPage } from "./pages/Product";
+
 import AllCategeories from "./pages/Category/AllCategeories";
 import AllBrands from "./pages/Brands/AllBrands";
-import Products from "./pages/Product/Products";
-import AllProducts from "./pages/Product/AllProducts";
-const ProductDetailsPage = lazy(() =>
-  import("./pages/Product/ProductDetailsPage")
-);
 import Cart from "./pages/Cart/Cart";
 import PaymentPage from "./pages/Payment/PaymentPage";
+
 // ? Admin Pages
-import AdminPage from "./pages/Admin/AdminPage";
-import AdminAllProducts from "./pages/Admin/AdminAllProducts";
-import AdminAllOrdersPage from "./pages/Admin/AdminAllOrdersPage";
-import AdminAddBrandPage from "./pages/Admin/AdminAddBrandPage";
-import AdminOrderDetailsPage from "./pages/Admin/AdminOrderDetailsPage";
-import AdminAddCategoryPage from "./pages/Admin/AdminAddCategoryPage";
-import AdminAddSubCategoryPage from "./pages/Admin/AdminAddSubCategoryPage";
-import AdminAddProductPage from "./pages/Admin/AdminAddProductPage";
-import AdminEditProductPage from "./pages/Admin/AdminEditProductPage";
-import AdminAddCoponPage from "./pages/Admin/AdminAddCoponPage";
-import AdminEditCoponPage from "./pages/Admin/AdminEditCoponPage";
+import {
+  AdminAddCoponPage,
+  AdminAddBrandPage,
+  AdminAddCategoryPage,
+  AdminAddProductPage,
+  AdminAddSubCategoryPage,
+  AdminAllOrdersPage,
+  AdminAllProducts,
+  AdminCoponsPage,
+  AdminEditCoponPage,
+  AdminEditProductPage,
+  AdminOrderDetailsPage,
+  AdminPage,
+} from "./pages/Admin";
+
 //? User Pages
-import UserPage from "./pages/User/UserPage";
-import UserProfilePage from "./pages/User/UserProfilePage";
-import UserOrdersPage from "./pages/User/UserOrdersPage";
-import UserFavoriteProductsPage from "./pages/User/UserFavoriteProductsPage";
-import UserAddAddressPage from "./pages/User/UserAddAddressPage";
-import UserAddressesPage from "./pages/User/UserAddressesPage";
-import UserEditAddressPage from "./pages/User/UserEditAddressPage";
-import AdminCoponsPage from "./pages/Admin/AdminCoponsPage";
+import {
+  UserAddAddressPage,
+  UserAddressesPage,
+  UserEditAddressPage,
+  UserFavoriteProductsPage,
+  UserOrdersPage,
+  UserPage,
+  UserProfilePage,
+} from "./pages/User";
 
 const routes = createBrowserRouter([
   {
@@ -105,11 +110,7 @@ const routes = createBrowserRouter([
           //? Product Details Page
           {
             path: ":productId",
-            element: (
-              <Suspense fallback={<Loading />}>
-                <ProductDetailsPage />
-              </Suspense>
-            ),
+            element: <ProductDetailsPage />,
           },
         ],
       },

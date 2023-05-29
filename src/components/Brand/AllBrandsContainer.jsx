@@ -1,9 +1,8 @@
-import Pagination from "../Utility/Pagination";
-import SubTitle from "../Utility/SubTitle";
-import BrandCard from "./BrandCard";
-import { Loading } from "../Utility/Loading";
+import { Pagination, SubTitle } from "../Utility";
+import { BrandCard } from "./";
+import { Loading } from "../Utility";
 
-import AllBrandsContainerHook from "../../Listeners/Brand/AllBrandsContainer.hook";
+import { AllBrandsContainerHook } from "../../Listeners/Brand";
 
 export default function AllBrandsContainer() {
   const { brands, loading, totalPages, getPageNumber } =

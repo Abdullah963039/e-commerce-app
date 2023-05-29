@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { useStore } from "../../../hooks/useStore";
+import { useStore } from "../../../hooks";
 import notify from "../../../utils/notifcation";
-import { AdminAllProductsHook } from "./AdminAllProducts.hook";
+import { AdminAllProductsHook } from "../";
 
-export function AdminProductCardHook() {
+export default function AdminProductCardHook() {
   const { rerenderComponent } = AdminAllProductsHook();
   const [deleteModal, setDeleteModal] = useState(false);
 

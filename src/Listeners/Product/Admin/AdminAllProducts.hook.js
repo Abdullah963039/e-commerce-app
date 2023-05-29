@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useStore } from "../../../hooks/useStore";
+import { useStore } from "../../../hooks";
 
-export const AdminAllProductsHook = () => {
+export default function AdminAllProductsHook() {
   const [rerender, setRerender] = useState(false); // state for make rerender when deleting products
   const { allProducts, getAllProducts, getAllProductsByPage, loading } =
     useStore();
@@ -21,4 +21,4 @@ export const AdminAllProductsHook = () => {
     loading,
     rerenderComponent,
   };
-};
+}

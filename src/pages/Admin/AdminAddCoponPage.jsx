@@ -1,6 +1,5 @@
 // components
-import AdminAddCopon from "../../components/Admin/AdminAddCopon";
-import { CoponsContainer } from "../../components/Admin/CoponsContainer";
+import { AdminAddCopon } from "../../components/Admin";
 
 export default function AdminAddCoponPage() {
   return (

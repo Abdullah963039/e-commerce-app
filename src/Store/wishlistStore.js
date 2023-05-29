@@ -1,4 +1,4 @@
-import { usePost, useDelete, useGet } from "../hooks/useAxios";
+import { usePost, useDelete, useGet } from "../hooks";
 
 const WISHLIST_API = "/api/v1/wishlist";
 

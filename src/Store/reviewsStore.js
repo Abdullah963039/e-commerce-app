@@ -1,4 +1,4 @@
-import { useDelete, useGet, usePost, usePut } from "../hooks/useAxios";
+import { useDelete, useGet, usePost, usePut } from "../hooks";
 
 const REVIEWS_API = "/api/v1/reviews";
 const PRODUCTS_URL = "/api/v1/products/";

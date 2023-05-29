@@ -1,4 +1,4 @@
-import AdminAddProduct from "../../components/Admin/AdminAddProduct";
+import { AdminAddProduct } from "../../components/Admin";
 
 export default function AdminAddProductPage() {
   return (

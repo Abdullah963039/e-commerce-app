@@ -1,10 +1,9 @@
-//? Admin > All Product Page
-
+// components
 import { ToastContainer } from "react-toastify";
-import Pagintaion from "../../components/Utility/Pagination";
-import { Loading } from "../../components/Utility/Loading";
-import { AdminAllProductsHook } from "../../Listeners/Product/Admin/AdminAllProducts.hook";
-import AdminProductCard from "../../components/Admin/AdminProductCard";
+import { Loading, Pagination } from "../../components/Utility";
+import { AdminProductCard } from "../../components/Admin";
+// hooks
+import { AdminAllProductsHook } from "../../Listeners/Product";
 
 export default function AdminAllProducts() {
   const {
@@ -25,7 +24,7 @@ export default function AdminAllProducts() {
               ))}
             </div>
           </div>
-          <Pagintaion
+          <Pagination
             totalPages={paginationResult?.["numberOfPages"]}
             onClick={paginationController}
           />

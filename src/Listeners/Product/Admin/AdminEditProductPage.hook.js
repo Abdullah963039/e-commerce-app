@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 // global state
-import { useStore } from "../../../hooks/useStore";
+import { useStore } from "../../../hooks";
 // utilities
 import notify from "../../../utils/notifcation";
 
@@ -28,7 +28,7 @@ async function getFileFromUrl(url, name, defaultType = "image/jpeg") {
   });
 }
 
-export const AdminEditProductPageHook = () => {
+export default function AdminEditProductPageHook() {
   const { productId } = useParams(); // to get product id from url params
 
   //? Global Store
@@ -213,4 +213,4 @@ export const AdminEditProductPageHook = () => {
       availColors,
     },
   };
-};
+}

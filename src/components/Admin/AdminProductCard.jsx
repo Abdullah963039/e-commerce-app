@@ -1,9 +1,15 @@
+// icons
 import { AiFillDelete, AiFillEdit, AiFillStar } from "react-icons/ai";
-import { Link } from "react-router-dom";
 
-import ConfirmMessage from "../Utility/ConfirmMessage";
+// components
+import { Link } from "react-router-dom";
+import { ConfirmMessage } from "../Utility";
+
+// utils
 import { currencyFormatter } from "../../utils/formatter";
-import { AdminProductCardHook } from "../../Listeners/Product/Admin/AdminProductCard.hook.js";
+
+// hooks
+import { AdminProductCardHook } from "../../Listeners/Product";
 
 export default function AdminProductCard({ product }) {
   const { deleteModal, showModal, closeModal, deleteItem } =

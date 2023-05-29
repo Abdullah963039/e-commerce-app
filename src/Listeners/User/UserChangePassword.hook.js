@@ -1,9 +1,9 @@
 // hooks
 import { useRef } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
 import { isPasswordValid } from "../../utils/validators";
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export default function UserChangePasswordHook() {
   const currentPasswordRef = useRef();

@@ -1,7 +1,7 @@
 //? Admin Manage All Orders
 
-import AdminOrderItem from "../../components/Admin/AdminOrderItem";
-import Pagination from "../../components/Utility/Pagination";
+import { AdminOrderItem } from "../../components/Admin";
+import { Pagination } from "../../components/Utility";
 
 export default function AdminAllOrdersPage() {
   return (

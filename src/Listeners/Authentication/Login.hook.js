@@ -1,11 +1,11 @@
 // hooks
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
-export function LoginHook() {
+export default function LoginHook() {
   const [email, setEmail] = useState(""); // Store email value
   const [password, setPassword] = useState(""); // Store password value
 

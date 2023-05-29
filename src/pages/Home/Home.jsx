@@ -1,11 +1,16 @@
-import { HomeSlider } from "../../components/Home/Slider";
-import HomeCategory from "../../components/Home/HomeCategory";
-import ProductsList from "../../components/Home/ProductsList";
-import DiscountSection from "../../components/Home/DiscountSection";
-import BrandsSection from "../../components/Home/BrandsSection";
-import HomeProductListHook from "../../Listeners/Product/Home.ProductList.hook";
-import { Loading } from "../../components/Utility/Loading";
+// components
+import {
+  BrandsSection,
+  DiscountSection,
+  HomeCategory,
+  HomeSlider,
+  ProductsList,
+} from "../../components/Home";
 import { Suspense } from "react";
+import { Loading } from "../../components/Utility";
+
+// hooks
+import { HomeProductListHook } from "../../Listeners/Product";
 
 export default function Home() {
   const { mostSold, fashionProducts, mostRated } = HomeProductListHook();

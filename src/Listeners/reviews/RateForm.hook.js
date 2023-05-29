@@ -1,10 +1,10 @@
 // hooks
 import { useRef, useState } from "react";
-import { useStore } from "../../hooks/useStore";
+import { useStore } from "../../hooks";
 import { useParams } from "react-router-dom";
 
 // utils
-import notify from "../../utils/notifcation";
+import { notify } from "../../utils";
 
 export default function RateFormHook() {
   const { productId } = useParams(); // Get product id from url
