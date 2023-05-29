@@ -5,6 +5,7 @@ export { default as ProductsPageContentHook } from "./ProductsPageContent.hook";
 export { default as HomeProductListHook } from "./Home.ProductList.hook";
 export { default as ProductHook } from "./Product.hook";
 export { default as ProductDetailsHook } from "./ProductDetails.hook";
+export { default as ProductInforamtionsHook } from "./ProductInforamtions.hook";
 
 // Admin Folder
 export { default as AdminAddProductHook } from "./Admin/AdminAddProduct.hook";

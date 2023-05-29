@@ -8,3 +8,4 @@ export { reviewsStore } from "./reviewsStore";
 export { coponsStore } from "./coponsStore";
 export { addressesStore } from "./addressesStore";
 export { updateUserStore } from "./updateUserStore";
+export { cartStore } from "./cartStore";

@@ -1,7 +1,8 @@
 // icons
 import { BiCartAdd } from "react-icons/bi";
 // utlis
-import { currencyFormatter } from "../../../utils/formatter";
+import { currencyFormatter } from "../../../utils";
+import { ProductInforamtionsHook } from "../../../Listeners/Product";
 
 export default function ProductInforamtions({ product }) {
   if (!product) return;
@@ -16,6 +17,9 @@ export default function ProductInforamtions({ product }) {
     brandName,
     ratingsQuantity,
   } = product;
+
+  const { isIncluded, clickOnColor, onAddToCart } = ProductInforamtionsHook();
+
   return (
     <div className="flex h-full flex-col justify-evenly gap-4">
       <div className="flex items-center justify-between">
@@ -36,7 +40,10 @@ export default function ProductInforamtions({ product }) {
           {availableColors?.map((hex, index) => (
             <span
               key={index}
-              className="circle cursor-pointer"
+              onClick={() => clickOnColor(hex)}
+              className={`circle cursor-pointer ${
+                isIncluded(hex) ? "ring-2 ring-slate-500" : ""
+              }`}
               style={{ backgroundColor: hex, borderColor: hex }}
             ></span>
           ))}
@@ -57,7 +64,10 @@ export default function ProductInforamtions({ product }) {
           {/* Real Price */}
           <span>{currencyFormatter(price)}</span>
         </button>
-        <button className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900">
+        <button
+          onClick={onAddToCart}
+          className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900"
+        >
           <BiCartAdd className="text-xl" />
           اضف للعربة
         </button>

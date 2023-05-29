@@ -12,6 +12,7 @@ import {
   coponsStore,
   addressesStore,
   updateUserStore,
+  cartStore,
 } from "../Store";
 
 const store = (...props) => ({
@@ -27,6 +28,7 @@ const store = (...props) => ({
   ...coponsStore(...props), //> Copons Store
   ...addressesStore(...props), //> User Addresses Store
   ...updateUserStore(...props), //> User Profile Store
+  ...cartStore(...props), //> Cart Store
 });
 
 export const useStore = create(store);
