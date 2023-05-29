@@ -34,6 +34,7 @@ export default function RateComment({ comment }) {
         closeModal={closeDeleteModal}
         itemId={comment["_id"]}
         deleteItem={onDeleteReview}
+        modalMessage={"هل تريد حذف تعليقك ؟"}
       />
       <ConfirmEditModal
         controller={editModal}
@@ -53,7 +54,7 @@ export default function RateComment({ comment }) {
               {comment.rating}
             </div>
           </div>
-          {commentedBy !== user["_id"] ? (
+          {commentedBy !== user?.["_id"] ? (
             <></>
           ) : (
             <div className="flex items-center gap-4">

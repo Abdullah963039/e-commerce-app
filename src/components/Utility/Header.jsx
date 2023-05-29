@@ -50,13 +50,26 @@ export default function Header() {
             />
           )}
           <Link to="/cart">
-            <button className="btn icon px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
+            <button className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
               <AiOutlineShoppingCart />
               العربة
+              <Badge count={0} />
             </button>
           </Link>
         </div>
       </div>
     </header>
+  );
+}
+
+function Badge({ count = 0 }) {
+  if (count == 0 || count == null || count == undefined) return <></>;
+
+  return (
+    <>
+      <span className="absolute -left-4 -top-4 flex aspect-square w-4 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-red-500 text-xs text-slate-200 ">
+        5
+      </span>
+    </>
   );
 }
