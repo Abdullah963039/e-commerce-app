@@ -2,16 +2,11 @@ import { usePost, useDelete, useGet } from "../hooks";
 
 const WISHLIST_API = "/api/v1/wishlist";
 
-// Authorization Configurations
-const authConfigs = {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-};
-
 export const wishlistStore = (set) => ({
   getUserWishlist: async () => {
     try {
       set({ loading: true, error: false });
-      const response = await useGet(WISHLIST_API, authConfigs);
+      const response = await useGet(WISHLIST_API, true);
       return response;
     } catch (err) {
       set({ error: true });

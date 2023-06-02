@@ -2,16 +2,12 @@ import { useGet, useDelete, usePost, usePut } from "../hooks";
 
 const USER_ADDRESSES_URL = "/api/v1/addresses";
 
-const authConfigs = {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-};
-
 export const addressesStore = (set) => ({
   //? GET
   getUserAddresses: async () => {
     try {
       set({ loading: true, error: false });
-      const response = await useGet(USER_ADDRESSES_URL, authConfigs);
+      const response = await useGet(USER_ADDRESSES_URL, true);
 
       return response;
     } catch (err) {
@@ -24,10 +20,7 @@ export const addressesStore = (set) => ({
   getSpecificUserAddress: async (addressId) => {
     try {
       set({ loading: true, error: false });
-      const response = await useGet(
-        USER_ADDRESSES_URL + `/${addressId}`,
-        authConfigs
-      );
+      const response = await useGet(USER_ADDRESSES_URL + `/${addressId}`, true);
 
       return response;
     } catch (err) {

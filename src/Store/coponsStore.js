@@ -2,16 +2,12 @@ import { useGet, useDelete, usePost, usePut } from "../hooks";
 
 const COPONS_URL = "/api/v1/coupons";
 
-const authConfigs = {
-  headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-};
-
 export const coponsStore = (set) => ({
   //? GET
   getAllCopons: async () => {
     try {
       set({ loading: true, error: false });
-      const response = await useGet(COPONS_URL + "?limit=10", authConfigs);
+      const response = await useGet(COPONS_URL + "?limit=10", true);
       return response;
     } catch (err) {
       set({ error: true });
@@ -25,7 +21,7 @@ export const coponsStore = (set) => ({
       set({ loading: true, error: false });
       const response = await useGet(
         COPONS_URL + `?limit=10&page=${page}`,
-        authConfigs
+        true
       );
       return response;
     } catch (err) {
@@ -38,7 +34,7 @@ export const coponsStore = (set) => ({
   getSpecificCopon: async (coponId) => {
     try {
       set({ loading: true, error: false });
-      const response = await useGet(COPONS_URL + `/${coponId}`, authConfigs);
+      const response = await useGet(COPONS_URL + `/${coponId}`, true);
       return response;
     } catch (err) {
       set({ error: true });

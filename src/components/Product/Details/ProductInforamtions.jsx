@@ -18,7 +18,8 @@ export default function ProductInforamtions({ product }) {
     ratingsQuantity,
   } = product;
 
-  const { isIncluded, clickOnColor, onAddToCart } = ProductInforamtionsHook();
+  const { selectedColor, clickOnColor, onAddToCart } =
+    ProductInforamtionsHook();
 
   return (
     <div className="flex h-full flex-col justify-evenly gap-4">
@@ -42,7 +43,9 @@ export default function ProductInforamtions({ product }) {
               key={index}
               onClick={() => clickOnColor(hex)}
               className={`circle cursor-pointer ${
-                isIncluded(hex) ? "ring-2 ring-slate-500" : ""
+                selectedColor === hex
+                  ? "!opacity-100 ring-2 ring-slate-500"
+                  : ""
               }`}
               style={{ backgroundColor: hex, borderColor: hex }}
             ></span>

@@ -19,17 +19,13 @@ export const authStore = (set) => ({
   user: null,
   logout: () => {
     localStorage.removeItem("token");
-    localStorage.removeItem("user");
     set({ user: null });
   },
   //? GET
   getLoggedUser: async () => {
-    const configs = {
-      headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
-    };
     try {
       set({ loading: true, error: false });
-      const { data } = await useGet(AUTH_API.GET.LOGGED_USER, configs);
+      const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
       set({ user: data });
     } catch (err) {
       set({ error: true });
@@ -74,7 +70,6 @@ export const authStore = (set) => ({
       return response;
     } catch (err) {
       set({ error: true });
-      console.log({ "catch error": err });
       return err.response;
     } finally {
       set({ loading: false });

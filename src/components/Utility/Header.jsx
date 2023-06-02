@@ -11,7 +11,8 @@ import { HeaderHook } from "../../Listeners/Search";
 import { DropdownMenu } from "./";
 
 export default function Header() {
-  const { keyword, onChangeKeyword, logoutUser, user } = HeaderHook();
+  const { keyword, onChangeKeyword, logoutUser, user, ordersCount } =
+    HeaderHook();
 
   return (
     <header className="bg-gradient-to-bl from-slate-900 to-slate-700">
@@ -53,7 +54,7 @@ export default function Header() {
             <button className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
               <AiOutlineShoppingCart />
               العربة
-              <Badge count={0} />
+              <Badge count={ordersCount} />
             </button>
           </Link>
         </div>
@@ -68,7 +69,7 @@ function Badge({ count = 0 }) {
   return (
     <>
       <span className="absolute -left-4 -top-4 flex aspect-square w-4 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-red-500 text-xs text-slate-200 ">
-        5
+        {count}
       </span>
     </>
   );

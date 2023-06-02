@@ -15,12 +15,13 @@ import "react-toastify/dist/ReactToastify.css"; //? Notification Styles
 import { getLocal } from "./utils";
 
 function App() {
-  const { getLoggedUser } = useStore();
+  const { getLoggedUser, getLoggedUserCart } = useStore();
 
   //? Get Logged User
   useEffect(() => {
     const getUser = async () => {
-      const response = await getLoggedUser();
+      const userResponse = await getLoggedUser();
+      const cartResponse = await getLoggedUserCart();
     };
 
     if (localStorage.getItem("token") != null) getUser();

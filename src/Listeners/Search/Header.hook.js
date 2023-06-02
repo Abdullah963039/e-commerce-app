@@ -11,7 +11,7 @@ export const HeaderHook = () => {
   const [keyword, setKeyword] = useSessionStorage("keyword", ""); // Search by keyword
   const { makeSearch } = ProductsPageContentHook(); // Doing search functionality
 
-  const { user, logout } = useStore(); // use global store
+  const { user, logout, ordersCount } = useStore(); // use global store
 
   const navigator = useNavigate(); // Navigator
 
@@ -29,5 +29,11 @@ export const HeaderHook = () => {
     }, 1000);
   };
 
-  return { keyword, onChangeKeyword, logoutUser, user };
+  return {
+    keyword,
+    onChangeKeyword,
+    logoutUser,
+    user,
+    ordersCount,
+  };
 };
