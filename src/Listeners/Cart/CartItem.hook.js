@@ -7,19 +7,14 @@ import { CartsContainerHook } from "./";
 //todo : implement update quantity & create state for rerender order items
 export default function CartItemHook() {
   const { removeSpecificCartItem, updateCartProductQuantity } = useStore(); // Global store
-  const { rerenderPage } = CartsContainerHook(); //! Rerender Component
+  const { rerenderPage } = CartsContainerHook();
 
   const [deleteModal, setDeleteModal] = useState(false);
-  const [quantity, setQuantity] = useState(null);
 
-  const openModal = (_) => {
-    setDeleteModal(true);
-    rerenderPage();
-  };
-  const closeModal = (_) => {
-    setDeleteModal(false);
-    rerenderPage();
-  };
+  const openModal = (_) => setDeleteModal(true);
+  const closeModal = (_) => setDeleteModal(false);
+
+  const [quantity, setQuantity] = useState(null);
 
   const changeQuantity = (e) => setQuantity(e.target.value);
 
