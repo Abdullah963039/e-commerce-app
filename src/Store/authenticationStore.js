@@ -27,6 +27,7 @@ export const authStore = (set) => ({
       set({ loading: true, error: false });
       const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
       set({ user: data });
+      return data;
     } catch (err) {
       set({ error: true });
       return err.response;

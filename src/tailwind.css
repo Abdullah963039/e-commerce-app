@@ -684,18 +684,6 @@ video {
   grid-column: span 7 / span 7;
 }
 
-.col-span-4 {
-  grid-column: span 4 / span 4;
-}
-
-.col-start-6 {
-  grid-column-start: 6;
-}
-
-.col-start-10 {
-  grid-column-start: 10;
-}
-
 .m-0 {
   margin: 0px;
 }
@@ -1431,11 +1419,6 @@ video {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-.bg-slate-600 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(71 85 105 / var(--tw-bg-opacity));
-}
-
 .bg-gradient-to-b {
   background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2045,31 +2028,21 @@ input[type=number] {
   color: rgb(15 23 42 / var(--tw-text-opacity));
 }
 
-.focus-within\:ring-2:focus-within {
-  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
-  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
-  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
-}
-
 .focus-within\:ring:focus-within {
   --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
   --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus-within\:ring-2:focus-within {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .focus-within\:ring-slate-400:focus-within {
   --tw-ring-opacity: 1;
   --tw-ring-color: rgb(148 163 184 / var(--tw-ring-opacity));
-}
-
-.focus-within\:ring-slate-800:focus-within {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(30 41 59 / var(--tw-ring-opacity));
-}
-
-.focus-within\:ring-slate-600:focus-within {
-  --tw-ring-opacity: 1;
-  --tw-ring-color: rgb(71 85 105 / var(--tw-ring-opacity));
 }
 
 .focus-within\:placeholder\:text-slate-800:focus-within::-moz-placeholder {
@@ -2253,14 +2226,6 @@ input[type=number] {
 }
 
 @media (min-width: 320px) {
-  .xs\:col-span-4 {
-    grid-column: span 4 / span 4;
-  }
-
-  .xs\:col-start-10 {
-    grid-column-start: 10;
-  }
-
   .xs\:my-4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
