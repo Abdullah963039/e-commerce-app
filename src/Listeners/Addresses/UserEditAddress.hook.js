@@ -16,13 +16,6 @@ export default function UserEditAddressHook() {
   //? Get address data
   useEffect(() => {
     getAddressHandler();
-
-    return () => {
-      // clear data
-      aliasRef.current.value = "";
-      detailsRef.current.value = "";
-      phoneRef.current.value = "";
-    };
   }, [addressId]);
 
   // get address handler
