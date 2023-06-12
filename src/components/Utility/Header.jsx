@@ -68,9 +68,15 @@ function Badge({ count = 0 }) {
 
   return (
     <>
-      <span className="absolute -left-4 -top-4 flex aspect-square w-4 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-red-500 text-xs text-slate-200 ">
-        {count}
-      </span>
+      {count > 99 ? (
+        <span className="absolute -left-6 -top-4 flex h-4 w-fit translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-red-500 px-1 text-xs text-slate-200 ">
+          99+
+        </span>
+      ) : (
+        <span className="absolute -left-4 -top-4 flex aspect-square w-4 translate-x-1/2 translate-y-1/2 items-center justify-center rounded-full bg-red-500 text-xs text-slate-200 ">
+          {count}
+        </span>
+      )}
     </>
   );
 }
