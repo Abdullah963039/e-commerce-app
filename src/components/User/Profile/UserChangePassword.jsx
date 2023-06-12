@@ -12,7 +12,7 @@ export default function UserChangePassword() {
     <>
       <form
         onSubmit={handleUpdatePassword}
-        className="mt-8 flex w-1/2 flex-col gap-3"
+        className="mt-8 flex flex-col gap-3 sm:w-4/5 md:w-3/4 lg:w-1/2"
       >
         <h1 className="text-xl font-bold">تغيير كلمة المرور</h1>
         <input

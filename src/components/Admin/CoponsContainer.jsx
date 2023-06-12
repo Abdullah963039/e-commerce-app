@@ -10,7 +10,7 @@ export function CoponsContainer() {
 
   return (
     <>
-      {allCopons == undefined ? (
+      {allCopons === undefined ? (
         <>
           <div className="my-12 text-center text-2xl text-slate-800">
             لا يوجد كوبونات لعرضها
@@ -18,7 +18,7 @@ export function CoponsContainer() {
         </>
       ) : (
         <div className="my-4 flex flex-col gap-4">
-          {allCopons?.data?.map((copon) => (
+          {allCopons?.data.map((copon) => (
             <Copon copon={copon} key={copon["_id"]} />
           ))}
 

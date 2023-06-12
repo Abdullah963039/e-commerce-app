@@ -520,9 +520,9 @@ video {
   width: 100%;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 380px) {
   .container {
-    max-width: 320px;
+    max-width: 380px;
   }
 }
 
@@ -582,6 +582,10 @@ video {
 
 .-left-4 {
   left: -1rem;
+}
+
+.-left-6 {
+  left: -1.5rem;
 }
 
 .-top-4 {
@@ -827,6 +831,10 @@ video {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-4 {
+  height: 1rem;
 }
 
 .h-\[100px\] {
@@ -1473,6 +1481,11 @@ video {
 
 .p-4 {
   padding: 1rem;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
 }
 
 .px-2 {
@@ -2225,7 +2238,7 @@ input[type=number] {
   display: flex;
 }
 
-@media (min-width: 320px) {
+@media (min-width: 380px) {
   .xs\:my-4 {
     margin-top: 1rem;
     margin-bottom: 1rem;
@@ -2233,6 +2246,10 @@ input[type=number] {
 
   .xs\:inline {
     display: inline;
+  }
+
+  .xs\:w-1\/2 {
+    width: 50%;
   }
 
   .xs\:flex-col {
@@ -2289,6 +2306,10 @@ input[type=number] {
 
   .sm\:w-1\/2 {
     width: 50%;
+  }
+
+  .sm\:w-4\/5 {
+    width: 80%;
   }
 
   .sm\:basis-1\/2 {
@@ -2363,6 +2384,22 @@ input[type=number] {
     grid-column: span 4 / span 4;
   }
 
+  .md\:w-4\/5 {
+    width: 80%;
+  }
+
+  .md\:w-1\/2 {
+    width: 50%;
+  }
+
+  .md\:w-3\/5 {
+    width: 60%;
+  }
+
+  .md\:w-3\/4 {
+    width: 75%;
+  }
+
   .md\:basis-1\/6 {
     flex-basis: 16.666667%;
   }
@@ -2397,6 +2434,10 @@ input[type=number] {
 @media (min-width: 1024px) {
   .lg\:col-span-3 {
     grid-column: span 3 / span 3;
+  }
+
+  .lg\:w-1\/2 {
+    width: 50%;
   }
 
   .lg\:max-w-\[400px\] {
