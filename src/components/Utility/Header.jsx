@@ -6,9 +6,9 @@ import { RiUserLine } from "react-icons/ri";
 import logo from "../../assets/imgs/logo.png";
 // components
 import { Link } from "react-router-dom";
+import { DropdownMenu } from "./";
 // hooks
 import { HeaderHook } from "../../Listeners/Search";
-import { DropdownMenu } from "./";
 
 export default function Header() {
   const { keyword, onChangeKeyword, logoutUser, user, ordersCount } =
@@ -50,13 +50,17 @@ export default function Header() {
               onLogout={logoutUser}
             />
           )}
-          <Link to="/cart">
-            <button className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
-              <AiOutlineShoppingCart />
-              العربة
-              <Badge count={ordersCount} />
-            </button>
-          </Link>
+          {user?.["role"] === "user" && (
+            <>
+              <Link to="/cart">
+                <button className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
+                  <AiOutlineShoppingCart />
+                  العربة
+                  <Badge count={ordersCount} />
+                </button>
+              </Link>
+            </>
+          )}
         </div>
       </div>
     </header>

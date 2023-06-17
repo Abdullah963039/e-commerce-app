@@ -33,7 +33,7 @@ export default function Product({ className, product }) {
               title={product["title"]}
             />
           </Link>
-          {user == null ? null : isFavorite ? (
+          {user == null || user.role == "admin" ? null : isFavorite ? (
             <button disabled={loading}>
               <AiFillHeart
                 title="ازالة من المفضلة"

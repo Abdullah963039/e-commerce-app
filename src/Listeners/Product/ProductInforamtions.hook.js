@@ -7,7 +7,7 @@ export default function ProductInforamtionsHook() {
   const { productId } = useParams();
   const [selectedColor, setSelectedColor] = useState("");
 
-  const { addProductToCart, getLoggedUserCart } = useStore(); // Global store
+  const { addProductToCart, getLoggedUserCart, user } = useStore(); // Global store
 
   function clickOnColor(hex) {
     if (selectedColor == hex) setSelectedColor("");
@@ -16,8 +16,6 @@ export default function ProductInforamtionsHook() {
   }
 
   async function onAddToCart() {
-    // todo: create rerender state in Header.hook.js to update badge in cart button
-
     if (selectedColor == "") {
       notify("error", "اختر لون واحد للمنتج على الاقل");
       return;
@@ -32,12 +30,11 @@ export default function ProductInforamtionsHook() {
     if (postRes.status === 200) {
       notify("done", "تم اضافة المنتج للعربة بنجاح");
       setSelectedColor("");
+      const getRes = await getLoggedUserCart();
     } else {
       notify("error");
     }
-
-    const getRes = await getLoggedUserCart();
   }
 
-  return { clickOnColor, selectedColor, onAddToCart };
+  return { clickOnColor, selectedColor, onAddToCart, role: user?.role };
 }

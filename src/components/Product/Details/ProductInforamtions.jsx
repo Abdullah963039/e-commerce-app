@@ -18,7 +18,7 @@ export default function ProductInforamtions({ product }) {
     ratingsQuantity,
   } = product;
 
-  const { selectedColor, clickOnColor, onAddToCart } =
+  const { selectedColor, clickOnColor, onAddToCart, role } =
     ProductInforamtionsHook();
 
   return (
@@ -61,15 +61,16 @@ export default function ProductInforamtions({ product }) {
         <p className="whitespace-break-spaces px-2 text-xl">{description}</p>
       </div>
       <div className="flex flex-wrap gap-4">
-        <button className="btn flex cursor-default gap-2 bg-white px-6 py-3 font-bold">
+        <span className="btn flex !cursor-default gap-2 bg-white px-6 py-3 font-bold">
           {/* Price After Discount */}
           {/* <del className="text-slate-500">5000</del> */}
           {/* Real Price */}
           <span>{currencyFormatter(price)}</span>
-        </button>
+        </span>
         <button
+          disabled={role === "admin"}
           onClick={onAddToCart}
-          className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900"
+          className="btn icon flex gap-2 border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-900 disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:bg-slate-700"
         >
           <BiCartAdd className="text-xl" />
           اضف للعربة

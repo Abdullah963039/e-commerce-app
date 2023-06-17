@@ -10,6 +10,15 @@ export default function ConfirmMessage({
   itemId = "",
   modalMessage,
 }) {
+  const handleDelete = () => {
+    if (itemId !== "") {
+      deleteItem(itemId);
+      return;
+    }
+
+    deleteItem();
+  };
+
   return (
     <>
       {controller && (
@@ -26,7 +35,7 @@ export default function ConfirmMessage({
                 تراجع
               </button>
               <button
-                onClick={() => deleteItem(itemId)}
+                onClick={handleDelete}
                 className="btn border-red-700 px-4 py-1 text-xs text-red-700 hover:bg-red-700  hover:text-red-100 sm:text-base xl:px-6 "
               >
                 حذف

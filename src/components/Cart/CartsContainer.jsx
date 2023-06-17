@@ -8,9 +8,9 @@ export default function CartsContainer() {
   const { cartOrders } = CartsContainerHook();
   return (
     <>
-      {cartOrders.length > 0 ? (
+      {cartOrders != null ? (
         <div className="flex flex-col items-start justify-between gap-4">
-          {cartOrders.map((order) => (
+          {cartOrders?.map((order) => (
             <CartItem key={order["_id"]} order={order} />
           ))}
         </div>
