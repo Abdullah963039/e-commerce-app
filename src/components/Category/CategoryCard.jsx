@@ -1,20 +1,11 @@
 import { Link } from "react-router-dom";
+import { addToSession as handleClickOnCategory } from "../../utils";
 
 export default function CategoryCard({ category }) {
-  function handleClickOnCategory() {
-    const sessionCategories = JSON.parse(sessionStorage.getItem("categories"));
-    if (sessionCategories == null) {
-      sessionStorage.setItem("categories", JSON.stringify([category["_id"]]));
-    } else {
-      sessionCategories.push(category["_id"]);
-      sessionStorage.setItem("categories", JSON.stringify(sessionCategories));
-    }
-  }
-
   return (
     <Link
       to="/products"
-      onClick={handleClickOnCategory}
+      onClick={() => handleClickOnCategory("categories", category["_id"])}
       className="relative block flex-1 basis-1/2 p-2 sm:basis-1/3 md:basis-1/6"
     >
       <div className="flex w-full flex-col justify-evenly gap-3 text-center">

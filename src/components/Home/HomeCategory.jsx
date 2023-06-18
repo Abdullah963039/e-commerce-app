@@ -1,6 +1,6 @@
 import { SubTitle } from "../Utility";
-import CategoryCard from "../Category/CategoryCard";
-import AllCategoryContainerHook from "../../Listeners/Category/AllCategoryContainer.hook";
+import { CategoryCard } from "../Category";
+import { AllCategoryContainerHook } from "../../Listeners/Category";
 
 export default function HomeCategory() {
   const { categories } = AllCategoryContainerHook(6); //? All Component Logics

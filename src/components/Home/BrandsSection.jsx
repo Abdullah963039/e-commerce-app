@@ -1,11 +1,12 @@
-import BrandCard from "../Brand/BrandCard";
-import SubTitle from "../Utility/SubTitle";
-import { Loading } from "../Utility/Loading";
+import { BrandCard } from "../Brand";
+import { SubTitle } from "../Utility";
 
-import AllBrandsContainerHook from "../../Listeners/Brand/AllBrandsContainer.hook";
+import { AllBrandsContainerHook } from "../../Listeners/Brand";
 
 export default function BrandsSection() {
   const { brands } = AllBrandsContainerHook(6);
+
+  console.log(brands);
 
   return (
     <>
@@ -17,12 +18,8 @@ export default function BrandsSection() {
             href="/brands"
           />
           <div className="flex flex-wrap justify-start gap-4 pb-12">
-            {brands.map((brand, index) => (
-              <BrandCard
-                img={brand["image"]}
-                title={brand["name"]}
-                key={index}
-              />
+            {brands.map((brand) => (
+              <BrandCard brand={brand} key={brand["_id"]} />
             ))}
           </div>
         </div>
