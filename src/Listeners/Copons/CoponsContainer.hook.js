@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useStore } from "../../hooks";
 
 export const CoponsContainerHook = () => {
-  const [allCopons, setAllCopons] = useState(undefined);
+  const [allCopons, setAllCopons] = useState([]);
   const [rerender, setRerender] = useState(false); // state for make rerender when deleting products
 
   const rerenderComponent = () => setRerender(!rerender); // rerender component handler
@@ -19,7 +19,7 @@ export const CoponsContainerHook = () => {
     getCopons();
 
     return () => {
-      setAllCopons(undefined);
+      setAllCopons([]);
     };
   }, [rerender]);
 

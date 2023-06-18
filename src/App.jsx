@@ -21,7 +21,9 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       const userResponse = await getLoggedUser();
-      const cartResponse = await getLoggedUserCart();
+      if (userResponse.role !== "admin") {
+        const cartResponse = await getLoggedUserCart();
+      }
     };
 
     if (localStorage.getItem("token") != null) getUser();

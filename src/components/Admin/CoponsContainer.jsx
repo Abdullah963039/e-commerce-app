@@ -10,7 +10,7 @@ export function CoponsContainer() {
 
   return (
     <>
-      {allCopons === undefined ? (
+      {allCopons.length == 0 ? (
         <>
           <div className="my-12 text-center text-2xl text-slate-800">
             لا يوجد كوبونات لعرضها

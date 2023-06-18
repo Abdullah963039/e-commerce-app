@@ -16,6 +16,7 @@ export default function ProductInforamtions({ product }) {
     categoryName,
     brandName,
     ratingsQuantity,
+    priceAfterDiscount,
   } = product;
 
   const { selectedColor, clickOnColor, onAddToCart, role } =
@@ -61,12 +62,17 @@ export default function ProductInforamtions({ product }) {
         <p className="whitespace-break-spaces px-2 text-xl">{description}</p>
       </div>
       <div className="flex flex-wrap gap-4">
-        <span className="btn flex !cursor-default gap-2 bg-white px-6 py-3 font-bold">
+        <div className="btn flex !cursor-default gap-2 bg-white px-6 py-3 font-bold">
           {/* Price After Discount */}
-          {/* <del className="text-slate-500">5000</del> */}
-          {/* Real Price */}
-          <span>{currencyFormatter(price)}</span>
-        </span>
+          {priceAfterDiscount != undefined ? (
+            <>
+              <del className="text-slate-500">{currencyFormatter(price)}</del>
+              <span>{currencyFormatter(priceAfterDiscount)}</span>
+            </>
+          ) : (
+            <span>{currencyFormatter(price)}</span>
+          )}
+        </div>
         <button
           disabled={role === "admin"}
           onClick={onAddToCart}

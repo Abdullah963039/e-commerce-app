@@ -29,7 +29,7 @@ export default function AdminAddProduct() {
     descriptionRef,
     quantityRef,
     priceRef,
-    soldPriceRef,
+    priceAfterDiscountRef,
     subCategoriesLogic: { budges, subCategories, addSubCategory },
     MainCategoryLogic: { categories, mainCategory, selectMainCategory },
     brandsLogic: { brands, selectedBrand, selectNewBrand },
@@ -180,17 +180,17 @@ export default function AdminAddProduct() {
         </>
 
         {/* Sold Price */}
-        {/* <>
+        <>
           <input
-            name="priceAfter"
-            ref={soldPriceRef}
+            name="priceAfterDiscount"
+            ref={priceAfterDiscountRef}
             min={0}
             type="number"
             placeholder="السعر بعد الخصم"
             title="السعر بعد الخصم"
             className="w-full rounded-md border border-slate-300 p-2 outline-none"
           />
-        </> */}
+        </>
 
         {/* Product Category */}
 

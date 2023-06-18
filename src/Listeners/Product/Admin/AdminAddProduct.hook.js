@@ -46,7 +46,7 @@ export default function AdminAddProductHook() {
   const descriptionRef = useRef("");
   const quantityRef = useRef("");
   const priceRef = useRef("");
-  const soldPriceRef = useRef("");
+  const priceAfterDiscountRef = useRef("");
 
   // ? Product Image Cover
   const selectImageCover = (e) => {
@@ -112,6 +112,10 @@ export default function AdminAddProductHook() {
       notify("error", "اكمل البيانات من فضلك !");
       return;
     }
+    if (+priceAfterDiscountRef.current.value >= +priceRef.current.value) {
+      notify("error", "لا يمكن ان يكون الخصم اكبر من سعر المنتج");
+      return;
+    }
 
     const formData = new FormData(e.target);
 
@@ -128,6 +132,8 @@ export default function AdminAddProductHook() {
     availColors.forEach((clr) => formData.append("availableColors", clr));
 
     const response = await createNewProduct(formData);
+
+    console.log(response);
 
     if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
     if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
@@ -154,6 +160,7 @@ export default function AdminAddProductHook() {
     descriptionRef.current.value = "";
     quantityRef.current.value = "";
     priceRef.current.value = "";
+    priceAfterDiscountRef.current.value = "";
   };
 
   return {
@@ -169,7 +176,7 @@ export default function AdminAddProductHook() {
     descriptionRef,
     quantityRef,
     priceRef,
-    soldPriceRef,
+    priceAfterDiscountRef,
     subCategoriesLogic: {
       budges,
       subCategories,

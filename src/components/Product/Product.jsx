@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 // icons
 import { AiFillStar, AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 // utils
-import { currencyFormatter } from "../../utils/formatter";
+import { currencyFormatter } from "../../utils";
 // hooks
 import { ProductHook } from "../../Listeners/Product";
 

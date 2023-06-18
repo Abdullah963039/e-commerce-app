@@ -6,8 +6,6 @@ import { AllBrandsContainerHook } from "../../Listeners/Brand";
 export default function BrandsSection() {
   const { brands } = AllBrandsContainerHook(6);
 
-  console.log(brands);
-
   return (
     <>
       {brands?.length > 0 && (
