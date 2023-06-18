@@ -15,14 +15,10 @@ export default function HomeCategory() {
               buttonContent="المزيد"
               href="/categories"
             />
-            <div className="flex flex-wrap items-center py-3">
+            <div className="flex flex-wrap items-center justify-evenly py-3">
               {categories?.length > 0 &&
-                categories.map((categroy, index) => (
-                  <CategoryCard
-                    key={index}
-                    categroyTitle={categroy.name}
-                    img={categroy.image}
-                  />
+                categories.map((categroy) => (
+                  <CategoryCard key={categroy["_id"]} category={categroy} />
                 ))}
             </div>
           </div>

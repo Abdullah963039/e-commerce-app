@@ -15,12 +15,8 @@ export default function AllCategoryContainer() {
             <Loading />
           ) : (
             categories?.length > 0 &&
-            categories.map((categroy, index) => (
-              <CategoryCard
-                key={index}
-                categroyTitle={categroy.name}
-                img={categroy.image}
-              />
+            categories.map((categroy) => (
+              <CategoryCard key={categroy["_id"]} category={categroy} />
             ))
           )}
         </div>
