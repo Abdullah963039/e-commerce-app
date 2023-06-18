@@ -1,5 +1,6 @@
 import React from "react";
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
+import { ProtectedRoute } from "./utils";
 
 //? Authentication
 import {
@@ -47,6 +48,7 @@ const routes = [
   {
     path: "/",
     element: <App />,
+    errorElement: <Navigate to={".."} replace />,
     children: [
       //? Home Page
       {
@@ -56,12 +58,20 @@ const routes = [
       //? Login Page
       {
         path: "/login",
-        element: <Login />,
+        element: (
+          <ProtectedRoute auth={false} to={"/"}>
+            <Login />
+          </ProtectedRoute>
+        ),
       },
       //? Register Page
       {
         path: "/register",
-        element: <Register />,
+        element: (
+          <ProtectedRoute auth={false} to={"/"}>
+            <Register />
+          </ProtectedRoute>
+        ),
       },
       //? Forget Password Page
       {
@@ -108,7 +118,11 @@ const routes = [
       //? Cart Page
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <ProtectedRoute admin={false} to="..">
+            <Cart />
+          </ProtectedRoute>
+        ),
       },
       //? Payment Page
       {
@@ -118,7 +132,11 @@ const routes = [
       //? Adminstrator Page
       {
         path: "/admin",
-        element: <AdminPage />,
+        element: (
+          <ProtectedRoute admin={true} to="..">
+            <AdminPage />
+          </ProtectedRoute>
+        ),
         children: [
           {
             //? Adminstrator Page
@@ -182,10 +200,14 @@ const routes = [
           },
         ],
       },
+      //? User Page
       {
-        //? User Page
         path: "/user",
-        element: <UserPage />,
+        element: (
+          <ProtectedRoute admin={false} to="..">
+            <UserPage />
+          </ProtectedRoute>
+        ),
         children: [
           //? User Profile Page
           {
