@@ -1,4 +1,5 @@
 import { usePost, useGet, usePut } from "../hooks";
+import Cookies from "js-cookie";
 
 const AUTH_API = {
   GET: {
@@ -19,6 +20,8 @@ export const authStore = (set) => ({
   user: null,
   logout: () => {
     localStorage.removeItem("token");
+    Cookies.set("is_user_logged", "false");
+    Cookies.remove("user_role");
     set({ user: null });
   },
   //? GET
@@ -27,6 +30,10 @@ export const authStore = (set) => ({
       set({ loading: true, error: false });
       const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
       set({ user: data });
+
+      Cookies.set("is_user_logged", "ture");
+      Cookies.set("user_role", data.role);
+
       return data;
     } catch (err) {
       set({ error: true });
@@ -55,6 +62,10 @@ export const authStore = (set) => ({
       const response = await usePost(AUTH_API.POST.LOGIN, { email, password });
       localStorage.setItem("token", response.data.token);
       set({ user: response.data.data });
+
+      Cookies.set("is_user_logged", "ture");
+      Cookies.set("user_role", response.data.data.role);
+
       return response;
     } catch (err) {
       set({ error: true });

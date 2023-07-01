@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { ProtectedRoute } from "./utils";
+import { ProtectedRoute } from "./components/Utility";
 
 //? Authentication
 import {
@@ -59,7 +59,7 @@ const routes = [
       {
         path: "/login",
         element: (
-          <ProtectedRoute auth={false} to={"/"}>
+          <ProtectedRoute user={"false"} href={"/"}>
             <Login />
           </ProtectedRoute>
         ),
@@ -68,7 +68,7 @@ const routes = [
       {
         path: "/register",
         element: (
-          <ProtectedRoute auth={false} to={"/"}>
+          <ProtectedRoute user={"false"} href={"/"}>
             <Register />
           </ProtectedRoute>
         ),
@@ -76,17 +76,29 @@ const routes = [
       //? Forget Password Page
       {
         path: "/forget-password",
-        element: <ForgetPassword />,
+        element: (
+          <ProtectedRoute user="false" href="/">
+            <ForgetPassword />
+          </ProtectedRoute>
+        ),
       },
       //? Verify Reset Code Page
       {
         path: "/verify-code",
-        element: <VerifyResetCode />,
+        element: (
+          <ProtectedRoute user="false" href="/">
+            <VerifyResetCode />
+          </ProtectedRoute>
+        ),
       },
       //? Reset Password Page
       {
         path: "/reset-password",
-        element: <ResetPassword />,
+        element: (
+          <ProtectedRoute user="false" href="/">
+            <ResetPassword />
+          </ProtectedRoute>
+        ),
       },
       //? All Categories Page
       {
@@ -119,7 +131,7 @@ const routes = [
       {
         path: "/cart",
         element: (
-          <ProtectedRoute admin={false} to="..">
+          <ProtectedRoute role="user" href="..">
             <Cart />
           </ProtectedRoute>
         ),
@@ -127,13 +139,17 @@ const routes = [
       //? Payment Page
       {
         path: "/paymethod",
-        element: <PaymentPage />,
+        element: (
+          <ProtectedRoute role="user" href="..">
+            <PaymentPage />
+          </ProtectedRoute>
+        ), //todo Protect This route
       },
       //? Adminstrator Page
       {
         path: "/admin",
         element: (
-          <ProtectedRoute admin={true} to="..">
+          <ProtectedRoute role="admin" href="..">
             <AdminPage />
           </ProtectedRoute>
         ),
@@ -204,7 +220,7 @@ const routes = [
       {
         path: "/user",
         element: (
-          <ProtectedRoute admin={false} to="..">
+          <ProtectedRoute role="user" href="..">
             <UserPage />
           </ProtectedRoute>
         ),

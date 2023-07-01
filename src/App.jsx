@@ -21,7 +21,7 @@ function App() {
   useEffect(() => {
     const getUser = async () => {
       const userResponse = await getLoggedUser();
-      if (userResponse.role !== "admin") {
+      if (userResponse?.role !== "admin") {
         const cartResponse = await getLoggedUserCart();
       }
     };
