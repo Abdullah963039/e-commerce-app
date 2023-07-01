@@ -9,3 +9,5 @@ export {
   ConfirmEditModal,
   EditProfileModal,
 } from "./ConfirmMessage";
+
+export { default as ProtectedRoute } from "./ProtectedRoute";

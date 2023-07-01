@@ -3,8 +3,11 @@ import { useState, useRef } from "react";
 import { useStore } from "../../hooks";
 import { notify } from "../../utils";
 import { CartsContainerHook } from "./";
+import { useNavigate } from "react-router-dom";
 
 export default function DiscountCodeHook() {
+  const navigate = useNavigate();
+
   const [clearCartModal, setClearCartModal] = useState(false); // Clear Cart Modal Controller
 
   const openClearCartModal = (_) => setClearCartModal(true);
@@ -16,6 +19,7 @@ export default function DiscountCodeHook() {
     clearUserCart,
     applyCouponToCart,
     appliedCoponName,
+    cartOrders,
   } = useStore(); // Global store
 
   const { rerenderPage } = CartsContainerHook(); // Rerendering carts container after clearing cart
@@ -47,13 +51,21 @@ export default function DiscountCodeHook() {
 
     const res = await applyCouponToCart(coponName);
 
-    if (res.status === 400) {
+    if (res.status === 400)
       notify("error", "اسم الكوبون غير صالح أو قد انتهت صلاحيته");
-      coponRef.current.value = "";
-    }
+
     if (res.status === 200) notify("done", "تم تطبيق الكوبون بنجاح");
 
-    console.log(res);
+    coponRef.current.value = "";
+  }
+
+  function handleNavigateToPayment() {
+    if (cartOrders !== null) {
+      navigate("/paymethod");
+      return;
+    }
+
+    notify("error", "من فضلك اضف منتجات للعربة ..");
   }
 
   return {
@@ -68,5 +80,7 @@ export default function DiscountCodeHook() {
     coponRef,
     applyCopon,
     appliedCoponName,
+    cartOrders,
+    handleNavigateToPayment,
   };
 }

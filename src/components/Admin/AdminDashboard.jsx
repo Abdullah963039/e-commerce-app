@@ -6,9 +6,9 @@ export default function AdminDashboard() {
     "w-full border-b border-slate-300 py-4 duration-150 hover:bg-slate-700 hover:text-slate-50 navlink";
 
   return (
-    <aside className="relative col-span-2 overflow-clip rounded-lg ">
+    <aside className="relative col-span-12 overflow-clip rounded-lg sm:col-span-2 ">
       <nav className="sticky top-8">
-        <ul className="flex flex-col items-center overflow-hidden rounded-lg bg-white text-center">
+        <ul className="flex flex-wrap items-center overflow-hidden rounded-lg bg-white text-center sm:flex-col">
           <NavLink to="/admin/orders" className={NAVLINK_STYLE}>
             <li title="ادارة الطلبات">ادارة الطلبات</li>
           </NavLink>

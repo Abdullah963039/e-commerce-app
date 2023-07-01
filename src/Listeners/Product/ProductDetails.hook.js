@@ -1,9 +1,11 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useStore } from "../../hooks";
 import { useState, useEffect } from "react";
+import { notify } from "../../utils";
 
 export default function ProductDetailsHook() {
   const { productId } = useParams(); // Get product id from url
+  const navigate = useNavigate(); // If Id is not provided
 
   const [product, setProduct] = useState({}); // Store Product Info
   const [productImages, setProductImages] = useState([]); // Store Product Images
@@ -35,7 +37,8 @@ export default function ProductDetailsHook() {
         setProductImages(productInfo.images.map((url) => ({ original: url }))); // create object to make suit logic for gallary lib
         setMayLikeProducts(productsMayLikeData);
       } catch (error) {
-        console.log(error);
+        notify("error", "حدث خطأ ما");
+        navigate("..", { replace: true });
       }
     };
 

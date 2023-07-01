@@ -1,35 +1,56 @@
-export default function AdminUserDetails() {
+import { Dropdown } from "primereact/dropdown";
+
+const OPTIONS = [
+  {
+    name: "قيد التنفيذ",
+    value: "wait",
+  },
+  {
+    name: "تم الانتهاء",
+    value: "done",
+  },
+  {
+    name: "الغاء",
+    value: "cancel",
+  },
+];
+
+export default function AdminUserDetails({ user, isDelivered, isPaid }) {
   return (
-    <div className="flex w-full flex-col gap-2 rounded-lg bg-white p-2">
-      <h3 className="mb-3 text-xl font-bold">تفاصيل العميل</h3>
-      {/* User Informations */}
-      <div className="flex flex-col gap-2 px-2">
-        <p>
-          الاسم: <span className="text-slate-500">علي علي</span>
-        </p>
-        <p>
-          رقم الهاتف: <span className="text-slate-500">0651651620</span>
-        </p>
-        <p>
-          البريد الالكتروني:{" "}
-          <span className="text-slate-500">UserName@User.com</span>
-        </p>
+    <>
+      <div className="flex w-full flex-col divide-y rounded-lg bg-white p-4 shadow-md">
+        <h3 className="mb-3 text-xl font-bold">تفاصيل العميل</h3>
+        {/* User Informations */}
+        <div className="flex flex-col gap-2 p-2">
+          {/* Username */}
+          <p className="flex items-center gap-2 text-slate-600">
+            <span className="basis-1/4 text-center">الاسم</span>{" "}
+            <span className="font-bold text-slate-900">{user.name}</span>
+          </p>
+          {/* User Phone Number */}
+          <p className="flex items-center gap-2 text-slate-600">
+            <span className="basis-1/4 text-center">رقم الهاتف</span>
+            <span className="font-bold text-slate-900">{user.phone}</span>
+          </p>
+          {/* User Email */}
+          <p className="flex items-center gap-2 text-slate-600">
+            <span className="basis-1/4 text-center">البريد الالكتروني</span>
+            <span className="font-bold text-slate-900">{user.email}</span>
+          </p>
+        </div>
       </div>
-      {/* Total Orders Price */}
-      <div className="border-y border-slate-200 p-2 text-center">65165</div>
       {/* Order Status */}
-      <div className="flex items-center justify-center gap-4 py-2">
-        <select
-          name="orderStatus"
-          className="w-[400px] border border-slate-300 bg-slate-100 py-2 text-center font-semibold text-slate-700 outline-none"
-        >
-          <option value="status">حالة الطلب</option>
-          <option value="pending">قيد التنفيذ</option>
-          <option value="done">تم الانتهاء</option>
-          <option value="cancel">إلغاء</option>
-        </select>
-        <button className="btn bg-slate-800 px-4 py-1 text-white">حفظ</button>
+      <div className="my-2 flex justify-evenly gap-4">
+        <Dropdown
+          options={OPTIONS}
+          optionLabel="name"
+          className="w-3/5 !border-none py-0 !outline-none ring-1 ring-slate-200 focus-within:ring-slate-600 hover:ring-slate-600"
+          placeholder="حالة الطلب"
+        />
+        <button className="basis-1/5 rounded-lg bg-slate-800 px-6 text-white hover:bg-slate-900">
+          حفظ
+        </button>
       </div>
-    </div>
+    </>
   );
 }

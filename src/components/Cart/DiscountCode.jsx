@@ -18,6 +18,7 @@ export default function DiscountCode() {
     applyCopon,
     coponRef,
     appliedCoponName,
+    handleNavigateToPayment,
   } = DiscountCodeHook();
 
   return (
@@ -61,9 +62,11 @@ export default function DiscountCode() {
             </>
           )}
         </div>
-
-        <button className="rounded-lg bg-slate-700 py-3 text-center font-bold text-white hover:bg-slate-800">
-          <Link to="/paymethod">اتمام الشراء</Link>
+        <button
+          onClick={handleNavigateToPayment}
+          className="rounded-lg bg-slate-700 py-3 text-center font-bold text-white hover:bg-slate-800 disabled:opacity-50 disabled:hover:bg-slate-700"
+        >
+          اتمام الشراء
         </button>
         <button
           onClick={openClearCartModal}

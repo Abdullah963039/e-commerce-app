@@ -50,7 +50,7 @@ export default function Header() {
               onLogout={logoutUser}
             />
           )}
-          {user?.["role"] === "user" && (
+          {user?.["role"] === "user" ? (
             <>
               <Link to="/cart">
                 <button className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 sm:text-base">
@@ -59,6 +59,16 @@ export default function Header() {
                   <Badge count={ordersCount} />
                 </button>
               </Link>
+            </>
+          ) : (
+            <>
+              <button
+                disabled
+                className="btn icon relative px-3 py-1 text-xs hover:bg-slate-200 hover:text-slate-900 disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:bg-transparent disabled:hover:text-white sm:text-base"
+              >
+                <AiOutlineShoppingCart />
+                العربة
+              </button>
             </>
           )}
         </div>

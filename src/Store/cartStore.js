@@ -57,6 +57,13 @@ export const cartStore = (set) => ({
       set({ loading: true, error: false });
       const response = await usePut(CART_URL + `/${orderId}`, { count });
 
+      set({
+        cartPrice: response.data.data.totalCartPrice,
+        cartPriceAfterDiscount: 0,
+        appliedCoponName: "",
+      });
+      console.log(response);
+
       return response;
     } catch (err) {
       set({ error: true });

@@ -13,6 +13,7 @@ import {
   addressesStore,
   updateUserStore,
   cartStore,
+  ordersStore,
 } from "../Store";
 
 const store = (...props) => ({
@@ -29,6 +30,7 @@ const store = (...props) => ({
   ...addressesStore(...props), //> User Addresses Store
   ...updateUserStore(...props), //> User Profile Store
   ...cartStore(...props), //> Cart Store
+  ...ordersStore(...props), //> Orders Store
 });
 
 export const useStore = create(store);
