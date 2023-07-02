@@ -1,9 +1,9 @@
 import { AdminUserDetails, OrderProductInfo } from "../../components/Admin";
-import { AdminUserDetailsHook } from "../../Listeners/Orders";
+import { AdminOrderDetailsPageHook } from "../../Listeners/Orders";
 import { currencyFormatter, dateFormatter } from "../../utils";
 
 export default function AdminOrderDetailsPage() {
-  const { order } = AdminUserDetailsHook();
+  const { order } = AdminOrderDetailsPageHook();
 
   if (order === null) return null;
 

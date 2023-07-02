@@ -1,25 +1,79 @@
-import { useParams } from "react-router-dom";
+import { useState } from "react";
 import { useStore } from "../../hooks";
-import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { notify } from "../../utils";
 
-export default function AdminUserDetailsHook() {
+const PAID_OPTIONS = [
+  {
+    title: "تم الدفع",
+    value: true,
+  },
+  {
+    title: "لم يتم الدفع",
+    value: false,
+  },
+];
+const DELIVER_OPTIONS = [
+  {
+    title: "تم التوصيل",
+    value: true,
+  },
+  {
+    title: "قيد التنفيذ",
+    value: false,
+  },
+];
+
+export default function AdminUserDetailsHook({ isDelivered, isPaid }) {
+  // Get Order Id
   const { orderId } = useParams();
 
-  const [order, setOrder] = useState(null);
+  // Global Store
+  const { updateOrderToDeliver, updateOrderToPaid, loading } = useStore();
 
-  const { getSpecificOrder } = useStore();
+  const [orderPay, setOrderPay] = useState(isPaid || false); // Order isPaid State
+  const [orderDeliver, setOrderDeliver] = useState(isDelivered || false); // Order isDelivered State
 
-  useEffect(() => {
-    getOrderDetails();
+  //   onChangeState
+  const handleChangePayStatus = (e) => setOrderPay(e.value);
+  const handleChangeDeliveredStatus = (e) => setOrderDeliver(e.value);
 
-    return () => setOrder(null);
-  }, [orderId]);
+  //? Call API
+  async function handleUpdateOrderToPaid() {
+    if (isPaid == orderPay) return;
 
-  async function getOrderDetails() {
-    const res = await getSpecificOrder(orderId);
+    const res = await updateOrderToPaid(orderId);
 
-    setOrder(res);
+    if (res.status == 200) {
+      notify("done", "تم تغيير حالة الطلب بنجاح");
+      return;
+    }
+
+    notify("error");
   }
 
-  return { order };
+  async function handleUpdateOrderToDeliver() {
+    if (isDelivered == orderDeliver) return;
+
+    const res = await updateOrderToDeliver(orderId);
+
+    if (res.status == 200) {
+      notify("done", "تم تغيير حالة الطلب بنجاح");
+      return;
+    }
+
+    notify("error");
+  }
+
+  return {
+    loading,
+    PAID_OPTIONS,
+    DELIVER_OPTIONS,
+    orderPay,
+    orderDeliver,
+    handleChangePayStatus,
+    handleChangeDeliveredStatus,
+    handleUpdateOrderToPaid,
+    handleUpdateOrderToDeliver,
+  };
 }
