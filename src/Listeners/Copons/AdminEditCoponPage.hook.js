@@ -26,7 +26,6 @@ export default function AdminEditCoponPageHook() {
         setDiscount(copon.discount);
         setExpiredIn(copon.expire);
       } catch (error) {
-        console.log(error);
         notify("error", "حدث خطأ ما");
       }
     };

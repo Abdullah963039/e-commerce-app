@@ -1,7 +1,7 @@
 import { useGet, usePost, usePut } from "../hooks";
 
 const ORDERS_API = "/api/v1/orders";
-const CHECKOUT_API = "/api/v1/orders/checkout-session/";
+const CHECKOUT_API = "/api/v1/orders/checkout-session";
 
 export const ordersStore = (set) => ({
   //? GET
@@ -34,7 +34,19 @@ export const ordersStore = (set) => ({
       set({ loading: false });
     }
   },
-  checkoutSessions: null,
+  checkoutSessions: async (cartId) => {
+    try {
+      set({ loading: true, error: false });
+      const response = await useGet(CHECKOUT_API + `/${cartId}`, true);
+
+      return response;
+    } catch (er) {
+      set({ error: true });
+      return er.response;
+    } finally {
+      set({ loading: false });
+    }
+  },
   //? POST
   createCashOrder: async (cartId, address) => {
     try {

@@ -67,8 +67,6 @@ export default function UserEditAddressHook() {
       phone,
     });
 
-    console.log(res); //!
-
     if (res.status === 200) {
       notify("done", "تم انشاء العنوان بنجاح");
       aliasRef.current.value = "";

@@ -1,8 +1,6 @@
 // hooks
 import { useEffect, useState } from "react";
 import { useStore } from "../../hooks";
-// utils
-import { getLocal } from "../../utils/getValueFromStorage";
 
 export default function HomeProductListHook() {
   const { getAllProducts, loading } = useStore();

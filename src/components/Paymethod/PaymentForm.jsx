@@ -1,5 +1,6 @@
 // components
 import { Dropdown } from "primereact/dropdown";
+import { LoadingIcon } from "../Utility";
 
 // utils
 import { currencyFormatter } from "../../utils";
@@ -15,6 +16,7 @@ export default function PaymentForm() {
     allAddresses: addresses,
     shippingAddress,
     selectAddress,
+    loading,
   } = PaymentFormHook();
   return (
     <>
@@ -27,7 +29,8 @@ export default function PaymentForm() {
           <label className="flex items-center gap-2 px-2 py-4">
             <input
               type="radio"
-              value="pay with card"
+              name="method"
+              value="card"
               onClick={handleSelectPaymethod}
             />
             الدفع عن طريق بطاقة ائتمانية
@@ -35,7 +38,8 @@ export default function PaymentForm() {
           <label className="flex items-center gap-2 px-2 py-4 ">
             <input
               type="radio"
-              value="pay when recive"
+              name="method"
+              value="cash"
               onClick={handleSelectPaymethod}
             />
             الدفع عند الاستلام
@@ -66,7 +70,7 @@ export default function PaymentForm() {
             type="submit"
             className="btn border-slate-700 bg-slate-700 px-6 py-3 text-sm text-white hover:bg-slate-800"
           >
-            اتمام الشراء
+            {loading ? <LoadingIcon /> : "اتمام الشراء"}
           </button>
         </div>
       </form>

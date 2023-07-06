@@ -51,9 +51,6 @@ export default function UserChangePasswordHook() {
       return; // Exit from proccess
     }
 
-    // Note : there is problem with server side
-    // It take old password as new , and new as old
-    // todo Check from values ...
     const res = await updateUserPassword({
       currentPassword,
       password,
@@ -61,12 +58,6 @@ export default function UserChangePasswordHook() {
     });
 
     if (res.status === 200) notify("done", "تم تغيير كلمة المرور بنجاح");
-
-    /**
-     * res.status === 400 :=> {value: 'ىثص', msg: 'Incorrect current password', param: 'password', location: 'body'}
-     */
-
-    console.log(res);
   }
 
   return {

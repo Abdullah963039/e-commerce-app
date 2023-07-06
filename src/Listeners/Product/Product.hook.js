@@ -16,7 +16,6 @@ export default function ProductHook(productId) {
 
   async function removeFromFavorites() {
     const res = await removeFromWishlist(productId);
-    console.log(res);
 
     if (res.status === 200) {
       notify("done", "تم ازالة المنتج الى المفضلة بنجاح");
@@ -26,7 +25,6 @@ export default function ProductHook(productId) {
 
   async function addToFavorites() {
     const res = await addToWishlist(productId);
-    console.log(res);
     if (res.status === 200) {
       notify("done", "تم اضافة المنتج من المفضلة بنجاح");
       setIsFavorite(true);

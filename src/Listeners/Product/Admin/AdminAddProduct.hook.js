@@ -133,8 +133,6 @@ export default function AdminAddProductHook() {
 
     const response = await createNewProduct(formData);
 
-    console.log(response);
-
     if (response.status === 500) notify("error", "نعتذر يوجد خطأ في المخدم");
     if (response.status === 400) notify("error", "هذا الاسم موجود مسبقا");
     if (response.status === 403) {

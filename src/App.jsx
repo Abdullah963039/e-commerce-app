@@ -11,9 +11,6 @@ import { Header, Footer } from "./components/Utility";
 import "./tailwind.css";
 import "react-toastify/dist/ReactToastify.css"; //? Notification Styles
 
-// utils
-import { getLocal } from "./utils";
-
 function App() {
   const { getLoggedUser, getLoggedUserCart } = useStore();
 

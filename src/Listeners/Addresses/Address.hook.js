@@ -19,7 +19,6 @@ export default function AddressHook() {
       notify("done", "تم حذف العنوان بنجاح");
       closeModal();
     }
-    console.log(res);
   }
 
   return {
