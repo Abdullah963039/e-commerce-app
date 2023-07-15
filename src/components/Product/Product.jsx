@@ -12,7 +12,7 @@ const PRODUCT_CARD =
 
 export default function Product({ className, product }) {
   const { user, loading, isFavorite, removeFromFavorites, addToFavorites } =
-    ProductHook(product["_id"]);
+    ProductHook(product);
 
   const productImageCover = product.imageCover.startsWith("http")
     ? product.imageCover
@@ -31,6 +31,7 @@ export default function Product({ className, product }) {
               alt={product["title"]}
               className="aspect-square object-contain"
               title={product["title"]}
+              loading="lazy"
             />
           </Link>
           {user == null || user.role == "admin" ? null : isFavorite ? (

@@ -20,8 +20,8 @@ export const authStore = (set) => ({
   user: null,
   logout: () => {
     localStorage.removeItem("token");
-    Cookies.set("is_user_logged", "false");
-    Cookies.remove("user_role");
+    Cookies.set("is_user_logged", "false"); // Note: Could be implemented in local storage instead of cookies
+    Cookies.remove("user_role"); // Note: Could be implemented in local storage instead of cookies
     set({ user: null });
   },
   //? GET
@@ -31,7 +31,7 @@ export const authStore = (set) => ({
       const { data } = await useGet(AUTH_API.GET.LOGGED_USER, true);
       set({ user: data });
 
-      Cookies.set("is_user_logged", "ture");
+      Cookies.set("is_user_logged", "true");
       Cookies.set("user_role", data.role);
 
       return data;

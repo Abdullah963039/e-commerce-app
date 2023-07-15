@@ -79,7 +79,7 @@ export default function RegisterHook() {
       notify("done", "تم إنشاء الحساب بنجاح");
       login(state["email"], state["password"]);
       setTimeout(() => {
-        navigator("/"); //todo Must Login And navigate to home page
+        navigator("/");
       }, 1500);
     }
   }

@@ -1,8 +1,10 @@
 // hooks
 import { useRef } from "react";
-import { useStore } from "../../hooks";
+import { lazily } from "react-lazily";
+
+const { useStore } = lazily(() => import("../../hooks"));
 // utils
-import { notify } from "../../utils";
+const { notify } = lazily(() => import("../../utils"));
 
 export default function UserAddAddressHook() {
   const aliasRef = useRef(),

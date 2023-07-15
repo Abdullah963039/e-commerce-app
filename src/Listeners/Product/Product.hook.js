@@ -3,38 +3,38 @@ import { useEffect, useState } from "react";
 import { useStore } from "../../hooks";
 import { notify } from "../../utils";
 
-export default function ProductHook(productId) {
-  const { user, addToWishlist, removeFromWishlist, loading } = useStore(); // get user's wishlist from global store
+export default function ProductHook(product) {
+  const { user, addToWishlist, removeFromWishlist, loading, wishlistProducts } =
+    useStore(); // get user's wishlist from global store
 
-  const [isFavorite, setIsFavorite] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(() =>
+    wishlistProducts.some((prod) => prod["_id"] === product?.["_id"])
+  );
 
   useEffect(() => {
-    const prodcutExist = user?.wishlist.some((id) => id === productId);
+    const isProdcutExistInWishlist = wishlistProducts?.some(
+      (prod) => prod["_id"] === product?.["_id"]
+    );
 
-    if (prodcutExist) setIsFavorite(true);
+    if (isProdcutExistInWishlist) setIsFavorite(true);
   }, []);
 
   async function removeFromFavorites() {
-    const res = await removeFromWishlist(productId);
+    const res = await removeFromWishlist(product?.["_id"]);
 
     if (res.status === 200) {
-      notify("done", "تم ازالة المنتج الى المفضلة بنجاح");
       setIsFavorite(false);
+      notify("done", "تم ازالة المنتج من المفضلة بنجاح");
     }
   }
 
   async function addToFavorites() {
-    const res = await addToWishlist(productId);
+    const res = await addToWishlist(product);
     if (res.status === 200) {
-      notify("done", "تم اضافة المنتج من المفضلة بنجاح");
       setIsFavorite(true);
+      notify("done", "تم اضافة المنتج الى المفضلة بنجاح");
     }
   }
 
   return { isFavorite, removeFromFavorites, addToFavorites, user, loading };
-}
-
-// helper function
-function isFromFavorite(wishlist = [], id = "") {
-  return Boolean(wishlist.find((i) => i === id));
 }

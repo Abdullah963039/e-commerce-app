@@ -10,10 +10,10 @@ export default function UserFavoriteProducts() {
     <>
       <div className="mb-4 grid grid-cols-12 gap-4">
         {wishlist?.length > 0 ? (
-          wishlist.map((favProd, index) => (
+          wishlist.map((favProduct) => (
             <Product
-              product={favProd}
-              key={index}
+              product={favProduct}
+              key={favProduct["_id"]}
               className={
                 "col-span-12 overflow-hidden rounded-lg bg-white shadow-md sm:col-span-6 md:col-span-4 lg:col-span-3"
               }

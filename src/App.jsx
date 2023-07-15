@@ -6,6 +6,7 @@ import { useStore } from "./hooks";
 import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import { Header, Footer } from "./components/Utility";
+import Cookies from "js-cookie";
 
 // styles
 import "./tailwind.css";
@@ -23,7 +24,14 @@ function App() {
       }
     };
 
-    if (localStorage.getItem("token") != null) getUser();
+    if (localStorage.getItem("token") != null) {
+      Cookies.set("is_user_logged", "true");
+      getUser();
+      return;
+    } else {
+      Cookies.set("is_user_logged", "false");
+      return;
+    }
 
     return () => {};
   }, []);

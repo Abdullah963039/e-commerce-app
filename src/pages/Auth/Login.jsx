@@ -95,8 +95,6 @@ export default function Login() {
               </p>
             </form>
           </div>
-          <Link to="/admin">admin</Link>
-          <Link to="/user">user</Link>
         </div>
       </div>
     </>

@@ -1,7 +1,7 @@
 import ReactPaginate from "react-paginate";
 
 const BUTTONS_STYLE =
-  "btn py-1 px-3 border-slate-700 text-slate-900 hover:bg-slate-700 hover:text-white duration-150";
+  "btn py-1 px-3 border-slate-700 text-slate-900 hover:bg-slate-700 hover:text-white duration-150 z-10";
 
 export default function Pagination({ totalPages = 0, onClick }) {
   const handlePageClick = (btn) => {
@@ -19,11 +19,12 @@ export default function Pagination({ totalPages = 0, onClick }) {
         marginPagesDisplayed={1}
         pageRangeDisplayed={2}
         containerClassName="flex gap-2 items-center justify-center p-4"
-        pageClassName={BUTTONS_STYLE}
-        previousClassName={BUTTONS_STYLE}
-        nextClassName={BUTTONS_STYLE}
+        pageClassName="z-0"
         breakClassName={BUTTONS_STYLE}
-        activeClassName="bg-slate-700 text-white"
+        nextLinkClassName={BUTTONS_STYLE}
+        previousLinkClassName={BUTTONS_STYLE}
+        pageLinkClassName={BUTTONS_STYLE}
+        activeLinkClassName="bg-slate-700 text-white"
       />
     </div>
   );

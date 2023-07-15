@@ -8,8 +8,8 @@ export default function UserAddresses() {
   const { allAddresses } = UserAddressesHook();
   return (
     <div className="flex flex-col items-center gap-2">
-      {allAddresses.length > 0 ? (
-        allAddresses.map((address) => (
+      {allAddresses?.length > 0 ? (
+        allAddresses?.map((address) => (
           <SingleAddress key={address["_id"]} address={address} />
         ))
       ) : (

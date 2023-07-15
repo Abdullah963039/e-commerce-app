@@ -1,54 +1,30 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Navigate, createBrowserRouter } from "react-router-dom";
-import { ProtectedRoute } from "./components/Utility";
+import { lazily } from "react-lazily";
 
-//? Authentication
-import {
-  Login,
-  Register,
-  ForgetPassword,
-  ResetPassword,
-  VerifyResetCode,
-} from "./pages/Auth";
-
-//? Components
-import { AllProducts, Products, ProductDetailsPage } from "./pages/Product";
-import { AllBrands, AllCategeories, Cart, Home, PaymentPage } from "./pages";
 import App from "./App";
 
-// ? Admin Pages
-import {
-  AdminAddCoponPage,
-  AdminAddBrandPage,
-  AdminAddCategoryPage,
-  AdminAddProductPage,
-  AdminAddSubCategoryPage,
-  AdminAllOrdersPage,
-  AdminAllProducts,
-  AdminCoponsPage,
-  AdminEditCoponPage,
-  AdminEditProductPage,
-  AdminOrderDetailsPage,
-  AdminPage,
-} from "./pages/Admin";
+import { Loading, ProtectedRoute } from "./components/Utility";
 
-//? User Pages
-import {
-  UserAddAddressPage,
-  UserAddressesPage,
-  UserEditAddressPage,
-  UserFavoriteProductsPage,
-  UserOrdersPage,
-  UserPage,
-  UserProfilePage,
-} from "./pages/User";
+//? Authentication
+const Auth = lazily(() => import("./pages/Auth"));
+const Admin = lazily(() => import("./pages/Admin"));
+const User = lazily(() => import("./pages/User"));
+
+//? Components
+const { AllProducts, Products, ProductDetailsPage } = lazily(() =>
+  import("./pages/Product")
+);
+const { AllBrands, AllCategeories, Cart, Home, PaymentPage } = lazily(() =>
+  import("./pages")
+);
 
 //? Application Routes
 const routes = [
   {
     path: "/",
     element: <App />,
-    errorElement: <Navigate to={".."} replace />,
+    errorElement: <>{(err) => JSON.stringify(err)}</>,
     children: [
       //? Home Page
       {
@@ -60,7 +36,9 @@ const routes = [
         path: "/login",
         element: (
           <ProtectedRoute user={"false"} href={"/"}>
-            <Login />
+            <Suspense fallback={<Loading />}>
+              <Auth.Login />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -69,7 +47,9 @@ const routes = [
         path: "/register",
         element: (
           <ProtectedRoute user={"false"} href={"/"}>
-            <Register />
+            <Suspense fallback={<Loading />}>
+              <Auth.Register />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -78,7 +58,9 @@ const routes = [
         path: "/forget-password",
         element: (
           <ProtectedRoute user="false" href="/">
-            <ForgetPassword />
+            <Suspense fallback={<Loading />}>
+              <Auth.ForgetPassword />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -87,7 +69,9 @@ const routes = [
         path: "/verify-code",
         element: (
           <ProtectedRoute user="false" href="/">
-            <VerifyResetCode />
+            <Suspense fallback={<Loading />}>
+              <Auth.VerifyResetCode />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -96,34 +80,56 @@ const routes = [
         path: "/reset-password",
         element: (
           <ProtectedRoute user="false" href="/">
-            <ResetPassword />
+            <Suspense fallback={<Loading />}>
+              <Auth.ResetPassword />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
       //? All Categories Page
       {
         path: "/categories",
-        element: <AllCategeories />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AllCategeories />
+          </Suspense>
+        ),
       },
       //? All Brands Page
       {
         path: "/brands",
-        element: <AllBrands />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <AllBrands />
+          </Suspense>
+        ),
       },
       //? Products Page
       {
         path: "/products",
-        element: <Products />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Products />
+          </Suspense>
+        ),
         children: [
           //? All Products Page
           {
             index: true,
-            element: <AllProducts />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <AllProducts />
+              </Suspense>
+            ),
           },
           //? Product Details Page
           {
             path: ":productId",
-            element: <ProductDetailsPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <ProductDetailsPage />
+              </Suspense>
+            ),
           },
         ],
       },
@@ -132,7 +138,9 @@ const routes = [
         path: "/cart",
         element: (
           <ProtectedRoute role="user" href="..">
-            <Cart />
+            <Suspense fallback={<Loading />}>
+              <Cart />
+            </Suspense>
           </ProtectedRoute>
         ),
       },
@@ -141,23 +149,31 @@ const routes = [
         path: "/paymethod",
         element: (
           <ProtectedRoute role="user" href="..">
-            <PaymentPage />
+            <Suspense fallback={<Loading />}>
+              <PaymentPage />
+            </Suspense>
           </ProtectedRoute>
-        ), //todo Protect This route
+        ),
       },
       //? Adminstrator Page
       {
         path: "/admin",
         element: (
           <ProtectedRoute role="admin" href="..">
-            <AdminPage />
+            <Suspense fallback={<Loading />}>
+              <Admin.AdminPage />
+            </Suspense>
           </ProtectedRoute>
         ),
         children: [
           {
             //? Adminstrator Page
             index: true,
-            element: <AdminAllProducts />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAllProducts />
+              </Suspense>
+            ),
           },
           {
             path: "orders",
@@ -165,54 +181,94 @@ const routes = [
               {
                 //? Adminstrator Orders Page
                 index: true,
-                element: <AdminAllOrdersPage />,
+                element: (
+                  <Suspense fallback={<Loading />}>
+                    <Admin.AdminAllOrdersPage />
+                  </Suspense>
+                ),
               },
               {
                 //? Adminstrator Order Details Page
                 path: ":orderId",
-                element: <AdminOrderDetailsPage />,
+                element: (
+                  <Suspense fallback={<Loading />}>
+                    <Admin.AdminOrderDetailsPage />
+                  </Suspense>
+                ),
               },
             ],
           },
           {
             //? Adminstrator Add Brand Page
             path: "add-brand",
-            element: <AdminAddBrandPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAddBrandPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Add Category Page
             path: "add-category",
-            element: <AdminAddCategoryPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAddCategoryPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Add Sub Category Page
             path: "add-sub-category",
-            element: <AdminAddSubCategoryPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAddSubCategoryPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Add Product Page
             path: "add-product",
-            element: <AdminAddProductPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAddProductPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Add Product Page
             path: "edit-product/:productId",
-            element: <AdminEditProductPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminEditProductPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Copons Page
             path: "copons",
-            element: <AdminCoponsPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminCoponsPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Add Copon Page
             path: "add-copon",
-            element: <AdminAddCoponPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminAddCoponPage />
+              </Suspense>
+            ),
           },
           {
             //? Adminstrator Edit Copon Page
             path: "edit-copon/:coponId",
-            element: <AdminEditCoponPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <Admin.AdminEditCoponPage />
+              </Suspense>
+            ),
           },
         ],
       },
@@ -221,24 +277,38 @@ const routes = [
         path: "/user",
         element: (
           <ProtectedRoute role="user" href="..">
-            <UserPage />
+            <Suspense fallback={<Loading />}>
+              <User.UserPage />
+            </Suspense>
           </ProtectedRoute>
         ),
         children: [
           //? User Profile Page
           {
             index: true,
-            element: <UserProfilePage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <User.UserProfilePage />
+              </Suspense>
+            ),
           },
           //? User Orders Page
           {
             path: "orders",
-            element: <UserOrdersPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <User.UserOrdersPage />
+              </Suspense>
+            ),
           },
           //? User Favorites Page
           {
             path: "favorites",
-            element: <UserFavoriteProductsPage />,
+            element: (
+              <Suspense fallback={<Loading />}>
+                <User.UserFavoriteProductsPage />
+              </Suspense>
+            ),
           },
           //? User Address Page
           {
@@ -246,17 +316,29 @@ const routes = [
             children: [
               {
                 index: true,
-                element: <UserAddressesPage />,
+                element: (
+                  <Suspense fallback={<Loading />}>
+                    <User.UserAddressesPage />
+                  </Suspense>
+                ),
               },
               //? User Add New Address Page
               {
                 path: "add-address",
-                element: <UserAddAddressPage />,
+                element: (
+                  <Suspense fallback={<Loading />}>
+                    <User.UserAddAddressPage />
+                  </Suspense>
+                ),
               },
               //? User Edit Address Page
               {
                 path: "edit/:addressId",
-                element: <UserEditAddressPage />,
+                element: (
+                  <Suspense fallback={<Loading />}>
+                    <User.UserEditAddressPage />
+                  </Suspense>
+                ),
               },
             ],
           },

@@ -1,20 +1,16 @@
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useStore } from "../../../hooks";
 
 export default function UserFavoriteProductsHook() {
-  const [wishlist, setWishlist] = useState([]); // user's wishlist state
-
-  const { getUserWishlist } = useStore(); // get user's wishlist from global store
+  const { getUserWishlist, wishlistProducts } = useStore(); // get user's wishlist from global store
 
   useEffect(() => {
-    async function f() {
-      //todo Rename this function
+    async function getWishlist() {
       const res = await getUserWishlist();
-      setWishlist(res.data);
     }
 
-    f();
-  }, []);
+    getWishlist();
+  }, [rerender]);
 
-  return { wishlist };
+  return { wishlist: wishlistProducts, rerenderFavoriteProductsPage };
 }

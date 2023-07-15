@@ -13,7 +13,7 @@ export default function LoginHook() {
   const navigator = useNavigate();
 
   // Global Store
-  const { login, loading } = useStore(); // todo Implement Logining User ...
+  const { login, loading } = useStore();
 
   // Referance for error tooltip
   const emailTooltipRef = useRef();

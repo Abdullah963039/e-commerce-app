@@ -30,5 +30,3 @@ export const updateUserStore = (set) => ({
     }
   },
 });
-
-// todo : export to global store
